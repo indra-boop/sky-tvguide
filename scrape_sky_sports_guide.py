@@ -14,26 +14,37 @@ Legal/ethical check (per 30 Jul 2026):
 - Data yang diambil adalah jadwal publik yang memang ditampilkan tanpa login.
 - Tetap: gunakan rate-limit wajar, jangan hit server terlalu sering/paralel.
 
-STATUS: Script ini BELUM di-test end-to-end oleh asisten karena sandbox
-cloud tidak punya akses network ke domain ini (hanya domain allowlist).
-Struktur DOM diverifikasi manual lewat browser (Chrome tool), tapi
-jalankan dulu dengan --headful --debug di komputer Anda sebelum dipakai
-rutin, lalu sesuaikan jika ada elemen yang tidak ketemu.
+STATUS: Sudah diverifikasi jalan (30 Jul 2026, Windows + Python 3.13) - 20
+channel Sports terdeteksi, 141 program berhasil di-parse. Kalau Sky ubah
+struktur halaman dan hasil tiba-tiba 0, jalankan dengan --headful --debug
+untuk diagnosa.
 
 Install dependencies:
     pip install playwright --break-system-packages
     playwright install chromium
 
 Usage:
-    python scrape_sky_sports_guide.py --output sports_today.csv
-    python scrape_sky_sports_guide.py --output sports_today.csv --headful --debug
+    # Default: output otomatis diberi nama sports_YYYY-MM-DD.csv (arsip harian)
+    python scrape_sky_sports_guide.py
+    python scrape_sky_sports_guide.py --headful --debug
+
+    # Arsip harian + otomatis commit & push ke git repo (folder script ini
+    # harus berada di dalam git repo yang sudah di-setup remote & auth-nya)
+    python scrape_sky_sports_guide.py --git-push
+
+    # Override nama file kalau perlu
+    python scrape_sky_sports_guide.py --output custom_name.csv
 """
 
 import argparse
 import csv
+import os
 import re
+import subprocess
 import sys
 from datetime import datetime
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 TIME_RANGE_RE = re.compile(
     r"(\d{1,2}:\d{2}\s*[AP]M)\s*-\s*(\d{1,2}:\d{2}\s*[AP]M)", re.IGNORECASE
@@ -78,7 +89,42 @@ def parse_row_text(raw_text: str):
     return channel_number, programs
 
 
-def scrape(output_path: str, headful: bool = False, debug: bool = False, timeout_ms: int = 60000):
+def git_commit_and_push(csv_filename: str):
+    """
+    Commit file CSV yang baru dibuat lalu push ke remote. Dijalankan di
+    SCRIPT_DIR (folder git repo), jadi tidak masalah script dipanggil dari
+    working directory manapun (mis. lewat Task Scheduler).
+    Best-effort: kalau tidak ada perubahan (commit gagal karena "nothing to
+    commit"), itu bukan error - cuma berarti data hari ini sama seperti
+    commit sebelumnya (jarang terjadi tapi mungkin).
+    """
+    def run(cmd):
+        return subprocess.run(
+            cmd, cwd=SCRIPT_DIR, capture_output=True, text=True
+        )
+
+    add_result = run(["git", "add", csv_filename])
+    if add_result.returncode != 0:
+        print(f"WARNING: git add gagal: {add_result.stderr.strip()}", file=sys.stderr)
+        return
+
+    commit_msg = f"Update sports schedule {datetime.now().strftime('%Y-%m-%d')}"
+    commit_result = run(["git", "commit", "-m", commit_msg])
+    if commit_result.returncode != 0:
+        # Biasanya karena "nothing to commit" - tidak fatal.
+        print(f"INFO: git commit dilewati ({commit_result.stdout.strip() or commit_result.stderr.strip()})")
+        return
+
+    push_result = run(["git", "push"])
+    if push_result.returncode != 0:
+        print(f"ERROR: git push gagal: {push_result.stderr.strip()}", file=sys.stderr)
+        return
+
+    print(f"Berhasil commit & push: {commit_msg}")
+
+
+def scrape(output_path: str, headful: bool = False, debug: bool = False,
+           timeout_ms: int = 60000, git_push: bool = False):
     from playwright.sync_api import sync_playwright
 
     rows_out = []
@@ -88,6 +134,9 @@ def scrape(output_path: str, headful: bool = False, debug: bool = False, timeout
             headless=not headful,
         )
         page = browser.new_page()
+        # NOTE: "networkidle" tidak pernah tercapai di situs ini karena ada
+        # koneksi tracking/analytics yang terus aktif (TikTok pixel, split.io
+        # SSE stream, dll). Pakai "domcontentloaded" + tunggu elemen spesifik.
         page.goto("https://tvguide.sky.co.nz/", wait_until="domcontentloaded", timeout=timeout_ms)
         page.wait_for_selector("select", timeout=30000)
 
@@ -200,12 +249,31 @@ def scrape(output_path: str, headful: bool = False, debug: bool = False, timeout
 
     print(f"Selesai. {len(rows_out)} program disimpan ke {output_path}")
 
+    if git_push:
+        git_commit_and_push(os.path.basename(output_path))
+
 
 if __name__ == "__main__":
+    default_name = f"sports_{datetime.now().strftime('%Y-%m-%d')}.csv"
+
     parser = argparse.ArgumentParser(description="Scrape jadwal Sports dari tvguide.sky.co.nz")
-    parser.add_argument("--output", default="sports_today.csv", help="Path file CSV output")
+    parser.add_argument(
+        "--output",
+        default=None,
+        help=f"Nama file CSV output. Default: {default_name} (arsip harian, otomatis pakai tanggal hari ini)",
+    )
     parser.add_argument("--headful", action="store_true", help="Jalankan browser dengan tampilan (untuk debug)")
     parser.add_argument("--debug", action="store_true", help="Print info debug ke stderr")
+    parser.add_argument(
+        "--git-push",
+        action="store_true",
+        help="Otomatis git add+commit+push file CSV yang baru dibuat (folder script harus di dalam git repo)",
+    )
     args = parser.parse_args()
 
-    scrape(args.output, headful=args.headful, debug=args.debug)
+    output_name = args.output or default_name
+    # Selalu simpan CSV di folder script ini (folder repo), bukan di cwd
+    # saat dijalankan - penting untuk pemakaian lewat Task Scheduler.
+    output_path = os.path.join(SCRIPT_DIR, output_name)
+
+    scrape(output_path, headful=args.headful, debug=args.debug, git_push=args.git_push)

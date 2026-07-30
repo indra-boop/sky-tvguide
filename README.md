@@ -1,6 +1,8 @@
 # sky-tvguide
 
-Scraper jadwal **Sports** dari [tvguide.sky.co.nz](https://tvguide.sky.co.nz/) (Sky NZ TV Guide) menjadi CSV.
+Scraper jadwal **Sports** dari [tvguide.sky.co.nz](https://tvguide.sky.co.nz/) (Sky NZ TV Guide), disimpan sebagai arsip CSV harian (`sports_YYYY-MM-DD.csv`).
+
+**Status**: Terverifikasi jalan (30 Jul 2026) — 20 channel Sports, 141 program berhasil diambil.
 
 ## Kenapa browser automation, bukan hit API langsung
 
@@ -14,29 +16,43 @@ Legal check (per 30 Jul 2026): `robots.txt` situs ini terbuka penuh
 (`User-agent: *` tanpa `Disallow`), dan data yang diambil adalah jadwal
 publik tanpa login. Tetap pakai rate-limit wajar saat scraping.
 
-## Install
+## Install (lokal)
 
 ```bash
 pip install -r requirements.txt
-playwright install chromium
+python -m playwright install chromium
 ```
 
 ## Pakai
 
 ```bash
-python scrape_sky_sports_guide.py --output sports_today.csv
+# Default: output sports_YYYY-MM-DD.csv (arsip harian, tanggal hari ini)
+python scrape_sky_sports_guide.py
+
+# Debug (browser kelihatan + log detail)
+python scrape_sky_sports_guide.py --headful --debug
+
+# Override nama file
+python scrape_sky_sports_guide.py --output custom_name.csv
+
+# Jalankan + langsung commit & push hasil CSV ke git (untuk run manual)
+python scrape_sky_sports_guide.py --git-push
 ```
 
-Debug (browser kelihatan + log detail):
+## Otomatis harian via GitHub Actions (direkomendasikan)
 
-```bash
-python scrape_sky_sports_guide.py --output sports_today.csv --headful --debug
-```
+Repo ini sudah include `.github/workflows/daily-scrape.yml` — jalan otomatis
+tiap hari jam 06:00 WITA di server GitHub (laptop Anda **tidak perlu nyala**),
+lalu commit CSV baru ke repo pakai identitas `github-actions[bot]` (bukan akun
+GitHub pribadi). Tidak perlu setup token/secret apapun karena cuma push ke
+repo sendiri, bukan ke API eksternal.
 
-> Catatan: di dalam script ada `executable_path="/opt/pw-browsers/chromium"`
-> yang khusus untuk sandbox tempat script ini ditulis. Hapus/kosongkan
-> parameter itu supaya Playwright pakai browser hasil `playwright install`
-> di komputer Anda sendiri.
+Cara aktifkan:
+1. Push repo ini ke GitHub (kalau belum).
+2. Buka tab **Actions** di repo → workflow "Daily Sports Schedule Scrape"
+   otomatis aktif begitu file workflow ter-push.
+3. Mau test langsung tanpa nunggu jadwal? Buka Actions → pilih workflow itu →
+   klik **Run workflow** (tombol manual trigger).
 
 ## Output
 
@@ -56,12 +72,11 @@ CSV dengan kolom:
 - Hanya mengambil hari yang sedang tampil di guide (default: hari ini).
   Situs punya tab navigasi hari sampai ~28 hari ke depan, tapi logic klik
   tab hari lain belum diimplementasikan.
+- Beberapa channel yang belum punya logo resmi (mis. 605-609 "Sky Sport
+  Pop-up", 62, 63) menghasilkan `channel_name` yang kurang rapi (nama file
+  mentah). Kosmetik saja — data program & jam tetap akurat.
 - Struktur DOM sudah divalidasi manual per 30 Jul 2026. Kalau Sky mengubah
   halaman, titik paling rawan: nama class Tailwind, threshold
   `offsetWidth > 700` untuk deteksi baris grid, dan pola nama file logo
   kanal. Jalankan `--headful --debug` untuk diagnosa cepat kalau hasil
-  tiba-tiba kosong.
-- Script belum di-run end-to-end oleh yang menulisnya (dibuat di sandbox
-  tanpa akses network ke domain ini) — tiap bagian logic sudah divalidasi
-  terpisah terhadap DOM live situs, tapi tetap test manual sebelum dipakai
-  rutin/terjadwal (mis. cron).
+  tiba-tiba kosong (baik lokal maupun cek log run di tab Actions).
