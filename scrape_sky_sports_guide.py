@@ -85,12 +85,11 @@ def scrape(output_path: str, headful: bool = False, debug: bool = False, timeout
 
     with sync_playwright() as p:
         browser = p.chromium.launch(
-            executable_path="/opt/pw-browsers/chromium",  # sesuaikan/hapus jika bukan di sandbox ini
             headless=not headful,
         )
         page = browser.new_page()
-        page.goto("https://tvguide.sky.co.nz/", wait_until="networkidle", timeout=timeout_ms)
-        page.wait_for_timeout(1500)
+        page.goto("https://tvguide.sky.co.nz/", wait_until="domcontentloaded", timeout=timeout_ms)
+        page.wait_for_selector("select", timeout=30000)
 
         # Tutup cookie banner kalau muncul (best-effort, tidak fatal kalau tidak ada)
         for label in ["Accept", "Accept All", "I Agree", "Got it"]:
