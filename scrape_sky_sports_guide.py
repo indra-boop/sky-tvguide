@@ -1,4 +1,3 @@
-﻿@'
 #!/usr/bin/env python3
 """
 Scraper: Sky TV Guide (NZ) - Sports channels only
