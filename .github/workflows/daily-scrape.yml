@@ -1,4 +1,3 @@
-﻿@'
 name: Sports Schedule Scrape (Every 3 Days)
 
 on:
@@ -72,10 +71,3 @@ jobs:
 
           git commit -m "chore: sports schedule sync $(date -u +%F)"
           git push
-'@ | Set-Content -Path .github\workflows\daily-scrape.yml -Encoding UTF8
-
-echo "debug_artifacts/" | Add-Content -Path .gitignore -Encoding UTF8
-
-git add scrape_sky_sports_guide.py .github\workflows\daily-scrape.yml .gitignore
-git commit -m "fix: tambah diagnostic capture saat select timeout + upload artifact on failure; sync script versi terbaru ke Actions"
-git push
