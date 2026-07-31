@@ -1,0 +1,64 @@
+﻿name: Sports Schedule Scrape (Every 3 Days)
+
+on:
+  schedule:
+    # 08:00 WITA (UTC+8) = 00:00 UTC -> disamakan dengan jam ausport-scraper.
+    # "*/3" di kolom day-of-month = jalan tiap tgl 1,4,7,10,...,31 (kalender,
+    # BUKAN hitung mundur 3 hari presisi dari run terakhir). Efeknya: di
+    # pergantian bulan jarak antar-run bisa jadi lebih pendek (mis. tgl 31 ->
+    # tgl 1 = cuma selisih 1 hari) atau, kalau bulan itu 30/28 hari, giliran
+    # tgl 1 berikutnya jaraknya lebih dari 3 hari dari run terakhir bulan
+    # sebelumnya. Cukup akurat untuk kebutuhan "asal ke-update per ~3 hari",
+    # tapi bukan interval 72 jam yang presisi.
+    - cron: "0 0 */3 * *"
+  workflow_dispatch: # biar bisa di-trigger manual lewat tombol "Run workflow"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sports-schedule-scrape
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Run scraper
+        run: python scrape_sky_sports_guide.py
+
+      - name: Commit CSV kalau ada perubahan
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          files=(sports_*.csv)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "Tidak ada CSV yang dihasilkan; batalkan commit." >&2
+            exit 1
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sports_*.csv
+
+          if git diff --cached --quiet; then
+            echo "Tidak ada perubahan jadwal hari ini."
+            exit 0
+          fi
+
+          git commit -m "chore: sports schedule sync $(date -u +%F)"
+          git push
