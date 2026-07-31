@@ -1,4 +1,5 @@
-﻿name: Sports Schedule Scrape (Every 3 Days)
+﻿@'
+name: Sports Schedule Scrape (Every 3 Days)
 
 on:
   schedule:
@@ -41,6 +42,15 @@ jobs:
       - name: Run scraper
         run: python scrape_sky_sports_guide.py
 
+      - name: Upload bukti diagnosa kalau scraper gagal
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-artifacts
+          path: debug_artifacts/
+          if-no-files-found: ignore
+          retention-days: 7
+
       - name: Commit CSV kalau ada perubahan
         run: |
           set -euo pipefail
@@ -62,3 +72,10 @@ jobs:
 
           git commit -m "chore: sports schedule sync $(date -u +%F)"
           git push
+'@ | Set-Content -Path .github\workflows\daily-scrape.yml -Encoding UTF8
+
+echo "debug_artifacts/" | Add-Content -Path .gitignore -Encoding UTF8
+
+git add scrape_sky_sports_guide.py .github\workflows\daily-scrape.yml .gitignore
+git commit -m "fix: tambah diagnostic capture saat select timeout + upload artifact on failure; sync script versi terbaru ke Actions"
+git push
