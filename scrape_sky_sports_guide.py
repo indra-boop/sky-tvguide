@@ -417,4 +417,3 @@ if __name__ == "__main__":
 
     scrape(output_path, headful=args.headful, debug=args.debug, git_push=args.git_push,
            days=days, start_date=start_date)
-'@ | Set-Content -Path scrape_sky_sports_guide.py -Encoding UTF8
