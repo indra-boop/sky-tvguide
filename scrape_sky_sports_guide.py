@@ -17,8 +17,7 @@ Legal/ethical check (per 30 Jul 2026):
 STATUS: Sudah diverifikasi jalan (30 Jul 2026, Windows + Python 3.13) - 20
 channel Sports terdeteksi, 141 program berhasil di-parse. Kalau Sky ubah
 struktur halaman dan hasil tiba-tiba 0, jalankan dengan --headful --debug
-untuk diagnosa. Kalau gagal HANYA di GitHub Actions (bukan di lokal), cek
-folder debug_artifacts/ (screenshot+HTML) yang otomatis tersimpan saat gagal.
+untuk diagnosa.
 
 Install dependencies:
     pip install playwright --break-system-packages
@@ -233,10 +232,83 @@ def scrape(output_path: str, headful: bool = False, debug: bool = False,
     start_date = start_date or datetime.now().date()
 
     with sync_playwright() as p:
+        # STEALTH MODE (ditambahkan setelah investigasi 31 Jul 2026): terbukti
+        # via evidence run GitHub Actions bahwa <div id="root"> kosong total -
+        # React app tidak pernah mount. HTML yang ter-capture nunjukin situs
+        # ini pakai Akamai Bot Manager, dan User-Agent Client Hints browser
+        # kita eksplisit lapor diri sebagai "HeadlessChrome". Headless sendiri
+        # SUDAH terverifikasi TIDAK masalah di jaringan lokal (test 31 Jul
+        # 2026: 151 program sukses headless dari laptop) - jadi kemungkinan
+        # besar akar masalahnya reputasi IP datacenter CI, BUKAN headless.
+        # Tweak di bawah ini usaha "cukup manusiawi" (UA normal, viewport
+        # umum, navigator.webdriver disembunyikan) - tujuannya kurangi false-
+        # positive deteksi otomasi untuk mengakses data publik yang memang
+        # diizinkan robots.txt, BUKAN untuk bypass proteksi berbayar/login.
+        # Kalau tetap gagal di CI setelah ini, itu bukti kuat akar masalahnya
+        # memang IP datacenter (lihat opsi self-hosted runner / proxy).
         browser = p.chromium.launch(
             headless=not headful,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+            ],
         )
-        page = browser.new_page()
+        page = browser.new_page(
+            user_agent=(
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+            ),
+            viewport={"width": 1366, "height": 768},
+            locale="en-NZ",
+            extra_http_headers={
+                # Override header User-Agent Client Hints (Sec-CH-UA-*).
+                # PENTING: mengganti opsi `user_agent` di atas SAJA tidak
+                # cukup - itu cuma ganti navigator.userAgent & header
+                # "User-Agent". Client Hints (navigator.userAgentData, yang
+                # kebaca oleh script tracking pihak ketiga di situs ini dan
+                # keluar sebagai "HeadlessChrome" di evidence sebelumnya)
+                # sumbernya beda dan butuh dioverride terpisah lewat header
+                # ini + init script di bawah.
+                "Accept-Language": "en-NZ,en;q=0.9",
+                "Sec-CH-UA": '"Not)A;Brand";v="24", "Chromium";v="128", "Google Chrome";v="128"',
+                "Sec-CH-UA-Platform": '"Windows"',
+                "Sec-CH-UA-Mobile": "?0",
+            },
+        )
+        page.add_init_script(
+            """
+            Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
+            // Samakan navigator.userAgentData (dibaca JS pihak ketiga, mis.
+            // tracking pixel) supaya konsisten dengan header Sec-CH-UA di
+            // atas - hilangkan brand "HeadlessChrome" yang jadi bukti utama
+            // deteksi otomasi di evidence run sebelumnya.
+            if (navigator.userAgentData) {
+                Object.defineProperty(navigator, 'userAgentData', {
+                    get: () => ({
+                        brands: [
+                            {brand: 'Not)A;Brand', version: '24'},
+                            {brand: 'Chromium', version: '128'},
+                            {brand: 'Google Chrome', version: '128'}
+                        ],
+                        mobile: false,
+                        platform: 'Windows',
+                        getHighEntropyValues: async () => ({
+                            brands: [
+                                {brand: 'Not)A;Brand', version: '24'},
+                                {brand: 'Chromium', version: '128'},
+                                {brand: 'Google Chrome', version: '128'}
+                            ],
+                            mobile: false,
+                            platform: 'Windows',
+                            platformVersion: '10.0.0',
+                            architecture: 'x86',
+                            model: '',
+                            uaFullVersion: '128.0.0.0'
+                        })
+                    })
+                });
+            }
+            """
+        )
         # NOTE: "networkidle" tidak pernah tercapai di situs ini karena ada
         # koneksi tracking/analytics yang terus aktif (TikTok pixel, split.io
         # SSE stream, dll). Pakai "domcontentloaded" + tunggu elemen spesifik.
