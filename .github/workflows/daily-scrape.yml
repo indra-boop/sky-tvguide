@@ -1,17 +1,10 @@
-name: Sports Schedule Scrape (Every 3 Days)
+name: Daily Sports Schedule Scrape
 
 on:
   schedule:
-    # 08:00 WITA (UTC+8) = 00:00 UTC -> disamakan dengan jam ausport-scraper.
-    # "*/3" di kolom day-of-month = jalan tiap tgl 1,4,7,10,...,31 (kalender,
-    # BUKAN hitung mundur 3 hari presisi dari run terakhir). Efeknya: di
-    # pergantian bulan jarak antar-run bisa jadi lebih pendek (mis. tgl 31 ->
-    # tgl 1 = cuma selisih 1 hari) atau, kalau bulan itu 30/28 hari, giliran
-    # tgl 1 berikutnya jaraknya lebih dari 3 hari dari run terakhir bulan
-    # sebelumnya. Cukup akurat untuk kebutuhan "asal ke-update per ~3 hari",
-    # tapi bukan interval 72 jam yang presisi.
-    - cron: "0 0 */3 * *"
-  workflow_dispatch: # biar bisa di-trigger manual lewat tombol "Run workflow"
+    # 08:00 WITA (UTC+8) = 00:00 UTC.
+    - cron: "0 0 * * *"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -23,7 +16,7 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,15 +26,10 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          python -m playwright install --with-deps chromium
-
       - name: Run scraper
-        run: python scrape_sky_sports_guide.py
+        run: python scrape_sky_sports_guide.py --debug
 
-      - name: Upload bukti diagnosa kalau scraper gagal
+      - name: Upload diagnostics if scraper fails
         if: failure()
         uses: actions/upload-artifact@v4
         with:
@@ -50,13 +38,13 @@ jobs:
           if-no-files-found: ignore
           retention-days: 7
 
-      - name: Commit CSV kalau ada perubahan
+      - name: Commit CSV if changed
         run: |
           set -euo pipefail
           shopt -s nullglob
           files=(sports_*.csv)
           if [ ${#files[@]} -eq 0 ]; then
-            echo "Tidak ada CSV yang dihasilkan; batalkan commit." >&2
+            echo "No CSV was generated; abort commit." >&2
             exit 1
           fi
 
@@ -65,7 +53,7 @@ jobs:
           git add sports_*.csv
 
           if git diff --cached --quiet; then
-            echo "Tidak ada perubahan jadwal hari ini."
+            echo "No schedule changes to commit."
             exit 0
           fi
 

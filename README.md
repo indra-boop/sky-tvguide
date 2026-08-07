@@ -1,82 +1,78 @@
 # sky-tvguide
 
-Scraper jadwal **Sports** dari [tvguide.sky.co.nz](https://tvguide.sky.co.nz/) (Sky NZ TV Guide), disimpan sebagai arsip CSV harian (`sports_YYYY-MM-DD.csv`).
+Exporter jadwal **Sports** dari [Sky NZ TV Guide](https://tvguide.sky.co.nz/),
+disimpan sebagai arsip CSV harian (`sports_YYYY-MM-DD.csv`).
 
-**Status**: Terverifikasi jalan (30 Jul 2026) — 20 channel Sports, 141 program berhasil diambil.
+Data dibaca langsung dari endpoint GraphQL publik yang digunakan aplikasi TV
+Guide. Tidak memakai Playwright, Chromium, login, token, atau API secret.
 
-## Kenapa browser automation, bukan hit API langsung
+**Status:** terverifikasi 7 Agustus 2026 — 15 Sports channels dan 318 programme
+slots berhasil diambil untuk satu hari. Jumlah channel/program dapat berubah
+sesuai jadwal Sky.
 
-`tvguide.sky.co.nz` adalah React SPA (client-side rendered). Endpoint internal
-`web-graphql.sky.co.nz/prod/graphql` kemungkinan jadi sumber data asli, tapi
-query/payload persisnya belum di-reverse-engineer di sini. Jadi script ini
-memakai Playwright (browser automation) untuk render halaman lalu membaca
-DOM yang sudah jadi.
+## Requirements
 
-Legal check (per 30 Jul 2026): `robots.txt` situs ini terbuka penuh
-(`User-agent: *` tanpa `Disallow`), dan data yang diambil adalah jadwal
-publik tanpa login. Tetap pakai rate-limit wajar saat scraping.
+- Python 3.9 atau lebih baru
+- Network access ke `https://api.skyone.co.nz/exp/graph`
+- Tidak ada third-party Python package
 
-## Install (lokal)
-
-```bash
-pip install -r requirements.txt
-python -m playwright install chromium
-```
-
-## Pakai
+## Penggunaan
 
 ```bash
-# Default: output sports_YYYY-MM-DD.csv (arsip harian, tanggal hari ini)
+# Hari ini menurut timezone Pacific/Auckland
 python scrape_sky_sports_guide.py
 
-# Debug (browser kelihatan + log detail)
-python scrape_sky_sports_guide.py --headful --debug
+# Log detail
+python scrape_sky_sports_guide.py --debug
 
-# Override nama file
+# Ambil beberapa hari, maksimum 28 hari
+python scrape_sky_sports_guide.py --days 7
+
+# Rentang tanggal eksplisit
+python scrape_sky_sports_guide.py --start-date 2026-08-07 --until 2026-08-13
+
+# Override nama/path output
 python scrape_sky_sports_guide.py --output custom_name.csv
 
-# Jalankan + langsung commit & push hasil CSV ke git (untuk run manual)
+# Run manual lalu commit dan push CSV
 python scrape_sky_sports_guide.py --git-push
 ```
 
-## Otomatis harian via GitHub Actions (direkomendasikan)
+Flag lama `--headful` masih diterima untuk compatibility, tetapi hanya
+menampilkan warning karena exporter tidak lagi menjalankan browser.
 
-Repo ini sudah include `.github/workflows/daily-scrape.yml` — jalan otomatis
-tiap hari jam 06:00 WITA di server GitHub (laptop Anda **tidak perlu nyala**),
-lalu commit CSV baru ke repo pakai identitas `github-actions[bot]` (bukan akun
-GitHub pribadi). Tidak perlu setup token/secret apapun karena cuma push ke
-repo sendiri, bukan ke API eksternal.
+## GitHub Actions
 
-Cara aktifkan:
-1. Push repo ini ke GitHub (kalau belum).
-2. Buka tab **Actions** di repo → workflow "Daily Sports Schedule Scrape"
-   otomatis aktif begitu file workflow ter-push.
-3. Mau test langsung tanpa nunggu jadwal? Buka Actions → pilih workflow itu →
-   klik **Run workflow** (tombol manual trigger).
+Workflow `.github/workflows/daily-scrape.yml` berjalan setiap hari pukul
+08:00 WITA (`00:00 UTC`) dan dapat dijalankan manual lewat **Run workflow**.
 
-## Output
+Workflow akan:
 
-CSV dengan kolom:
+1. Menjalankan exporter menggunakan Python 3.12.
+2. Menulis `sports_YYYY-MM-DD.csv`.
+3. Commit dan push CSV bila ada perubahan.
+4. Upload `debug_artifacts/failure.json` selama tujuh hari jika gagal.
+
+## Output CSV
 
 | Kolom | Keterangan |
 |---|---|
-| `channel_id` | ID kanal dari URL `/channel/{id}` |
-| `channel_number` | Nomor kanal yang tampil di guide (mis. `050`) |
-| `channel_name` | Nama kanal, diekstrak dari nama file logo (mis. `Sky Sports 1`) |
-| `program_title` | Judul acara |
-| `start_time` / `end_time` | Jam tayang |
-| `scraped_at` | Timestamp scraping |
+| `channel_id` | ID channel dari GraphQL |
+| `channel_number` | Nomor channel Sky |
+| `channel_name` | Nama channel |
+| `date` | Tanggal guide dalam timezone `Pacific/Auckland` |
+| `program_title` | Judul program |
+| `start_time` / `end_time` | Jam lokal `Pacific/Auckland` |
+| `scraped_at` | Timestamp scraping UTC (ISO 8601) |
 
-## Keterbatasan saat ini
+## Reliability controls
 
-- Hanya mengambil hari yang sedang tampil di guide (default: hari ini).
-  Situs punya tab navigasi hari sampai ~28 hari ke depan, tapi logic klik
-  tab hari lain belum diimplementasikan.
-- Beberapa channel yang belum punya logo resmi (mis. 605-609 "Sky Sport
-  Pop-up", 62, 63) menghasilkan `channel_name` yang kurang rapi (nama file
-  mentah). Kosmetik saja — data program & jam tetap akurat.
-- Struktur DOM sudah divalidasi manual per 30 Jul 2026. Kalau Sky mengubah
-  halaman, titik paling rawan: nama class Tailwind, threshold
-  `offsetWidth > 700` untuk deteksi baris grid, dan pola nama file logo
-  kanal. Jalankan `--headful --debug` untuk diagnosa cepat kalau hasil
-  tiba-tiba kosong (baik lokal maupun cek log run di tab Actions).
+- Sports group ID ditemukan secara dinamis; tidak hard-coded.
+- Retry dengan exponential backoff untuk timeout, HTTP `429`, dan HTTP `5xx`.
+- Response size limit 16 MiB dan basic schema validation.
+- Zero-row response dianggap failure agar CSV kosong tidak ter-commit.
+- Diagnostic JSON otomatis dibuat saat gagal.
+
+Endpoint ini merupakan implementation detail aplikasi Sky dan dapat berubah.
+Jika schema berubah, workflow akan gagal dengan diagnostic yang eksplisit,
+bukan menghasilkan CSV kosong.
