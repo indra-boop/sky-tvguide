@@ -2,5 +2,6 @@ __pycache__/
 *.pyc
 .venv/
 venv/
-# CSV SENGAJA TIDAK di-ignore - repo ini dipakai sebagai arsip harian
-# jadwal Sports (sports_YYYY-MM-DD.csv), bukan cuma nyimpan kode.
+debug_artifacts/
+
+# CSV intentionally remains tracked as the daily Sports schedule archive.
