@@ -1,400 +1,338 @@
 #!/usr/bin/env python3
+"""Export the public Sky NZ Sports TV guide to CSV.
+
+The Sky TV Guide React application reads its schedule from the public
+GraphQL endpoint used below. Calling that endpoint directly avoids browser
+rendering failures on GitHub-hosted runners and removes the Playwright/
+Chromium dependency.
 """
-Scraper: Sky TV Guide (NZ) - Sports channels only
-Source : https://tvguide.sky.co.nz/
-Method : Browser automation (Playwright), karena situs adalah React SPA
-         (client-side rendered, butuh JavaScript untuk menampilkan data).
-         Tidak ada REST/GraphQL publik yang terdokumentasi untuk data ini
-         (endpoint internal terdeteksi: web-graphql.sky.co.nz/prod/graphql,
-         tapi query/payload-nya tidak di-reverse-engineer di sini -> lihat
-         catatan di bagian bawah file ini).
 
-Legal/ethical check (per 30 Jul 2026):
-- robots.txt situs ini TIDAK melarang crawling (User-agent: * tanpa Disallow).
-- Data yang diambil adalah jadwal publik yang memang ditampilkan tanpa login.
-- Tetap: gunakan rate-limit wajar, jangan hit server terlalu sering/paralel.
-
-STATUS: Sudah diverifikasi jalan (30 Jul 2026, Windows + Python 3.13) - 20
-channel Sports terdeteksi, 141 program berhasil di-parse. Kalau Sky ubah
-struktur halaman dan hasil tiba-tiba 0, jalankan dengan --headful --debug
-untuk diagnosa.
-
-Install dependencies:
-    pip install playwright --break-system-packages
-    playwright install chromium
-
-Usage:
-    # Default: hanya hari ini, output sports_YYYY-MM-DD.csv (arsip harian)
-    python scrape_sky_sports_guide.py
-    python scrape_sky_sports_guide.py --headful --debug
-
-    # Ambil rentang hari ke depan (situs cuma sedia data s.d. 28 hari ke depan)
-    python scrape_sky_sports_guide.py --days 28
-    python scrape_sky_sports_guide.py --until 2026-08-27
-
-    # Arsip harian + otomatis commit & push ke git repo (folder script ini
-    # harus berada di dalam git repo yang sudah di-setup remote & auth-nya)
-    python scrape_sky_sports_guide.py --git-push
-
-    # Override nama file kalau perlu
-    python scrape_sky_sports_guide.py --output custom_name.csv
-
-Catatan multi-hari (verified 30 Jul 2026): semua tab tanggal (hari ini s.d.
-+27 hari) SUDAH ada di DOM sekaligus saat page load pertama - tidak perlu
-klik tombol panah ">" berkali-kali. Script ini klik tiap tab tanggal
-(dicari by exact text, mis. "27 Aug") lalu re-scrape grid untuk hari itu.
-"""
+from __future__ import annotations
 
 import argparse
 import csv
+import json
 import os
-import re
 import subprocess
 import sys
-from datetime import datetime, timedelta
+import time
+from datetime import date, datetime, timedelta, timezone
+from typing import Any
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
+from zoneinfo import ZoneInfo
+
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+GRAPHQL_URL = "https://api.skyone.co.nz/exp/graph"
+TV_GUIDE_URL = "https://tvguide.sky.co.nz/"
+SKY_TIMEZONE = ZoneInfo("Pacific/Auckland")
+MAX_RESPONSE_BYTES = 16 * 1024 * 1024
+DEFAULT_TIMEOUT_SECONDS = 30
+DEFAULT_RETRIES = 3
 
-TIME_RANGE_RE = re.compile(
-    r"(\d{1,2}:\d{2}\s*[AP]M)\s*-\s*(\d{1,2}:\d{2}\s*[AP]M)", re.IGNORECASE
-)
+CHANNEL_GROUPS_QUERY = """
+query getChannelGroups {
+  experience(appId: TV_GUIDE_WEB) {
+    channelGroups {
+      id
+      title
+    }
+    appId
+  }
+}
+"""
 
-
-def parse_row_text(raw_text: str):
-    """
-    Parse innerText dari satu baris channel menjadi list program.
-    Pola yang diamati di screenshot browser:
-        050            <- nomor channel
-        AFL: Collingwood v Geelong
-        5:45 AM - 8:15 AM
-        HotelPlanner Tour ...
-        8:15 AM - 8:45 AM
-    Jadi: baris pertama = nomor channel, lalu berpasangan (judul, jam).
-    """
-    lines = [l.strip() for l in raw_text.split("\n") if l.strip()]
-    if not lines:
-        return None, []
-
-    channel_number = lines[0]
-    programs = []
-    title_buffer = []
-
-    for line in lines[1:]:
-        m = TIME_RANGE_RE.search(line)
-        if m:
-            title = " ".join(title_buffer).strip()
-            if title:
-                programs.append(
-                    {
-                        "title": title,
-                        "start_time": m.group(1).upper().replace(" ", ""),
-                        "end_time": m.group(2).upper().replace(" ", ""),
-                    }
-                )
-            title_buffer = []
-        else:
-            title_buffer.append(line)
-
-    return channel_number, programs
-
-
-def git_commit_and_push(csv_filename: str):
-    """
-    Commit file CSV yang baru dibuat lalu push ke remote. Dijalankan di
-    SCRIPT_DIR (folder git repo), jadi tidak masalah script dipanggil dari
-    working directory manapun (mis. lewat Task Scheduler).
-    Best-effort: kalau tidak ada perubahan (commit gagal karena "nothing to
-    commit"), itu bukan error - cuma berarti data hari ini sama seperti
-    commit sebelumnya (jarang terjadi tapi mungkin).
-    """
-    def run(cmd):
-        return subprocess.run(
-            cmd, cwd=SCRIPT_DIR, capture_output=True, text=True
-        )
-
-    add_result = run(["git", "add", csv_filename])
-    if add_result.returncode != 0:
-        print(f"WARNING: git add gagal: {add_result.stderr.strip()}", file=sys.stderr)
-        return
-
-    commit_msg = f"Update sports schedule {datetime.now().strftime('%Y-%m-%d')}"
-    commit_result = run(["git", "commit", "-m", commit_msg])
-    if commit_result.returncode != 0:
-        # Biasanya karena "nothing to commit" - tidak fatal.
-        print(f"INFO: git commit dilewati ({commit_result.stdout.strip() or commit_result.stderr.strip()})")
-        return
-
-    push_result = run(["git", "push"])
-    if push_result.returncode != 0:
-        print(f"ERROR: git push gagal: {push_result.stderr.strip()}", file=sys.stderr)
-        return
-
-    print(f"Berhasil commit & push: {commit_msg}")
-
-
-def day_label_for(date_obj) -> str:
-    """Format tanggal sesuai label tab di situs, mis. '31 Jul', '1 Aug', '27 Aug'."""
-    return f"{date_obj.day} {date_obj.strftime('%b')}"
-
-
-def click_day_tab(page, date_obj) -> bool:
-    """
-    Klik tab tanggal yang sesuai. Tab dicari by exact text match (mis. '27
-    Aug') di antara <div> tanpa child - pola yang sudah diverifikasi manual
-    di browser. Return False kalau tab tidak ketemu (mis. situs ubah range
-    hari yang disediakan, atau ubah struktur DOM).
-    """
-    label = day_label_for(date_obj)
-    clicked = page.evaluate(
-        """(label) => {
-            const all = [...document.querySelectorAll('div')];
-            const target = all.find(
-                el => el.textContent.trim() === label && el.children.length === 0
-            );
-            if (target) { target.click(); return true; }
-            return false;
-        }""",
-        label,
-    )
-    return clicked
-
-
-def scrape_current_day(page, date_obj, debug: bool = False):
-    """Scrape grid Sports untuk hari yang SEDANG ditampilkan di halaman."""
-    rows = []
-    channel_links = page.query_selector_all('a[href^="/channel/"]')
-    if debug:
-        print(f"[debug] {date_obj.isoformat()}: {len(channel_links)} channel row terdeteksi", file=sys.stderr)
-
-    for link in channel_links:
-        # Cari ancestor yang mewakili satu baris penuh (lebar mendekati grid),
-        # bukan cuma badge nomor channel.
-        row_text = page.evaluate(
-            """(el) => {
-                let node = el;
-                for (let i = 0; i < 8 && node.parentElement; i++) {
-                    node = node.parentElement;
-                    if (node.offsetWidth > 700) break;
+CHANNEL_GROUP_QUERY = """
+query getChannelGroup($id: ID!, $date: LocalDate) {
+  experience(appId: TV_GUIDE_WEB) {
+    channelGroup(id: $id) {
+      id
+      title
+      channels {
+        ... on LinearChannel {
+          id
+          title
+          number
+          tileImage {
+            uri
+          }
+          slotsForDay(date: $date) {
+            slots {
+              id
+              startMs
+              endMs
+              live
+              programme {
+                ... on Episode {
+                  id
+                  title
+                  show {
+                    id
+                    title
+                    type
+                  }
                 }
-                return node.innerText;
-            }""",
-            link,
+                ... on Movie {
+                  id
+                  title
+                }
+                ... on PayPerViewEventProgram {
+                  id
+                  title
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+"""
+
+
+class SkyGuideError(RuntimeError):
+    """Raised when the Sky guide API returns unusable data."""
+
+
+def _post_graphql(
+    query: str,
+    variables: dict[str, Any] | None = None,
+    *,
+    timeout_seconds: int = DEFAULT_TIMEOUT_SECONDS,
+    retries: int = DEFAULT_RETRIES,
+    debug: bool = False,
+) -> dict[str, Any]:
+    payload = json.dumps(
+        {"query": query, "variables": variables or {}},
+        separators=(",", ":"),
+    ).encode("utf-8")
+    last_error: Exception | None = None
+
+    for attempt in range(1, retries + 1):
+        request = Request(
+            GRAPHQL_URL,
+            data=payload,
+            method="POST",
+            headers={
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Origin": TV_GUIDE_URL.rstrip("/"),
+                "Referer": TV_GUIDE_URL,
+                "User-Agent": "jerco-sky-tvguide/2.0 (+public schedule exporter)",
+            },
         )
-        channel_href = link.get_attribute("href") or ""
-        channel_id = channel_href.split("/")[-1]
 
-        # Nama channel TIDAK tersedia sebagai teks/alt di DOM - logo channel
-        # dirender sebagai CSS background-image pada <div> di dalam link
-        # nomor channel (bukan grid program). Nama diambil dari nama file
-        # gambar logo tsb, mis. "Sky_Sports_1.png" -> "Sky Sports 1".
-        channel_name = page.evaluate(
-            """(el) => {
-                const divs = el.querySelectorAll('div');
-                const bgDiv = [...divs].find(
-                    d => getComputedStyle(d).backgroundImage !== 'none'
-                );
-                if (!bgDiv) return null;
-                const bg = getComputedStyle(bgDiv).backgroundImage;
-                const m = bg.match(/\\/([^\\/"]+)\\.(png|svg|jpg|jpeg|webp)/i);
-                return m ? m[1].replace(/_/g, ' ') : null;
-            }""",
-            link,
+        try:
+            with urlopen(request, timeout=timeout_seconds) as response:
+                status = response.status
+                content_type = response.headers.get("Content-Type", "")
+                body = response.read(MAX_RESPONSE_BYTES + 1)
+
+            if len(body) > MAX_RESPONSE_BYTES:
+                raise SkyGuideError(
+                    f"GraphQL response exceeds {MAX_RESPONSE_BYTES} bytes"
+                )
+            if "json" not in content_type.lower():
+                raise SkyGuideError(
+                    f"Unexpected GraphQL content type: {content_type!r}"
+                )
+
+            document = json.loads(body.decode("utf-8"))
+            if not isinstance(document, dict):
+                raise SkyGuideError("GraphQL response root is not an object")
+            if document.get("errors"):
+                raise SkyGuideError(
+                    "GraphQL returned errors: "
+                    + json.dumps(document["errors"], ensure_ascii=False)[:2000]
+                )
+
+            data = document.get("data")
+            if not isinstance(data, dict):
+                raise SkyGuideError("GraphQL response has no data object")
+
+            if debug:
+                print(
+                    f"[debug] GraphQL request succeeded: HTTP {status}, "
+                    f"{len(body)} bytes",
+                    file=sys.stderr,
+                )
+            return data
+
+        except HTTPError as error:
+            snippet = error.read(2000).decode("utf-8", "replace")
+            last_error = SkyGuideError(
+                f"GraphQL HTTP {error.code}: {snippet or error.reason}"
+            )
+            retryable = error.code == 429 or 500 <= error.code < 600
+        except (URLError, TimeoutError, json.JSONDecodeError) as error:
+            last_error = error
+            retryable = True
+        except SkyGuideError as error:
+            last_error = error
+            retryable = False
+
+        if not retryable or attempt == retries:
+            break
+
+        delay = 2 ** (attempt - 1)
+        print(
+            f"[warning] GraphQL attempt {attempt}/{retries} failed: "
+            f"{last_error}. Retry in {delay}s.",
+            file=sys.stderr,
+        )
+        time.sleep(delay)
+
+    raise SkyGuideError(
+        f"GraphQL request failed after {retries} attempt(s): {last_error}"
+    ) from last_error
+
+
+def _find_sports_group_id(*, debug: bool = False) -> str:
+    data = _post_graphql(CHANNEL_GROUPS_QUERY, debug=debug)
+    experience = data.get("experience")
+    if not isinstance(experience, dict):
+        raise SkyGuideError("Missing experience object in channel-groups response")
+
+    groups = experience.get("channelGroups")
+    if not isinstance(groups, list):
+        raise SkyGuideError("Missing channelGroups list in GraphQL response")
+
+    for group in groups:
+        if (
+            isinstance(group, dict)
+            and str(group.get("title", "")).strip().casefold() == "sports"
+            and group.get("id")
+        ):
+            if debug:
+                print(
+                    f"[debug] Sports group: {group['id']}",
+                    file=sys.stderr,
+                )
+            return str(group["id"])
+
+    available = [
+        str(group.get("title"))
+        for group in groups
+        if isinstance(group, dict) and group.get("title")
+    ]
+    raise SkyGuideError(
+        f"Sports channel group not found. Available groups: {available}"
+    )
+
+
+def _format_sky_time(epoch_ms: Any) -> str:
+    if not isinstance(epoch_ms, (int, float)):
+        raise SkyGuideError(f"Invalid programme timestamp: {epoch_ms!r}")
+    value = datetime.fromtimestamp(epoch_ms / 1000, tz=timezone.utc)
+    value = value.astimezone(SKY_TIMEZONE)
+    return value.strftime("%I:%M%p").lstrip("0")
+
+
+def _scrape_day(
+    sports_group_id: str,
+    target_date: date,
+    *,
+    debug: bool = False,
+) -> list[dict[str, str]]:
+    data = _post_graphql(
+        CHANNEL_GROUP_QUERY,
+        {"id": sports_group_id, "date": target_date.isoformat()},
+        debug=debug,
+    )
+    experience = data.get("experience")
+    group = experience.get("channelGroup") if isinstance(experience, dict) else None
+    if not isinstance(group, dict):
+        raise SkyGuideError(
+            f"Missing Sports channelGroup for {target_date.isoformat()}"
         )
 
-        channel_number, programs = parse_row_text(row_text)
+    channels = group.get("channels")
+    if not isinstance(channels, list):
+        raise SkyGuideError(
+            f"Missing channels list for {target_date.isoformat()}"
+        )
 
-        if debug:
-            print(f"[debug]   channel {channel_id} ({channel_name}): "
-                  f"{len(programs)} program terparse", file=sys.stderr)
+    scraped_at = datetime.now(timezone.utc).isoformat(timespec="seconds").replace(
+        "+00:00", "Z"
+    )
+    rows: list[dict[str, str]] = []
 
-        for prog in programs:
+    for channel in channels:
+        if not isinstance(channel, dict):
+            continue
+        slots_for_day = channel.get("slotsForDay")
+        slots = (
+            slots_for_day.get("slots")
+            if isinstance(slots_for_day, dict)
+            else None
+        )
+        if not isinstance(slots, list):
+            slots = []
+
+        parsed_for_channel = 0
+        for slot in slots:
+            if not isinstance(slot, dict):
+                continue
+            programme = slot.get("programme")
+            if not isinstance(programme, dict):
+                continue
+            title = str(programme.get("title") or "").strip()
+            if not title:
+                continue
+
+            try:
+                start_time = _format_sky_time(slot.get("startMs"))
+                end_time = _format_sky_time(slot.get("endMs"))
+            except SkyGuideError as error:
+                print(
+                    f"[warning] Skip slot {slot.get('id')!r}: {error}",
+                    file=sys.stderr,
+                )
+                continue
+
             rows.append(
                 {
-                    "channel_id": channel_id,
-                    "channel_number": channel_number,
-                    "channel_name": channel_name or "",
-                    "date": date_obj.isoformat(),
-                    "program_title": prog["title"],
-                    "start_time": prog["start_time"],
-                    "end_time": prog["end_time"],
-                    "scraped_at": datetime.now().isoformat(timespec="seconds"),
+                    "channel_id": str(channel.get("id") or ""),
+                    "channel_number": str(channel.get("number") or ""),
+                    "channel_name": str(channel.get("title") or ""),
+                    "date": target_date.isoformat(),
+                    "program_title": title,
+                    "start_time": start_time,
+                    "end_time": end_time,
+                    "scraped_at": scraped_at,
                 }
             )
+            parsed_for_channel += 1
+
+        if debug:
+            print(
+                f"[debug] {target_date.isoformat()} channel "
+                f"{channel.get('number')} {channel.get('title')}: "
+                f"{parsed_for_channel} programmes",
+                file=sys.stderr,
+            )
+
+    if not rows:
+        raise SkyGuideError(
+            f"GraphQL returned zero usable Sports programmes for "
+            f"{target_date.isoformat()}"
+        )
+
+    print(
+        f"[info] {target_date.isoformat()}: {len(channels)} channels, "
+        f"{len(rows)} programmes",
+        file=sys.stderr,
+    )
     return rows
 
 
-def scrape(output_path: str, headful: bool = False, debug: bool = False,
-           timeout_ms: int = 60000, git_push: bool = False, days: int = 1,
-           start_date=None):
-    from playwright.sync_api import sync_playwright
-
-    rows_out = []
-    start_date = start_date or datetime.now().date()
-
-    with sync_playwright() as p:
-        # STEALTH MODE (ditambahkan setelah investigasi 31 Jul 2026): terbukti
-        # via evidence run GitHub Actions bahwa <div id="root"> kosong total -
-        # React app tidak pernah mount. HTML yang ter-capture nunjukin situs
-        # ini pakai Akamai Bot Manager, dan User-Agent Client Hints browser
-        # kita eksplisit lapor diri sebagai "HeadlessChrome". Headless sendiri
-        # SUDAH terverifikasi TIDAK masalah di jaringan lokal (test 31 Jul
-        # 2026: 151 program sukses headless dari laptop) - jadi kemungkinan
-        # besar akar masalahnya reputasi IP datacenter CI, BUKAN headless.
-        # Tweak di bawah ini usaha "cukup manusiawi" (UA normal, viewport
-        # umum, navigator.webdriver disembunyikan) - tujuannya kurangi false-
-        # positive deteksi otomasi untuk mengakses data publik yang memang
-        # diizinkan robots.txt, BUKAN untuk bypass proteksi berbayar/login.
-        # Kalau tetap gagal di CI setelah ini, itu bukti kuat akar masalahnya
-        # memang IP datacenter (lihat opsi self-hosted runner / proxy).
-        browser = p.chromium.launch(
-            headless=not headful,
-            args=[
-                "--disable-blink-features=AutomationControlled",
-            ],
-        )
-        page = browser.new_page(
-            user_agent=(
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-                "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
-            ),
-            viewport={"width": 1366, "height": 768},
-            locale="en-NZ",
-            extra_http_headers={
-                # Override header User-Agent Client Hints (Sec-CH-UA-*).
-                # PENTING: mengganti opsi `user_agent` di atas SAJA tidak
-                # cukup - itu cuma ganti navigator.userAgent & header
-                # "User-Agent". Client Hints (navigator.userAgentData, yang
-                # kebaca oleh script tracking pihak ketiga di situs ini dan
-                # keluar sebagai "HeadlessChrome" di evidence sebelumnya)
-                # sumbernya beda dan butuh dioverride terpisah lewat header
-                # ini + init script di bawah.
-                "Accept-Language": "en-NZ,en;q=0.9",
-                "Sec-CH-UA": '"Not)A;Brand";v="24", "Chromium";v="128", "Google Chrome";v="128"',
-                "Sec-CH-UA-Platform": '"Windows"',
-                "Sec-CH-UA-Mobile": "?0",
-            },
-        )
-        page.add_init_script(
-            """
-            Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
-            // Samakan navigator.userAgentData (dibaca JS pihak ketiga, mis.
-            // tracking pixel) supaya konsisten dengan header Sec-CH-UA di
-            // atas - hilangkan brand "HeadlessChrome" yang jadi bukti utama
-            // deteksi otomasi di evidence run sebelumnya.
-            if (navigator.userAgentData) {
-                Object.defineProperty(navigator, 'userAgentData', {
-                    get: () => ({
-                        brands: [
-                            {brand: 'Not)A;Brand', version: '24'},
-                            {brand: 'Chromium', version: '128'},
-                            {brand: 'Google Chrome', version: '128'}
-                        ],
-                        mobile: false,
-                        platform: 'Windows',
-                        getHighEntropyValues: async () => ({
-                            brands: [
-                                {brand: 'Not)A;Brand', version: '24'},
-                                {brand: 'Chromium', version: '128'},
-                                {brand: 'Google Chrome', version: '128'}
-                            ],
-                            mobile: false,
-                            platform: 'Windows',
-                            platformVersion: '10.0.0',
-                            architecture: 'x86',
-                            model: '',
-                            uaFullVersion: '128.0.0.0'
-                        })
-                    })
-                });
-            }
-            """
-        )
-        # NOTE: "networkidle" tidak pernah tercapai di situs ini karena ada
-        # koneksi tracking/analytics yang terus aktif (TikTok pixel, split.io
-        # SSE stream, dll). Pakai "domcontentloaded" + tunggu elemen spesifik.
-        response = page.goto("https://tvguide.sky.co.nz/", wait_until="domcontentloaded", timeout=timeout_ms)
-        if response is not None:
-            print(f"[info] HTTP status halaman awal: {response.status}", file=sys.stderr)
-
-        try:
-            page.wait_for_selector("select", timeout=45000)
-        except Exception:
-            # Simpan bukti (screenshot + HTML mentah) SEBELUM exit supaya bisa
-            # didiagnosa dari luar (mis. lewat artifact GitHub Actions), tanpa
-            # perlu nebak penyebabnya. Jangan hapus blok ini - ini satu-satunya
-            # cara diagnosa kalau gagalnya cuma terjadi di runner CI, bukan di
-            # mesin lokal.
-            diag_dir = os.path.join(SCRIPT_DIR, "debug_artifacts")
-            os.makedirs(diag_dir, exist_ok=True)
-            try:
-                page.screenshot(path=os.path.join(diag_dir, "failure.png"), full_page=True)
-            except Exception as e:
-                print(f"WARNING: gagal ambil screenshot diagnosa: {e}", file=sys.stderr)
-            try:
-                with open(os.path.join(diag_dir, "failure.html"), "w", encoding="utf-8") as f:
-                    f.write(page.content())
-            except Exception as e:
-                print(f"WARNING: gagal simpan HTML diagnosa: {e}", file=sys.stderr)
-            print(
-                f"ERROR: elemen <select> tidak muncul dalam 45 detik. "
-                f"Judul halaman saat ini: {page.title()!r}. URL saat ini: {page.url!r}. "
-                f"Bukti (screenshot+HTML) disimpan ke {diag_dir}/ untuk diagnosa lanjut.",
-                file=sys.stderr,
-            )
-            browser.close()
-            raise
-
-        # Tutup cookie banner kalau muncul (best-effort, tidak fatal kalau tidak ada)
-        for label in ["Accept", "Accept All", "I Agree", "Got it"]:
-            try:
-                btn = page.get_by_role("button", name=label, exact=False)
-                if btn.count() > 0:
-                    btn.first.click(timeout=2000)
-                    break
-            except Exception:
-                pass
-
-        # Filter dropdown -> "Sports"
-        select_el = page.query_selector("select")
-        if select_el is None:
-            print("ERROR: elemen <select> filter channel tidak ditemukan. "
-                  "Struktur halaman mungkin sudah berubah.", file=sys.stderr)
-            browser.close()
-            sys.exit(1)
-
-        select_el.select_option(label="Sports")
-        page.wait_for_timeout(2000)
-
-        for offset in range(days):
-            target_date = start_date + timedelta(days=offset)
-
-            # Klik tab tanggalnya (termasuk untuk hari pertama - aman diklik
-            # ulang walau itu tab "Today", cuma memastikan konsisten dan
-            # tidak ada edge case tersembunyi soal tab mana yang aktif
-            # secara default).
-            clicked = click_day_tab(page, target_date)
-            if not clicked:
-                print(f"WARNING: tab tanggal '{day_label_for(target_date)}' tidak ditemukan "
-                      f"- situs mungkin cuma sedia data s.d. hari itu, atau strukturnya berubah. "
-                      f"Berhenti di sini.", file=sys.stderr)
-                break
-            page.wait_for_timeout(2000)
-
-            day_rows = scrape_current_day(page, target_date, debug=debug)
-            if not day_rows:
-                print(f"WARNING: 0 program untuk {target_date.isoformat()}. "
-                      f"Kemungkinan struktur DOM situs berubah.", file=sys.stderr)
-            rows_out.extend(day_rows)
-
-        browser.close()
-
-    if not rows_out:
-        print("WARNING: 0 baris program berhasil diparse sama sekali. Kemungkinan "
-              "struktur DOM situs berubah -> perlu penyesuaian selector.", file=sys.stderr)
-
-    with open(output_path, "w", newline="", encoding="utf-8") as f:
+def _write_csv(output_path: str, rows: list[dict[str, str]]) -> None:
+    os.makedirs(os.path.dirname(output_path) or SCRIPT_DIR, exist_ok=True)
+    with open(output_path, "w", newline="", encoding="utf-8") as csv_file:
         writer = csv.DictWriter(
-            f,
+            csv_file,
             fieldnames=[
                 "channel_id",
                 "channel_number",
@@ -407,84 +345,166 @@ def scrape(output_path: str, headful: bool = False, debug: bool = False,
             ],
         )
         writer.writeheader()
-        writer.writerows(rows_out)
+        writer.writerows(rows)
 
-    print(f"Selesai. {len(rows_out)} program ({days} hari) disimpan ke {output_path}")
+
+def _git_commit_and_push(csv_filename: str) -> None:
+    def run(command: list[str]) -> subprocess.CompletedProcess[str]:
+        return subprocess.run(
+            command,
+            cwd=SCRIPT_DIR,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+
+    add_result = run(["git", "add", csv_filename])
+    if add_result.returncode != 0:
+        raise SkyGuideError(f"git add failed: {add_result.stderr.strip()}")
+
+    commit_message = (
+        f"chore: sports schedule sync "
+        f"{datetime.now(SKY_TIMEZONE).date().isoformat()}"
+    )
+    commit_result = run(["git", "commit", "-m", commit_message])
+    if commit_result.returncode != 0:
+        combined = (commit_result.stdout + commit_result.stderr).strip()
+        if "nothing to commit" in combined.lower():
+            print("[info] No CSV changes to commit.", file=sys.stderr)
+            return
+        raise SkyGuideError(f"git commit failed: {combined}")
+
+    push_result = run(["git", "push"])
+    if push_result.returncode != 0:
+        raise SkyGuideError(f"git push failed: {push_result.stderr.strip()}")
+    print(f"[info] Committed and pushed: {commit_message}", file=sys.stderr)
+
+
+def _save_failure_artifact(error: BaseException) -> None:
+    diagnostic_dir = os.path.join(SCRIPT_DIR, "debug_artifacts")
+    os.makedirs(diagnostic_dir, exist_ok=True)
+    diagnostic = {
+        "timestamp": datetime.now(timezone.utc)
+        .isoformat(timespec="seconds")
+        .replace("+00:00", "Z"),
+        "endpoint": GRAPHQL_URL,
+        "error_type": type(error).__name__,
+        "error": str(error),
+    }
+    path = os.path.join(diagnostic_dir, "failure.json")
+    with open(path, "w", encoding="utf-8") as output:
+        json.dump(diagnostic, output, ensure_ascii=False, indent=2)
+        output.write("\n")
+    print(f"[error] Diagnostic saved to {path}", file=sys.stderr)
+
+
+def scrape(
+    output_path: str,
+    *,
+    debug: bool = False,
+    git_push: bool = False,
+    days: int = 1,
+    start_date: date | None = None,
+) -> list[dict[str, str]]:
+    start_date = start_date or datetime.now(SKY_TIMEZONE).date()
+    sports_group_id = _find_sports_group_id(debug=debug)
+    rows: list[dict[str, str]] = []
+
+    for offset in range(days):
+        rows.extend(
+            _scrape_day(
+                sports_group_id,
+                start_date + timedelta(days=offset),
+                debug=debug,
+            )
+        )
+
+    _write_csv(output_path, rows)
+    print(f"Done. {len(rows)} programmes saved to {output_path}")
 
     if git_push:
-        git_commit_and_push(os.path.basename(output_path))
+        _git_commit_and_push(os.path.relpath(output_path, SCRIPT_DIR))
+    return rows
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Scrape jadwal Sports dari tvguide.sky.co.nz")
-    parser.add_argument(
-        "--days",
-        type=int,
-        default=1,
-        help="Jumlah hari yang di-scrape mulai dari titik start (default: 1). "
-             "Situs cuma sedia data s.d. 28 hari ke depan dari hari ini.",
+def _parse_date(value: str, option_name: str) -> date:
+    try:
+        return datetime.strptime(value, "%Y-%m-%d").date()
+    except ValueError as error:
+        raise SystemExit(
+            f"ERROR: {option_name} must use YYYY-MM-DD format: {value!r}"
+        ) from error
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(
+        description="Export Sky NZ Sports TV Guide data to CSV"
     )
+    parser.add_argument("--days", type=int, default=1)
+    parser.add_argument("--until")
+    parser.add_argument("--start-offset", type=int, default=0)
+    parser.add_argument("--start-date")
+    parser.add_argument("--output")
+    parser.add_argument("--debug", action="store_true")
+    parser.add_argument("--git-push", action="store_true")
     parser.add_argument(
-        "--until",
-        default=None,
-        help="Alternatif dari --days: tanggal akhir dalam format YYYY-MM-DD (mis. 2026-08-27), "
-             "dihitung relatif dari titik start. Kalau diisi, --days diabaikan.",
-    )
-    parser.add_argument(
-        "--start-offset",
-        type=int,
-        default=0,
-        help="Mulai scrape N hari dari hari ini (default: 0 = mulai hari ini). "
-             "Berguna buat scrape per-minggu, mis. minggu ke-2: --start-offset 7 --days 7",
-    )
-    parser.add_argument(
-        "--start-date",
-        default=None,
-        help="Alternatif dari --start-offset: tanggal mulai eksplisit YYYY-MM-DD. "
-             "Kalau diisi, --start-offset diabaikan.",
-    )
-    parser.add_argument(
-        "--output",
-        default=None,
-        help="Nama file CSV output. Default otomatis: sports_YYYY-MM-DD.csv (1 hari) atau "
-             "sports_YYYY-MM-DD_to_YYYY-MM-DD.csv (multi-hari).",
-    )
-    parser.add_argument("--headful", action="store_true", help="Jalankan browser dengan tampilan (untuk debug)")
-    parser.add_argument("--debug", action="store_true", help="Print info debug ke stderr")
-    parser.add_argument(
-        "--git-push",
+        "--headful",
         action="store_true",
-        help="Otomatis git add+commit+push file CSV yang baru dibuat (folder script harus di dalam git repo)",
+        help="Deprecated compatibility option; no browser is used",
     )
     args = parser.parse_args()
 
-    today = datetime.now().date()
+    if args.headful:
+        print(
+            "[warning] --headful is deprecated; GraphQL mode uses no browser.",
+            file=sys.stderr,
+        )
 
-    if args.start_date:
-        start_date = datetime.strptime(args.start_date, "%Y-%m-%d").date()
-    else:
-        start_date = today + timedelta(days=args.start_offset)
+    today = datetime.now(SKY_TIMEZONE).date()
+    start_date = (
+        _parse_date(args.start_date, "--start-date")
+        if args.start_date
+        else today + timedelta(days=args.start_offset)
+    )
 
     if args.until:
-        until_date = datetime.strptime(args.until, "%Y-%m-%d").date()
+        until_date = _parse_date(args.until, "--until")
         days = (until_date - start_date).days + 1
-        if days < 1:
-            print(f"ERROR: --until {args.until} lebih awal dari tanggal start {start_date.isoformat()}.",
-                  file=sys.stderr)
-            sys.exit(1)
     else:
         days = args.days
 
+    if days < 1:
+        parser.error("requested date range must contain at least one day")
+    if days > 28:
+        parser.error("Sky publishes at most 28 days; --days must be <= 28")
+
     end_date = start_date + timedelta(days=days - 1)
-    if days == 1:
-        default_name = f"sports_{start_date.isoformat()}.csv"
-    else:
-        default_name = f"sports_{start_date.isoformat()}_to_{end_date.isoformat()}.csv"
-
+    default_name = (
+        f"sports_{start_date.isoformat()}.csv"
+        if days == 1
+        else f"sports_{start_date.isoformat()}_to_{end_date.isoformat()}.csv"
+    )
     output_name = args.output or default_name
-    # Selalu simpan CSV di folder script ini (folder repo), bukan di cwd
-    # saat dijalankan - penting untuk pemakaian lewat Task Scheduler.
-    output_path = os.path.join(SCRIPT_DIR, output_name)
+    output_path = (
+        output_name
+        if os.path.isabs(output_name)
+        else os.path.join(SCRIPT_DIR, output_name)
+    )
 
-    scrape(output_path, headful=args.headful, debug=args.debug, git_push=args.git_push,
-           days=days, start_date=start_date)
+    try:
+        scrape(
+            output_path,
+            debug=args.debug,
+            git_push=args.git_push,
+            days=days,
+            start_date=start_date,
+        )
+    except Exception as error:
+        _save_failure_artifact(error)
+        print(f"ERROR: {error}", file=sys.stderr)
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
