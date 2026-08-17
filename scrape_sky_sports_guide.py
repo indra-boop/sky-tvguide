@@ -27,6 +27,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 GRAPHQL_URL = "https://api.skyone.co.nz/exp/graph"
 TV_GUIDE_URL = "https://tvguide.sky.co.nz/"
 SKY_TIMEZONE = ZoneInfo("Pacific/Auckland")
+COUNTRY_CODE = "NZ"
 MAX_RESPONSE_BYTES = 16 * 1024 * 1024
 DEFAULT_TIMEOUT_SECONDS = 30
 DEFAULT_RETRIES = 3
@@ -262,6 +263,10 @@ def _scrape_day(
     for channel in channels:
         if not isinstance(channel, dict):
             continue
+
+        channel_name = str(channel.get("title") or "").strip()
+        channel_display_name = f"[{COUNTRY_CODE}] {channel_name}"
+
         slots_for_day = channel.get("slotsForDay")
         slots = (
             slots_for_day.get("slots")
@@ -294,9 +299,11 @@ def _scrape_day(
 
             rows.append(
                 {
+                    "country_code": COUNTRY_CODE,
                     "channel_id": str(channel.get("id") or ""),
                     "channel_number": str(channel.get("number") or ""),
-                    "channel_name": str(channel.get("title") or ""),
+                    "channel_name": channel_name,
+                    "channel_display_name": channel_display_name,
                     "date": target_date.isoformat(),
                     "program_title": title,
                     "start_time": start_time,
@@ -309,7 +316,7 @@ def _scrape_day(
         if debug:
             print(
                 f"[debug] {target_date.isoformat()} channel "
-                f"{channel.get('number')} {channel.get('title')}: "
+                f"{channel.get('number')} {channel_display_name}: "
                 f"{parsed_for_channel} programmes",
                 file=sys.stderr,
             )
@@ -334,9 +341,11 @@ def _write_csv(output_path: str, rows: list[dict[str, str]]) -> None:
         writer = csv.DictWriter(
             csv_file,
             fieldnames=[
+                "country_code",
                 "channel_id",
                 "channel_number",
                 "channel_name",
+                "channel_display_name",
                 "date",
                 "program_title",
                 "start_time",

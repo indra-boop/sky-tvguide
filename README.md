@@ -55,15 +55,30 @@ Workflow akan:
 
 ## Output CSV
 
+Setiap channel pada source ini berasal dari market/feed Sky New Zealand, sehingga
+menggunakan kode negara ISO 3166-1 alpha-2 `NZ`. Nama asli tetap dipertahankan
+untuk matching/dedup, sedangkan `channel_display_name` menyediakan format siap
+tampil seperti `[NZ] Sky Sport 1`.
+
 | Kolom | Keterangan |
 |---|---|
+| `country_code` | Kode negara/market feed, selalu `NZ` untuk source Sky NZ |
 | `channel_id` | ID channel dari GraphQL |
 | `channel_number` | Nomor channel Sky |
-| `channel_name` | Nama channel |
+| `channel_name` | Nama channel asli tanpa prefix negara |
+| `channel_display_name` | Nama channel siap tampil, contoh `[NZ] Sky Sport 1` |
 | `date` | Tanggal guide dalam timezone `Pacific/Auckland` |
 | `program_title` | Judul program |
 | `start_time` / `end_time` | Jam lokal `Pacific/Auckland` |
 | `scraped_at` | Timestamp scraping UTC (ISO 8601) |
+
+Contoh:
+
+```csv
+country_code,channel_id,channel_number,channel_name,channel_display_name,date,program_title,start_time,end_time,scraped_at
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-08-15,DP World Tour: Round 2,11:00PM,4:10AM,2026-08-15T01:11:40Z
+NZ,0026,60,ESPN,[NZ] ESPN,2026-08-15,SportsCenter,6:00AM,7:00AM,2026-08-15T01:11:40Z
+```
 
 ## Reliability controls
 
