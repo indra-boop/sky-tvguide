@@ -22,6 +22,8 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 from zoneinfo import ZoneInfo
 
+from sport_classifier import classify_sport
+
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 GRAPHQL_URL = "https://api.skyone.co.nz/exp/graph"
@@ -306,6 +308,7 @@ def _scrape_day(
                     "channel_display_name": channel_display_name,
                     "date": target_date.isoformat(),
                     "program_title": title,
+                    "sport_category": classify_sport(title),
                     "start_time": start_time,
                     "end_time": end_time,
                     "scraped_at": scraped_at,
@@ -351,6 +354,7 @@ def _write_csv(output_path: str, rows: list[dict[str, str]]) -> None:
                 "start_time",
                 "end_time",
                 "scraped_at",
+                "sport_category",
             ],
         )
         writer.writeheader()
