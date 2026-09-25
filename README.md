@@ -71,14 +71,19 @@ tampil seperti `[NZ] Sky Sport 1`.
 | `program_title` | Judul program |
 | `start_time` / `end_time` | Jam lokal `Pacific/Auckland` |
 | `scraped_at` | Timestamp scraping UTC (ISO 8601) |
+| `sport_category` | Klasifikasi konservatif dari `program_title`: 23 jenis olahraga atau `Other` bila judul ambigu. Bukan penanda LIVE. |
 
 Contoh:
 
 ```csv
-country_code,channel_id,channel_number,channel_name,channel_display_name,date,program_title,start_time,end_time,scraped_at
-NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-08-15,DP World Tour: Round 2,11:00PM,4:10AM,2026-08-15T01:11:40Z
-NZ,0026,60,ESPN,[NZ] ESPN,2026-08-15,SportsCenter,6:00AM,7:00AM,2026-08-15T01:11:40Z
+country_code,channel_id,channel_number,channel_name,channel_display_name,date,program_title,start_time,end_time,scraped_at,sport_category
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-08-15,DP World Tour: Round 2,11:00PM,4:10AM,2026-08-15T01:11:40Z,Golf
+NZ,0026,60,ESPN,[NZ] ESPN,2026-08-15,SportsCenter,6:00AM,7:00AM,2026-08-15T01:11:40Z,Other
 ```
+
+Classifier memakai pola judul spesifik (misalnya `UFC`/`PFL` → `MMA`, `NRL` → `Rugby League`, `F1` → `Motorsport`). `Other` menjaga agar studio show dan judul ambigu tidak diberi cabang olahraga palsu. File arsip lama tetap berformat lama sampai dihasilkan ulang; ingest dashboard menerima kedua format.
+
+Validasi lokal: `python -m unittest discover -s tests -v`.
 
 ## Reliability controls
 
