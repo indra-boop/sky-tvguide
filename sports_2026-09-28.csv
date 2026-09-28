@@ -1,0 +1,307 @@
+country_code,channel_id,channel_number,channel_name,channel_display_name,date,program_title,start_time,end_time,scraped_at,sport_category
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,CRO Race 2026: Stage 6,12:00AM,2:10AM,2026-09-28T03:56:00Z,Cycling
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,WSL: Spurs v Aston Villa,2:10AM,3:50AM,2026-09-28T03:56:00Z,Other
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,NPC: Hawke's Bay v Taranaki,3:50AM,4:05AM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,WSL: Chelsea v Arsenal,4:05AM,6:35AM,2026-09-28T03:56:00Z,Other
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,CRO Race 2026: Stage 6,6:35AM,8:35AM,2026-09-28T03:56:00Z,Cycling
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,Tauihi: Queens v Kahu,8:35AM,10:35AM,2026-09-28T03:56:00Z,Basketball
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,PREM: Saints v Red Bulls Hls,10:35AM,10:47AM,2026-09-28T03:56:00Z,Other
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,PREM: Exeter Chiefs v Gloucester Hls,10:47AM,11:00AM,2026-09-28T03:56:00Z,Other
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,PREM: Sale Sharks v Bristol Bears Hls,11:00AM,11:15AM,2026-09-28T03:56:00Z,Other
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,PREM: Leicester Tigers v Saracens Hls,11:15AM,11:30AM,2026-09-28T03:56:00Z,Other
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,WSL: Man Utd v West Ham Hls,11:30AM,11:45AM,2026-09-28T03:56:00Z,Other
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,WSL: Liverpool v Everton Hls,11:45AM,12:00PM,2026-09-28T03:56:00Z,Other
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,WSL: Spurs v Aston Villa Hls,12:00PM,12:15PM,2026-09-28T03:56:00Z,Other
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,WSL: Chelsea v Arsenal Hls,12:15PM,12:30PM,2026-09-28T03:56:00Z,Other
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,NRL: Panthers v Knights PF2 Hls,12:30PM,12:45PM,2026-09-28T03:56:00Z,Rugby League
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,Sunday Night With Matty Johns,12:45PM,1:45PM,2026-09-28T03:56:00Z,Other
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,AFLW: Gold Coast SUNS v St Kilda Hls,1:45PM,2:00PM,2026-09-28T03:56:00Z,Aussie Rules
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,AFLW: Adelaide Crows v Freemantle Hls,2:00PM,2:15PM,2026-09-28T03:56:00Z,Aussie Rules
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,AFLW: Sydney Swans v Brisbane Lions Hls,2:15PM,2:30PM,2026-09-28T03:56:00Z,Aussie Rules
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,Laver Cup Day 3 Highlights,2:30PM,3:30PM,2026-09-28T03:56:00Z,Tennis
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,England v Sri Lanka: 3rd ODI Hls,3:30PM,4:00PM,2026-09-28T03:56:00Z,Cricket
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,India v West Indies: 1st ODI Hls,4:00PM,4:30PM,2026-09-28T03:56:00Z,Cricket
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,GTWS: Myoko Trail Hls,4:30PM,5:00PM,2026-09-28T03:56:00Z,Trail Running
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,UFC 332 Countdown,5:00PM,5:30PM,2026-09-28T03:56:00Z,MMA
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,England v Sri Lanka: 3rd ODI Hls,5:30PM,6:00PM,2026-09-28T03:56:00Z,Cricket
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,CRO Race 2026: Stage 6,6:00PM,8:00PM,2026-09-28T03:56:00Z,Cycling
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,PREM: Saints v Red Bulls,8:00PM,10:00PM,2026-09-28T03:56:00Z,Other
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,PREM: Leicester Tigers v Saracens Hls,10:00PM,10:15PM,2026-09-28T03:56:00Z,Other
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,NRLW: Roosters v Raiders PF1 Hls,10:15PM,10:30PM,2026-09-28T03:56:00Z,Rugby League
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,NRLW: Titans v Broncos PF2 Hls,10:30PM,10:45PM,2026-09-28T03:56:00Z,Rugby League
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,FPC: Northland v Hawke's Bay Hls,10:45PM,11:00PM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,FPC: North Harbour v Otago Hls,11:00PM,11:15PM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,NPC: Tasman v Bay of Plenty Hls,11:15PM,11:30PM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,NPC: Auckland v Manawatu Hls,11:30PM,11:45PM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,NPC: Northland v Counties Hls (RS),11:45PM,12:00AM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-09-28,NPC: Canterbury v Southland Hls,12:00AM,12:15AM,2026-09-28T03:56:00Z,Rugby Union
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,Australia v South Africa,10:00PM,1:50AM,2026-09-28T03:56:00Z,Other
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,WSL: Liverpool v Everton,1:50AM,4:00AM,2026-09-28T03:56:00Z,Other
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,Presidents Cup Day 3 Hls,4:00AM,5:00AM,2026-09-28T03:56:00Z,Golf
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,Presidents Cup Day 4,5:00AM,11:50AM,2026-09-28T03:56:00Z,Golf
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,NRL: Panthers v Knights PF2 Hls,11:50AM,12:05PM,2026-09-28T03:56:00Z,Rugby League
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,FPC: Wellington v Tasman Hls,12:05PM,12:20PM,2026-09-28T03:56:00Z,Rugby Union
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,Australia v South Africa Hls,12:20PM,12:35PM,2026-09-28T03:56:00Z,Other
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,NPC: Wellington v Waikato Hls,12:35PM,12:50PM,2026-09-28T03:56:00Z,Rugby Union
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,NPC: Hawke's Bay v Taranaki,12:50PM,1:05PM,2026-09-28T03:56:00Z,Rugby Union
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,DP World Tour: Round 4 Hls,1:05PM,1:30PM,2026-09-28T03:56:00Z,Golf
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,India v West Indies: 1st ODI Hls,1:30PM,2:00PM,2026-09-28T03:56:00Z,Cricket
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,NRLW: Roosters v Raiders PF1 Hls,2:00PM,2:15PM,2026-09-28T03:56:00Z,Rugby League
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,NRLW: Titans v Broncos PF2 Hls,2:15PM,2:30PM,2026-09-28T03:56:00Z,Rugby League
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,NRL: Panthers v Knights PF2 Hls,2:30PM,2:45PM,2026-09-28T03:56:00Z,Rugby League
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,PREM: Saints v Red Bulls Hls,2:45PM,3:00PM,2026-09-28T03:56:00Z,Other
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,PREM: Exeter Chiefs v Gloucester Hls,3:00PM,3:15PM,2026-09-28T03:56:00Z,Other
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,PREM: Sale Sharks v Bristol Bears Hls,3:15PM,3:30PM,2026-09-28T03:56:00Z,Other
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,PREM: Leicester Tigers v Saracens Hls,3:30PM,3:45PM,2026-09-28T03:56:00Z,Other
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,Australia v South Africa,3:45PM,6:00PM,2026-09-28T03:56:00Z,Other
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,India v West Indies: 1st ODI Hls,6:00PM,6:30PM,2026-09-28T03:56:00Z,Cricket
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,England v Sri Lanka: 3rd ODI Hls,6:30PM,7:00PM,2026-09-28T03:56:00Z,Cricket
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,The Crowd Goes Wild,7:00PM,7:30PM,2026-09-28T03:56:00Z,Other
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,League Lounge With Shaun Johnson,7:30PM,8:00PM,2026-09-28T03:56:00Z,Other
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,NRL: 2001 Grand Final: Knights v Eels,8:00PM,9:30PM,2026-09-28T03:56:00Z,Rugby League
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,NRL 360,9:30PM,10:30PM,2026-09-28T03:56:00Z,Rugby League
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,Matty & Cronk,10:30PM,11:05PM,2026-09-28T03:56:00Z,Other
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,League Lounge With Shaun Johnson,11:05PM,11:35PM,2026-09-28T03:56:00Z,Other
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-09-28,The Crowd Goes Wild,11:35PM,12:05AM,2026-09-28T03:56:00Z,Other
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-09-28,England v Sri Lanka: 3rd \ODI,10:20PM,5:45AM,2026-09-28T03:56:00Z,Cricket
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-09-28,PREM: Exeter Chiefs v Gloucester Hls,5:45AM,6:00AM,2026-09-28T03:56:00Z,Other
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-09-28,PREM: Sale Sharks v Bristol Bears Hls,6:00AM,6:15AM,2026-09-28T03:56:00Z,Other
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-09-28,PREM: Saints v Red Bulls Hls,6:15AM,6:30AM,2026-09-28T03:56:00Z,Other
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-09-28,Australia v South Africa,6:30AM,8:45AM,2026-09-28T03:56:00Z,Other
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-09-28,NRL: Panthers v Knights PF2 Hls,8:45AM,9:00AM,2026-09-28T03:56:00Z,Rugby League
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-09-28,NZRL Prem Youth Tournament D2,9:00AM,5:00PM,2026-09-28T03:56:00Z,Other
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-09-28,Australia v South Africa Hls,5:00PM,5:15PM,2026-09-28T03:56:00Z,Other
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-09-28,NRLW: Roosters v Raiders PF1 Hls,5:15PM,5:30PM,2026-09-28T03:56:00Z,Rugby League
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-09-28,NRLW: Titans v Broncos PF2 Hls,5:30PM,5:45PM,2026-09-28T03:56:00Z,Rugby League
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-09-28,NRL: Dolphins v Roosters PF1 Hls,5:45PM,6:00PM,2026-09-28T03:56:00Z,Rugby League
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-09-28,NRL: Panthers v Knights PF2 Hls,6:00PM,6:15PM,2026-09-28T03:56:00Z,Rugby League
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-09-28,AFL Grand Final: FRE v BRL,6:15PM,9:30PM,2026-09-28T03:56:00Z,Aussie Rules
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-09-28,AFL 360,9:30PM,10:30PM,2026-09-28T03:56:00Z,Aussie Rules
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-09-28,AFL: On The Couch,10:30PM,11:30PM,2026-09-28T03:56:00Z,Aussie Rules
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-09-28,England v Sri Lanka: 3rd ODI Hls,11:30PM,12:00AM,2026-09-28T03:56:00Z,Cricket
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-09-28,India v West Indies: 1st ODI Hls,12:00AM,12:30AM,2026-09-28T03:56:00Z,Cricket
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-09-28,India v West Indies: 1st ODI,9:20PM,5:45AM,2026-09-28T03:56:00Z,Cricket
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-09-28,NRL: Panthers v Knights PF2 Hls,5:45AM,6:00AM,2026-09-28T03:56:00Z,Rugby League
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-09-28,Australia v South Africa Hls,6:00AM,6:15AM,2026-09-28T03:56:00Z,Other
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-09-28,AFLW: Gold Coast SUNS v St Kilda Hls,6:15AM,6:30AM,2026-09-28T03:56:00Z,Aussie Rules
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-09-28,LPGA: Round 2 Hls,6:30AM,7:00AM,2026-09-28T03:56:00Z,Golf
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-09-28,LPGA: Round 3,7:00AM,10:05AM,2026-09-28T03:56:00Z,Golf
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-09-28,Jet Ski World Series: Rd1 Bulgaria,10:05AM,11:00AM,2026-09-28T03:56:00Z,Other
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-09-28,FPC: Wellington v Tasman,11:00AM,1:00PM,2026-09-28T03:56:00Z,Rugby Union
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-09-28,PREM: Leicester Tigers v Saracens,1:00PM,3:00PM,2026-09-28T03:56:00Z,Other
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-09-28,NPC: Wellington v Waikato,3:00PM,5:00PM,2026-09-28T03:56:00Z,Rugby Union
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-09-28,NPC: Hawke's Bay v Taranaki,5:00PM,7:00PM,2026-09-28T03:56:00Z,Rugby Union
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-09-28,India v West Indies: 1st ODI Hls,7:00PM,7:30PM,2026-09-28T03:56:00Z,Cricket
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-09-28,England v Sri Lanka: 3rd ODI Hls,7:30PM,8:00PM,2026-09-28T03:56:00Z,Cricket
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-09-28,FIA F1: Azerbaijan Grand Prix,8:00PM,10:00PM,2026-09-28T03:56:00Z,Motorsport
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-09-28,FIA Formula 2: Rd12 Feature Race 1,10:00PM,11:25PM,2026-09-28T03:56:00Z,Motorsport
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-09-28,FIA Formula 2: Rd12 Feature Race,11:25PM,12:30AM,2026-09-28T03:56:00Z,Motorsport
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-09-28,Laver Cup Day 3 - Day Session,12:00AM,4:55AM,2026-09-28T03:56:00Z,Tennis
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-09-28,Australia v South Africa,4:55AM,7:05AM,2026-09-28T03:56:00Z,Other
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-09-28,NRL: Panthers v Knights PF2,7:05AM,9:00AM,2026-09-28T03:56:00Z,Rugby League
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-09-28,NRLW: Titans v Broncos PF2,9:00AM,10:40AM,2026-09-28T03:56:00Z,Rugby League
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-09-28,NRLW: Roosters v Raiders PF1 Hls,10:40AM,11:00AM,2026-09-28T03:56:00Z,Rugby League
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-09-28,Sunday Night With Matty Johns,11:00AM,12:00PM,2026-09-28T03:56:00Z,Other
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-09-28,LPGA: Round 3 Hls,12:00PM,12:30PM,2026-09-28T03:56:00Z,Golf
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-09-28,DP World Tour: Round 4 Hls,12:30PM,1:00PM,2026-09-28T03:56:00Z,Golf
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-09-28,England v Sri Lanka: 3rd ODI,1:00PM,8:00PM,2026-09-28T03:56:00Z,Cricket
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-09-28,India v West Indies: 1st ODI Hls,8:00PM,8:30PM,2026-09-28T03:56:00Z,Cricket
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-09-28,The Crowd Goes Wild,8:30PM,9:00PM,2026-09-28T03:56:00Z,Other
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-09-28,Laver Cup Day 3 Highlights,9:00PM,10:00PM,2026-09-28T03:56:00Z,Tennis
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-09-28,Jet Ski World Series: Rd1 Bulgaria,10:00PM,11:00PM,2026-09-28T03:56:00Z,Other
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-09-28,UFC 332 Countdown,11:00PM,11:30PM,2026-09-28T03:56:00Z,MMA
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-09-28,NRL 360,11:30PM,12:30AM,2026-09-28T03:56:00Z,Rugby League
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-09-28,DP World Tour: Round 4,11:30PM,4:45AM,2026-09-28T03:56:00Z,Golf
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-09-28,FPC: Wellington v Tasman Hls,4:45AM,5:00AM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-09-28,LPGA: Round 2 Hls,5:00AM,5:30AM,2026-09-28T03:56:00Z,Golf
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-09-28,WXV: England v Black Ferns Ext. Hls,5:30AM,6:00AM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-09-28,NPC: Hawke's Bay v Taranaki,6:00AM,8:00AM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-09-28,NPC: Wellington v Waikato,8:00AM,10:00AM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-09-28,PREM: Saints v Red Bulls Hls,10:00AM,10:15AM,2026-09-28T03:56:00Z,Other
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-09-28,PREM: Exeter Chiefs v Gloucester Hls,10:15AM,10:30AM,2026-09-28T03:56:00Z,Other
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-09-28,PREM: Sale Sharks v Bristol Bears Hls,10:30AM,10:45AM,2026-09-28T03:56:00Z,Other
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-09-28,PREM: Leicester Tigers v Saracens Hls,10:45AM,11:00AM,2026-09-28T03:56:00Z,Other
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-09-28,India v West Indies: 1st ODI,11:00AM,7:00PM,2026-09-28T03:56:00Z,Cricket
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-09-28,Laver Cup Day 3,7:00PM,12:10AM,2026-09-28T03:56:00Z,Tennis
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,WXV: France v Canada Hls,12:00AM,12:15AM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,WXV: Italy v South Africa Hls,12:15AM,12:35AM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,WXV: Ireland v Japan,12:35AM,2:45AM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,PREM: Sale Sharks v Bristol Bears Hls,2:45AM,3:00AM,2026-09-28T03:56:00Z,Other
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,PREM: Leicester Tigers v Saracens,3:00AM,5:05AM,2026-09-28T03:56:00Z,Other
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,NPC: Wellington v Waikato Hls,5:05AM,5:20AM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,NPC: Hawke's Bay v Taranaki,5:20AM,5:35AM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,Inside Sailing Ep.9,5:35AM,6:00AM,2026-09-28T03:56:00Z,Sailing
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,FIA F1: Azerbaijan Grand Prix Ext Hls,6:00AM,7:00AM,2026-09-28T03:56:00Z,Motorsport
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,FPC: Wellington v Tasman,7:00AM,8:50AM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,PREM: Leicester Tigers v Saracens,8:50AM,10:35AM,2026-09-28T03:56:00Z,Other
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,England v Sri Lanka: 3rd ODI Hls,10:35AM,11:00AM,2026-09-28T03:56:00Z,Cricket
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,DP World Tour: Round 4,11:00AM,1:00PM,2026-09-28T03:56:00Z,Golf
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,England v Sri Lanka: 3rd ODI Hls,1:00PM,1:30PM,2026-09-28T03:56:00Z,Cricket
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,LPGA: Round 3 Hls,1:30PM,2:00PM,2026-09-28T03:56:00Z,Golf
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,Presidents Cup Day 4 Hls,2:00PM,3:00PM,2026-09-28T03:56:00Z,Golf
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,LPGA: Round 3,3:00PM,5:00PM,2026-09-28T03:56:00Z,Golf
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,Presidents Cup Day 4,5:00PM,7:00PM,2026-09-28T03:56:00Z,Golf
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,DP World Tour: Round 4 Hls,7:00PM,7:30PM,2026-09-28T03:56:00Z,Golf
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,Presidents Cup Day 4 Hls,7:30PM,8:30PM,2026-09-28T03:56:00Z,Golf
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,LPGA: Round 3 Hls,8:30PM,9:00PM,2026-09-28T03:56:00Z,Golf
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,Presidents Cup Day 4,9:00PM,11:00PM,2026-09-28T03:56:00Z,Golf
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-09-28,LPGA: Round 3,11:00PM,1:00AM,2026-09-28T03:56:00Z,Golf
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-09-28,Big Shoes To Fill,12:00AM,12:30AM,2026-09-28T03:56:00Z,Other
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-09-28,The Starting Eleven,12:30AM,1:00AM,2026-09-28T03:56:00Z,Soccer
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-09-28,FPC: Wellington v Tasman Hls,1:00AM,1:20AM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-09-28,Inside Sailing Ep.9,1:20AM,1:50AM,2026-09-28T03:56:00Z,Sailing
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-09-28,UCI Road World Championships,1:50AM,9:10AM,2026-09-28T03:56:00Z,Cycling
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-09-28,FPC: Wellington v Tasman Hls,9:10AM,9:25AM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-09-28,NRLW: Titans v Broncos PF2 Hls,9:25AM,9:40AM,2026-09-28T03:56:00Z,Rugby League
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-09-28,NRL: Panthers v Knights PF2 Hls,9:40AM,10:00AM,2026-09-28T03:56:00Z,Rugby League
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-09-28,Zuffa Boxing 11: Main Card,10:00AM,1:00PM,2026-09-28T03:56:00Z,Other
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-09-28,NRLW: Roosters v Raiders PF1,1:00PM,3:00PM,2026-09-28T03:56:00Z,Rugby League
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-09-28,NRLW: Titans v Broncos PF2,3:00PM,4:38PM,2026-09-28T03:56:00Z,Rugby League
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-09-28,Inside Sailing Ep.9,4:38PM,5:05PM,2026-09-28T03:56:00Z,Sailing
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-09-28,NRL: Dolphins v Roosters PF1,5:05PM,7:00PM,2026-09-28T03:56:00Z,Rugby League
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-09-28,NRL: Panthers v Knights PF2,7:00PM,9:00PM,2026-09-28T03:56:00Z,Rugby League
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-09-28,The Crowd Goes Wild,9:00PM,9:30PM,2026-09-28T03:56:00Z,Other
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-09-28,WSL: London City v Brighton,9:30PM,11:30PM,2026-09-28T03:56:00Z,Other
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-09-28,WSL: Man Utd v West Ham,11:30PM,1:30AM,2026-09-28T03:56:00Z,Other
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,PL STORIES,12:00AM,12:30AM,2026-09-28T03:56:00Z,Soccer
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,REWIND,12:30AM,1:00AM,2026-09-28T03:56:00Z,Other
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,PL MOMENTS,1:00AM,2:00AM,2026-09-28T03:56:00Z,Soccer
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,PL STORIES,2:00AM,2:30AM,2026-09-28T03:56:00Z,Soccer
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,PL STORIES,2:30AM,3:00AM,2026-09-28T03:56:00Z,Soccer
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,THE BIG INTERVIEW,3:00AM,3:30AM,2026-09-28T03:56:00Z,Other
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,THE BIG INTERVIEW,3:30AM,4:00AM,2026-09-28T03:56:00Z,Other
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,THE CATCH-UP SHOW,4:00AM,5:00AM,2026-09-28T03:56:00Z,Other
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,NETBUSTERS,5:00AM,5:30AM,2026-09-28T03:56:00Z,Netball
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,PL STORIES,5:30AM,6:00AM,2026-09-28T03:56:00Z,Soccer
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,PL STORIES,6:00AM,6:30AM,2026-09-28T03:56:00Z,Soccer
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,PL STORIES,6:30AM,7:00AM,2026-09-28T03:56:00Z,Soccer
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,PL STORIES,7:00AM,7:30AM,2026-09-28T03:56:00Z,Soccer
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,1-TO-11,7:30AM,8:30AM,2026-09-28T03:56:00Z,Other
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,REVIEW,8:30AM,9:30AM,2026-09-28T03:56:00Z,Other
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,REVIEW OF THE SEASON,9:30AM,11:30AM,2026-09-28T03:56:00Z,Other
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,PL STORIES,11:30AM,12:00PM,2026-09-28T03:56:00Z,Soccer
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,PL STORIES,12:00PM,1:00PM,2026-09-28T03:56:00Z,Soccer
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,THE BIG INTERVIEW,1:00PM,1:30PM,2026-09-28T03:56:00Z,Other
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,THE BIG INTERVIEW,1:30PM,2:00PM,2026-09-28T03:56:00Z,Other
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,THE CATCH-UP SHOW,2:00PM,3:00PM,2026-09-28T03:56:00Z,Other
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,THE BIG INTERVIEW,3:00PM,3:30PM,2026-09-28T03:56:00Z,Other
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,NETBUSTERS,3:30PM,4:00PM,2026-09-28T03:56:00Z,Netball
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,GOALS OF THE SEASON,4:00PM,5:00PM,2026-09-28T03:56:00Z,Other
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,PL MASTERCLASS,5:00PM,6:00PM,2026-09-28T03:56:00Z,Soccer
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,PL MOMENTS,6:00PM,7:00PM,2026-09-28T03:56:00Z,Soccer
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,PL STORIES,7:00PM,7:30PM,2026-09-28T03:56:00Z,Soccer
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,REWIND,7:30PM,8:00PM,2026-09-28T03:56:00Z,Other
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,REWIND,8:00PM,8:30PM,2026-09-28T03:56:00Z,Other
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,THE BIG INTERVIEW,8:30PM,9:00PM,2026-09-28T03:56:00Z,Other
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,REVIEW OF THE SEASON,9:00PM,11:00PM,2026-09-28T03:56:00Z,Other
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,THE CATCH-UP SHOW,11:00PM,12:00AM,2026-09-28T03:56:00Z,Other
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-09-28,REVIEW,12:00AM,1:00AM,2026-09-28T03:56:00Z,Other
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,Sunday Night With Matty Johns,11:45PM,12:50AM,2026-09-28T03:56:00Z,Other
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,WSL: Man Utd v West Ham,12:50AM,3:00AM,2026-09-28T03:56:00Z,Other
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,NPC: Wellington v Waikato Hls,3:00AM,3:15AM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,NPC: Hawke's Bay v Taranaki,3:15AM,3:30AM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,ANZ PL Darts: Canberra Hls,3:30AM,4:00AM,2026-09-28T03:56:00Z,Darts
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,Inside Sailing Ep.9,4:00AM,4:30AM,2026-09-28T03:56:00Z,Sailing
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,Big Shoes To Fill,4:30AM,5:00AM,2026-09-28T03:56:00Z,Other
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,The Starting Eleven,5:00AM,5:30AM,2026-09-28T03:56:00Z,Soccer
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,NPC: Hawke's Bay v Taranaki,5:30AM,5:45AM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,FPC: Wellington v Tasman Hls,5:45AM,6:00AM,2026-09-28T03:56:00Z,Rugby Union
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,NRLW: Titans v Broncos PF2 Hls,6:00AM,6:15AM,2026-09-28T03:56:00Z,Rugby League
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,NRL: Panthers v Knights PF2 Hls,6:15AM,6:30AM,2026-09-28T03:56:00Z,Rugby League
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,Sunday Night With Matty Johns,6:30AM,7:30AM,2026-09-28T03:56:00Z,Other
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,AFLW: Adelaide Crows v Freemantle,7:30AM,9:20AM,2026-09-28T03:56:00Z,Aussie Rules
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,AFLW: Sydney Swans v Brisbane Lions,9:20AM,11:10AM,2026-09-28T03:56:00Z,Aussie Rules
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,AFLW: Gold Coast SUNS v St Kilda,11:10AM,1:00PM,2026-09-28T03:56:00Z,Aussie Rules
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,Inside Sailing Ep.9,1:00PM,1:30PM,2026-09-28T03:56:00Z,Sailing
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,Australia v South Africa Hls,1:30PM,1:45PM,2026-09-28T03:56:00Z,Other
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,AFLW: Adelaide Crows v Freemantle Hls,1:45PM,2:00PM,2026-09-28T03:56:00Z,Aussie Rules
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,AFLW: Sydney Swans v Brisbane Lions Hls,2:00PM,2:15PM,2026-09-28T03:56:00Z,Aussie Rules
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,AFLW: Gold Coast SUNS v St Kilda Hls,2:15PM,2:30PM,2026-09-28T03:56:00Z,Aussie Rules
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,UCI Road World Championships,2:30PM,9:50PM,2026-09-28T03:56:00Z,Cycling
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-09-28,Zuffa Boxing 11,9:50PM,4:15AM,2026-09-28T03:56:00Z,Other
+NZ,0026,60,ESPN,[NZ] ESPN,2026-09-28,College Football,11:30PM,1:00AM,2026-09-28T03:56:00Z,American Football
+NZ,0026,60,ESPN,[NZ] ESPN,2026-09-28,College Football,1:00AM,3:00AM,2026-09-28T03:56:00Z,American Football
+NZ,0026,60,ESPN,[NZ] ESPN,2026-09-28,Sunday NFL Countdown,3:00AM,6:00AM,2026-09-28T03:56:00Z,American Football
+NZ,0026,60,ESPN,[NZ] ESPN,2026-09-28,NFL Bills v Chargers,6:00AM,9:00AM,2026-09-28T03:56:00Z,American Football
+NZ,0026,60,ESPN,[NZ] ESPN,2026-09-28,In Depth With,9:00AM,9:25AM,2026-09-28T03:56:00Z,Other
+NZ,0026,60,ESPN,[NZ] ESPN,2026-09-28,NFL Cowboys v Ravens,9:25AM,12:30PM,2026-09-28T03:56:00Z,American Football
+NZ,0026,60,ESPN,[NZ] ESPN,2026-09-28,SC: NFL Blitz,12:30PM,1:15PM,2026-09-28T03:56:00Z,American Football
+NZ,0026,60,ESPN,[NZ] ESPN,2026-09-28,NFL  Broncos v Rams,1:15PM,4:45PM,2026-09-28T03:56:00Z,American Football
+NZ,0026,60,ESPN,[NZ] ESPN,2026-09-28,SportsCenter,4:45PM,5:30PM,2026-09-28T03:56:00Z,Other
+NZ,0026,60,ESPN,[NZ] ESPN,2026-09-28,NFL,5:30PM,7:30PM,2026-09-28T03:56:00Z,American Football
+NZ,0026,60,ESPN,[NZ] ESPN,2026-09-28,WNBA Playoffs,7:30PM,9:30PM,2026-09-28T03:56:00Z,Basketball
+NZ,0026,60,ESPN,[NZ] ESPN,2026-09-28,NBL: Overtime,9:30PM,10:30PM,2026-09-28T03:56:00Z,Basketball
+NZ,0026,60,ESPN,[NZ] ESPN,2026-09-28,NFL Mini,10:30PM,11:00PM,2026-09-28T03:56:00Z,American Football
+NZ,0026,60,ESPN,[NZ] ESPN,2026-09-28,NFL,11:00PM,1:30AM,2026-09-28T03:56:00Z,American Football
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-09-28,College Football,12:00AM,2:00AM,2026-09-28T03:56:00Z,American Football
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-09-28,Quick Pitch,2:00AM,3:00AM,2026-09-28T03:56:00Z,Other
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-09-28,College Final,3:00AM,4:00AM,2026-09-28T03:56:00Z,Other
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-09-28,Quick Pitch,4:00AM,5:00AM,2026-09-28T03:56:00Z,Other
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-09-28,30 For 30,5:00AM,6:30AM,2026-09-28T03:56:00Z,Other
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-09-28,WNBA Countdown,6:30AM,7:00AM,2026-09-28T03:56:00Z,Basketball
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-09-28,WNBA Playoffs Mercury v Aces,7:00AM,9:00AM,2026-09-28T03:56:00Z,Basketball
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-09-28,NFL Buccaneers v Vikings,9:00AM,12:00PM,2026-09-28T03:56:00Z,American Football
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-09-28,College Final,12:00PM,1:00PM,2026-09-28T03:56:00Z,Other
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-09-28,In Depth With,1:00PM,1:30PM,2026-09-28T03:56:00Z,Other
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-09-28,W C Volleyball Pittsburgh v Stanford,1:30PM,3:30PM,2026-09-28T03:56:00Z,Other
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-09-28,SportsCenter,3:30PM,4:00PM,2026-09-28T03:56:00Z,Other
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-09-28,MLB,4:00PM,6:00PM,2026-09-28T03:56:00Z,Baseball
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-09-28,NFL,6:00PM,8:30PM,2026-09-28T03:56:00Z,American Football
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-09-28,NFL Mini,8:30PM,9:00PM,2026-09-28T03:56:00Z,American Football
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-09-28,NFL Mini,9:00PM,9:30PM,2026-09-28T03:56:00Z,American Football
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-09-28,ESPN FC,9:30PM,10:00PM,2026-09-28T03:56:00Z,Soccer
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-09-28,NFL,10:00PM,12:30AM,2026-09-28T03:56:00Z,American Football
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Trackside 1 LIVE - AUS/INTL,12:00AM,1:00AM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Trackside 1 LIVE - AUS/INTL,1:00AM,2:00AM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Trackside 1 LIVE - AUS/INTL,2:00AM,3:00AM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Trackside 1 LIVE - AUS/INTL,3:00AM,3:45AM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Harness Trials,3:45AM,4:30AM,2026-09-28T03:56:00Z,Other
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Thoroughbred Weekly,4:30AM,5:30AM,2026-09-28T03:56:00Z,Other
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Racing Replay Australia,5:30AM,6:00AM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Racing Replay Australia cont.,6:00AM,6:30AM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Racing Replay Riccarton,6:30AM,7:15AM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Racing Replay Hastings,7:15AM,8:00AM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Thoroughbred Weekly,8:00AM,9:00AM,2026-09-28T03:56:00Z,Other
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Racing Replay Alexandra Park,9:00AM,9:45AM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Racing Replay Addington,9:45AM,10:30AM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Racing Replay Te Rapa,10:30AM,11:00AM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Thoroughbred Weekly,11:00AM,12:00PM,2026-09-28T03:56:00Z,Other
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Racing Replay Australia,12:00PM,1:00PM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Racing Replay Riccarton,1:00PM,1:45PM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Racing Replay Hastings,1:45PM,2:30PM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Thoroughbred Weekly,2:30PM,3:30PM,2026-09-28T03:56:00Z,Other
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Trackside 1 LIVE - AUS,3:30PM,4:00PM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Trackside 1 LIVE - AUS,4:00PM,5:00PM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Trackside 1 LIVE - AUS,5:00PM,6:00PM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Trackside 1 LIVE - AUS,6:00PM,7:00PM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Trackside 1 LIVE - AUS,7:00PM,8:00PM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Weigh In,8:00PM,9:00PM,2026-09-28T03:56:00Z,Other
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Trackside 1 LIVE - AUS,9:00PM,10:00PM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Trackside 1 LIVE - AUS,10:00PM,11:00PM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Trackside 1 LIVE - AUS,11:00PM,12:00AM,2026-09-28T03:56:00Z,Racing
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-09-28,Trackside 1 LIVE - AUS,12:00AM,1:00AM,2026-09-28T03:56:00Z,Racing
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Trackside 2 LIVE - AUS,12:00AM,12:45AM,2026-09-28T03:56:00Z,Racing
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Australian Trials,12:45AM,1:15AM,2026-09-28T03:56:00Z,Other
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Racing Replay Addington,1:15AM,2:00AM,2026-09-28T03:56:00Z,Racing
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Thoroughbred Weekly,2:00AM,3:00AM,2026-09-28T03:56:00Z,Other
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Racing Replay Australia,3:00AM,4:00AM,2026-09-28T03:56:00Z,Racing
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Racing Replay Hastings,4:00AM,5:00AM,2026-09-28T03:56:00Z,Racing
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Racing Replay Riccarton,5:00AM,5:45AM,2026-09-28T03:56:00Z,Racing
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Thoroughbred Weekly,5:45AM,6:00AM,2026-09-28T03:56:00Z,Other
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Thoroughbred Weekly cont.,6:00AM,6:55AM,2026-09-28T03:56:00Z,Other
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Trackside 2 LIVE - USA,6:55AM,9:00AM,2026-09-28T03:56:00Z,Racing
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Trackside 2 LIVE - USA,9:00AM,11:00AM,2026-09-28T03:56:00Z,Racing
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Trackside 2 LIVE - USA,11:00AM,1:00PM,2026-09-28T03:56:00Z,Racing
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Trackside 2 LIVE - AUS,1:00PM,3:00PM,2026-09-28T03:56:00Z,Racing
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Trackside 2 LIVE - AUS,3:00PM,5:00PM,2026-09-28T03:56:00Z,Racing
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Trackside 2 LIVE - AUS,5:00PM,7:00PM,2026-09-28T03:56:00Z,Racing
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Trackside 2 LIVE - AUS,7:00PM,8:00PM,2026-09-28T03:56:00Z,Racing
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Trackside 2 LIVE - AUS,8:00PM,9:00PM,2026-09-28T03:56:00Z,Racing
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Trackside 2 LIVE - AUS,9:00PM,10:00PM,2026-09-28T03:56:00Z,Racing
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Trackside 2 LIVE - AUS,10:00PM,10:35PM,2026-09-28T03:56:00Z,Racing
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Racing Replay Waverley,10:35PM,11:00PM,2026-09-28T03:56:00Z,Racing
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Thoroughbred Weekly,11:00PM,12:00AM,2026-09-28T03:56:00Z,Other
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-09-28,Weigh In,12:00AM,1:00AM,2026-09-28T03:56:00Z,Other
+NZ,SARA,65,Sky Arena,[NZ] Sky Arena,2026-09-28,October 4th: UFC 332,6:00PM,6:00AM,2026-09-28T03:56:00Z,MMA
+NZ,SARA,65,Sky Arena,[NZ] Sky Arena,2026-09-28,October 4th: UFC 332,6:00AM,6:00PM,2026-09-28T03:56:00Z,MMA
+NZ,SARA,65,Sky Arena,[NZ] Sky Arena,2026-09-28,October 4th: UFC 332,6:00PM,6:00AM,2026-09-28T03:56:00Z,MMA
