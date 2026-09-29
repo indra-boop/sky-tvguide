@@ -10,6 +10,10 @@ Guide. Tidak memakai Playwright, Chromium, login, token, atau API secret.
 slots berhasil diambil untuk satu hari. Jumlah channel/program dapat berubah
 sesuai jadwal Sky.
 
+## Kebijakan publikasi live
+
+CSV `sports_YYYY-MM-DD.csv` adalah **arsip TV guide**, termasuk program studio, highlights, dan tayang ulang. API/kolom saat ini tidak menyediakan flag live per acara yang tervalidasi. Karena itu CSV ini tidak boleh dipakai sebagai feed live atau diberi badge LIVE berdasarkan kategori olahraga atau kata pada judul. Untuk feed live, tambahkan sumber/badge eksplisit dan filter terpisah dengan tes replay sebelum ingest.
+
 ## Requirements
 
 - Python 3.9 atau lebih baru
