@@ -14,6 +14,7 @@ dan terlihat, meniru pola sendToDashboard() di ausport-scraper.
 from __future__ import annotations
 
 import argparse
+import re
 import csv
 import glob
 import json
@@ -75,22 +76,74 @@ def _read_rows(csv_path: str) -> list[dict[str, str]]:
     return rows
 
 
-def _resolve_csv_path(explicit: str | None) -> str:
-    if explicit:
-        return explicit if os.path.isabs(explicit) else os.path.join(SCRIPT_DIR, explicit)
+def _csv_date_from_name(path: str):
+    """Parse YYYY-MM-DD from sports_YYYY-MM-DD.csv; return None if not dated."""
+    name = os.path.basename(path)
+    match = re.fullmatch(r"sports_(\d{4}-\d{2}-\d{2})\.csv", name)
+    if not match:
+        return None
+    try:
+        return datetime.strptime(match.group(1), "%Y-%m-%d").date()
+    except ValueError:
+        return None
 
-    today = datetime.now(SKY_TIMEZONE).date()
-    for offset in (0, -1):
-        candidate = os.path.join(
-            SCRIPT_DIR, f"sports_{(today + timedelta(days=offset)).isoformat()}.csv"
+
+def _assert_csv_matches_target(path: str, target_date) -> None:
+    """Reject silent stale ingest when filename date ≠ target date."""
+    file_date = _csv_date_from_name(path)
+    if file_date is None:
+        raise IngestError(
+            f"CSV path must be sports_YYYY-MM-DD.csv so date can be verified "
+            f"(got {os.path.basename(path)!r}). Target date: {target_date.isoformat()}."
         )
-        if os.path.isfile(candidate):
-            return candidate
+    if file_date != target_date:
+        raise IngestError(
+            f"CSV date guard: resolved file date {file_date.isoformat()} ≠ "
+            f"target date {target_date.isoformat()} "
+            f"({os.path.basename(path)}). Refusing stale/wrong-day ingest."
+        )
 
+
+def _resolve_csv_path(
+    explicit: str | None, *, target_date=None
+) -> str:
+    """Resolve CSV for ingest; require filename date == target (NZ today).
+
+    Previous behaviour fell back to H-1 then glob(sports_20*.csv)[-1] with no
+    age check, which silently ingested stale files. Prefer failing loudly.
+    Note: sports_today.csv delete is intentionally untouched.
+    """
+    if target_date is None:
+        target_date = datetime.now(SKY_TIMEZONE).date()
+
+    if explicit:
+        path = (
+            explicit
+            if os.path.isabs(explicit)
+            else os.path.join(SCRIPT_DIR, explicit)
+        )
+        if not os.path.isfile(path):
+            raise IngestError(f"CSV tidak ditemukan: {path}")
+        _assert_csv_matches_target(path, target_date)
+        return path
+
+    candidate = os.path.join(
+        SCRIPT_DIR, f"sports_{target_date.isoformat()}.csv"
+    )
+    if os.path.isfile(candidate):
+        _assert_csv_matches_target(candidate, target_date)
+        return candidate
+
+    # Loud failure: do not fall back to H-1 or newest glob match.
+    h1 = (target_date + timedelta(days=-1)).isoformat()
     matches = sorted(glob.glob(os.path.join(SCRIPT_DIR, "sports_20*.csv")))
-    if matches:
-        return matches[-1]
-    raise IngestError("Tidak ada file sports_YYYY-MM-DD.csv yang bisa dikirim")
+    newest = os.path.basename(matches[-1]) if matches else "(none)"
+    raise IngestError(
+        f"CSV for target date {target_date.isoformat()} not found "
+        f"(expected sports_{target_date.isoformat()}.csv). "
+        f"Stale fallback disabled (would have considered H-1 "
+        f"sports_{h1}.csv or newest {newest})."
+    )
 
 
 def _post(url: str, token: str, rows: list[dict[str, str]], *, retries: int) -> dict[str, Any]:
@@ -157,6 +210,11 @@ def main() -> int:
     )
     parser.add_argument("--csv", help="Path CSV; default: sports_<hari ini NZ>.csv")
     parser.add_argument(
+        "--target-date",
+        help="Target YYYY-MM-DD (Pacific/Auckland). Default: today NZ. "
+        "CSV filename date must match this value.",
+    )
+    parser.add_argument(
         "--min-rows",
         type=int,
         default=int(os.environ.get("MINIMUM_INGEST_ROWS", DEFAULT_MIN_ROWS)),
@@ -173,7 +231,17 @@ def main() -> int:
     token = os.environ.get("DASHBOARD_INGEST_TOKEN", "").strip()
 
     try:
-        csv_path = _resolve_csv_path(args.csv)
+        if args.target_date:
+            try:
+                target_date = datetime.strptime(args.target_date, "%Y-%m-%d").date()
+            except ValueError as exc:
+                raise IngestError(
+                    f"--target-date must be YYYY-MM-DD, got {args.target_date!r}"
+                ) from exc
+        else:
+            target_date = datetime.now(SKY_TIMEZONE).date()
+
+        csv_path = _resolve_csv_path(args.csv, target_date=target_date)
         rows = _read_rows(csv_path)
 
         print(
