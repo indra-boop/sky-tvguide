@@ -233,6 +233,34 @@ def _format_sky_time(epoch_ms: Any) -> str:
     return value.strftime("%I:%M%p").lstrip("0")
 
 
+def _format_utc(epoch_ms: Any) -> str:
+    """Absolute instant of a slot (ISO 8601 UTC, minute precision).
+
+    The clock-only start_time/end_time columns lose the day: a channel's grid
+    for one guide date starts with the programme still on air from the previous
+    NZ day and can end with the 12:00AM slot of the next one. start_utc/end_utc
+    keep what the API actually returned.
+    """
+    if not isinstance(epoch_ms, (int, float)):
+        raise SkyGuideError(f"Invalid programme timestamp: {epoch_ms!r}")
+    value = datetime.fromtimestamp(epoch_ms / 1000, tz=timezone.utc)
+    return value.strftime("%Y-%m-%dT%H:%M:00Z")
+
+
+def _slot_extras(slot: dict[str, Any], programme: dict[str, Any]) -> dict[str, str]:
+    """Fields the API returns that the CSV used to drop."""
+    live = slot.get("live")
+    show = programme.get("show")
+    show = show if isinstance(show, dict) else {}
+    return {
+        "start_utc": _format_utc(slot.get("startMs")),
+        "end_utc": _format_utc(slot.get("endMs")),
+        "live": "" if live is None else ("true" if live else "false"),
+        "show_title": str(show.get("title") or "").strip(),
+        "show_type": str(show.get("type") or "").strip(),
+    }
+
+
 def _scrape_day(
     sports_group_id: str,
     target_date: date,
@@ -292,6 +320,7 @@ def _scrape_day(
             try:
                 start_time = _format_sky_time(slot.get("startMs"))
                 end_time = _format_sky_time(slot.get("endMs"))
+                extras = _slot_extras(slot, programme)
             except SkyGuideError as error:
                 print(
                     f"[warning] Skip slot {slot.get('id')!r}: {error}",
@@ -312,6 +341,7 @@ def _scrape_day(
                     "start_time": start_time,
                     "end_time": end_time,
                     "scraped_at": scraped_at,
+                    **extras,
                 }
             )
             parsed_for_channel += 1
@@ -355,6 +385,12 @@ def _write_csv(output_path: str, rows: list[dict[str, str]]) -> None:
                 "end_time",
                 "scraped_at",
                 "sport_category",
+                # Kolom baru selalu di akhir: konsumen lama membaca per nama kolom.
+                "start_utc",
+                "end_utc",
+                "live",
+                "show_title",
+                "show_type",
             ],
         )
         writer.writeheader()
