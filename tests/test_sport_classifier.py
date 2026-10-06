@@ -74,7 +74,8 @@ class SportClassifierTests(unittest.TestCase):
             _write_csv(path, rows)
             with open(path, newline="", encoding="utf-8") as handle:
                 reader = csv.DictReader(handle)
-                self.assertEqual("sport_category", reader.fieldnames[-1])
+                # 11 kolom lama tidak berubah urutan; kolom baru hanya ditambah di belakang.
+                self.assertEqual("sport_category", reader.fieldnames[10])
                 self.assertEqual("MMA", next(reader)["sport_category"])
 
 
