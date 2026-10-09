@@ -111,7 +111,7 @@ def _resolve_csv_path(
 
     Previous behaviour fell back to H-1 then glob(sports_20*.csv)[-1] with no
     age check, which silently ingested stale files. Prefer failing loudly.
-    Note: sports_today.csv delete is intentionally untouched.
+    Note: legacy sports_today.csv (stale since 2026-07-31) was removed 2026-10-09.
     """
     if target_date is None:
         target_date = datetime.now(SKY_TIMEZONE).date()
