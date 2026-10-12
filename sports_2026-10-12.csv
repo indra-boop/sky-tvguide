@@ -1,0 +1,317 @@
+country_code,channel_id,channel_number,channel_name,channel_display_name,date,program_title,start_time,end_time,scraped_at,sport_category,start_utc,end_utc,live,show_title,show_type
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,PL: Manchester United v Tottenham,10:20PM,12:20AM,2026-10-12T04:34:42Z,Other,2026-10-11T09:20:00Z,2026-10-11T11:20:00Z,false,Premier League,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,Brute Force,12:20AM,12:50AM,2026-10-12T04:34:42Z,Other,2026-10-11T11:20:00Z,2026-10-11T11:50:00Z,false,Forever Auckland FC,SERIES
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,Out Of Form,12:50AM,1:20AM,2026-10-12T04:34:42Z,Other,2026-10-11T11:50:00Z,2026-10-11T12:20:00Z,false,Forever Auckland FC,SERIES
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,ANZ PL Darts: Melbourne Hls,1:20AM,1:45AM,2026-10-12T04:34:42Z,Darts,2026-10-11T12:20:00Z,2026-10-11T12:45:00Z,false,Darts: ANZ Premier League,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,PREM: Northampton Saints v Bath Hls,1:45AM,2:00AM,2026-10-12T04:34:42Z,Other,2026-10-11T12:45:00Z,2026-10-11T13:00:00Z,false,Gallagher Premiership,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,PREM: Saracens v Bristol Bears Hls,2:00AM,2:15AM,2026-10-12T04:34:42Z,Other,2026-10-11T13:00:00Z,2026-10-11T13:15:00Z,false,Gallagher Premiership,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,NPC: Northland v Tasman QF1 Hls,2:15AM,2:30AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T13:15:00Z,2026-10-11T13:30:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,NPC: North Harbour v Taranaki QF2 Hls,2:30AM,2:45AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T13:30:00Z,2026-10-11T13:45:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,NPC: Otago v Hawke's Bay QF3 Hls,2:45AM,3:00AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T13:45:00Z,2026-10-11T14:00:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,NPC: Canterbury v Waikato QF4 Hls,3:00AM,3:15AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T14:00:00Z,2026-10-11T14:15:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,PGA Tour: Round 4,3:15AM,5:15AM,2026-10-12T04:34:42Z,Golf,2026-10-11T14:15:00Z,2026-10-11T16:15:00Z,false,PGA Tour,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,Tauihi: Hoiho v Queens,5:15AM,7:15AM,2026-10-12T04:34:42Z,Basketball,2026-10-11T16:15:00Z,2026-10-11T18:15:00Z,false,Tauihi Basketball Aotearoa,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,FPC: Canterbury v Auckland Final,7:15AM,9:30AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T18:15:00Z,2026-10-11T20:30:00Z,false,The Farah Palmer Cup,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,FPC: Wellington v Northland Final,9:30AM,11:45AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T20:30:00Z,2026-10-11T22:45:00Z,false,The Farah Palmer Cup,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,UCI BMX Racing World Cup: Rd8,11:45AM,1:15PM,2026-10-12T04:34:42Z,Other,2026-10-11T22:45:00Z,2026-10-12T00:15:00Z,false,UCI BMX Racing World Cup,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,Cycling: Paris-Tours 2026,1:15PM,3:15PM,2026-10-12T04:34:42Z,Cycling,2026-10-12T00:15:00Z,2026-10-12T02:15:00Z,false,Cycling: Paris-Tours,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,PL: Crystal Palace v Notts Forest Hls,3:15PM,3:30PM,2026-10-12T04:34:42Z,Other,2026-10-12T02:15:00Z,2026-10-12T02:30:00Z,false,Premier League,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,PL: Hull City v Everton Hls,3:30PM,3:45PM,2026-10-12T04:34:42Z,Other,2026-10-12T02:30:00Z,2026-10-12T02:45:00Z,false,Premier League,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,PL: Liverpool v Manchester City Mini Hls,3:45PM,4:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T02:45:00Z,2026-10-12T03:00:00Z,false,Premier League,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,NPC: Northland v Tasman QF1 Hls,4:00PM,4:15PM,2026-10-12T04:34:42Z,Rugby Union,2026-10-12T03:00:00Z,2026-10-12T03:15:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,NPC: North Harbour v Taranaki QF2 Hls,4:15PM,4:30PM,2026-10-12T04:34:42Z,Rugby Union,2026-10-12T03:15:00Z,2026-10-12T03:30:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,NPC: Otago v Hawke's Bay QF3 Hls,4:30PM,4:45PM,2026-10-12T04:34:42Z,Rugby Union,2026-10-12T03:30:00Z,2026-10-12T03:45:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,NPC: Canterbury v Waikato QF4 Hls,4:45PM,5:00PM,2026-10-12T04:34:42Z,Rugby Union,2026-10-12T03:45:00Z,2026-10-12T04:00:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,DP World Tour: Round 4 Hls,5:00PM,5:30PM,2026-10-12T04:34:42Z,Golf,2026-10-12T04:00:00Z,2026-10-12T04:30:00Z,false,DP World Tour,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,PGA Tour: Round 4 Hls,5:30PM,6:00PM,2026-10-12T04:34:42Z,Golf,2026-10-12T04:30:00Z,2026-10-12T05:00:00Z,false,PGA Tour,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,Supercars Bathurst 1000 Race 30 EXT HLs,6:00PM,7:30PM,2026-10-12T04:34:42Z,Motorsport,2026-10-12T05:00:00Z,2026-10-12T06:30:00Z,false,Supercars Championship,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,India v West Indies: 3rd T20 Hls,7:30PM,7:45PM,2026-10-12T04:34:42Z,Cricket,2026-10-12T06:30:00Z,2026-10-12T06:45:00Z,false,Intl Cricket: West Indies Tour Of India,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,Australia v Bangladesh: 2nd ODI Hls,7:45PM,8:15PM,2026-10-12T04:34:42Z,Cricket,2026-10-12T06:45:00Z,2026-10-12T07:15:00Z,false,Intl Women's Cricket: Australia V Bangladesh,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,PL: Crystal Palace v Notts Forest Hls,8:15PM,8:30PM,2026-10-12T04:34:42Z,Other,2026-10-12T07:15:00Z,2026-10-12T07:30:00Z,false,Premier League,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,PL: Hull City v Everton Hls,8:30PM,8:45PM,2026-10-12T04:34:42Z,Other,2026-10-12T07:30:00Z,2026-10-12T07:45:00Z,false,Premier League,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,PL: Liverpool v Manchester City Mini Hls,8:45PM,9:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T07:45:00Z,2026-10-12T08:00:00Z,false,Premier League,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,The Breakdown,9:00PM,10:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T08:00:00Z,2026-10-12T09:00:00Z,false,The Breakdown,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,Tauihi: Hoiho v Queens,10:00PM,12:00AM,2026-10-12T04:34:42Z,Basketball,2026-10-12T09:00:00Z,2026-10-12T11:00:00Z,false,Tauihi Basketball Aotearoa,SPORT
+NZ,0162,50,Sky Sport Select,[NZ] Sky Sport Select,2026-10-12,Tauihi: Kahu v Pouakai,12:00AM,2:00AM,2026-10-12T04:34:42Z,Basketball,2026-10-12T11:00:00Z,2026-10-12T13:00:00Z,false,Tauihi Basketball Aotearoa,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,FIA F1: Singapore GP Pre Race,11:30PM,12:55AM,2026-10-12T04:34:42Z,Motorsport,2026-10-11T10:30:00Z,2026-10-11T11:55:00Z,true,FIA Formula One World Championship,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,FIA F1: Singapore Grand Prix,12:55AM,3:05AM,2026-10-12T04:34:42Z,Motorsport,2026-10-11T11:55:00Z,2026-10-11T14:05:00Z,true,FIA Formula One World Championship,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,FIA F1: Singapore Chequered Flag,3:05AM,4:00AM,2026-10-12T04:34:42Z,Motorsport,2026-10-11T14:05:00Z,2026-10-11T15:00:00Z,true,FIA Formula One World Championship,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,Ted's Notebook:Singapore,4:00AM,4:35AM,2026-10-12T04:34:42Z,Other,2026-10-11T15:00:00Z,2026-10-11T15:35:00Z,true,Ted's Notebook,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,Bledisloe: All Blacks v Australia Ex Hls,4:35AM,5:00AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T15:35:00Z,2026-10-11T16:00:00Z,false,Bledisloe Cup,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,FIA F1: Singapore GP Pre Race,5:00AM,6:10AM,2026-10-12T04:34:42Z,Motorsport,2026-10-11T16:00:00Z,2026-10-11T17:10:00Z,false,FIA Formula One World Championship,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,FIA F1: Singapore Grand Prix,6:10AM,8:30AM,2026-10-12T04:34:42Z,Motorsport,2026-10-11T17:10:00Z,2026-10-11T19:30:00Z,false,FIA Formula One World Championship,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,FIA F1: Singapore Chequered Flag,8:30AM,9:10AM,2026-10-12T04:34:42Z,Motorsport,2026-10-11T19:30:00Z,2026-10-11T20:10:00Z,false,FIA Formula One World Championship,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,Ted's Notebook:Singapore,9:10AM,9:40AM,2026-10-12T04:34:42Z,Other,2026-10-11T20:10:00Z,2026-10-11T20:40:00Z,false,Ted's Notebook,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,India v West Indies: 3rd T20,9:40AM,2:00PM,2026-10-12T04:34:42Z,Cricket,2026-10-11T20:40:00Z,2026-10-12T01:00:00Z,false,Intl Cricket: West Indies Tour Of India,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,FIA F1: Singapore Grand Prix Ext Hls,2:00PM,3:00PM,2026-10-12T04:34:42Z,Motorsport,2026-10-12T01:00:00Z,2026-10-12T02:00:00Z,false,FIA Formula One World Championship,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,The Breakdown,3:00PM,4:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T02:00:00Z,2026-10-12T03:00:00Z,false,The Breakdown,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,PREM: Leicester Tigers v Gloucester Hls,4:00PM,4:15PM,2026-10-12T04:34:42Z,Other,2026-10-12T03:00:00Z,2026-10-12T03:15:00Z,false,Gallagher Premiership,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,PREM: Northampton Saints v Bath Hls,4:15PM,4:30PM,2026-10-12T04:34:42Z,Other,2026-10-12T03:15:00Z,2026-10-12T03:30:00Z,false,Gallagher Premiership,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,PREM: Saracens v Bristol Bears Hls,4:30PM,4:45PM,2026-10-12T04:34:42Z,Other,2026-10-12T03:30:00Z,2026-10-12T03:45:00Z,false,Gallagher Premiership,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,PREM: Chiefs v Red Bull Hls,4:45PM,5:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T03:45:00Z,2026-10-12T04:00:00Z,false,Gallagher Premiership,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,FIA F1: Singapore Grand Prix Ext Hls,5:00PM,6:00PM,2026-10-12T04:34:42Z,Motorsport,2026-10-12T04:00:00Z,2026-10-12T05:00:00Z,false,FIA Formula One World Championship,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,The Breakdown,6:00PM,7:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T05:00:00Z,2026-10-12T06:00:00Z,false,The Breakdown,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,The Crowd Goes Wild,7:00PM,7:30PM,2026-10-12T04:34:42Z,Other,2026-10-12T06:00:00Z,2026-10-12T06:30:00Z,true,The Crowd Goes Wild,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,PL: Liverpool v Manchester City,7:30PM,9:30PM,2026-10-12T04:34:42Z,Other,2026-10-12T06:30:00Z,2026-10-12T08:30:00Z,false,Premier League,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,The Crowd Goes Wild,9:30PM,10:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T08:30:00Z,2026-10-12T09:00:00Z,false,The Crowd Goes Wild,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,The Breakdown,10:00PM,11:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T09:00:00Z,2026-10-12T10:00:00Z,false,The Breakdown,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,FIA F1: Singapore Grand Prix Hls,11:00PM,11:15PM,2026-10-12T04:34:42Z,Motorsport,2026-10-12T10:00:00Z,2026-10-12T10:15:00Z,false,FIA Formula One World Championship,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,PL: Liverpool v Manchester City Hls,11:15PM,11:30PM,2026-10-12T04:34:42Z,Other,2026-10-12T10:15:00Z,2026-10-12T10:30:00Z,false,Premier League,SPORT
+NZ,SPT1,51,Sky Sport 1,[NZ] Sky Sport 1,2026-10-12,NPC: Cantberbury v Waikato QF4,11:30PM,1:30AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-12T10:30:00Z,2026-10-12T12:30:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,Out Of Form,11:30PM,12:05AM,2026-10-12T04:34:42Z,Other,2026-10-11T10:30:00Z,2026-10-11T11:05:00Z,false,Forever Auckland FC,SERIES
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,Bledisloe: All Blacks v Australia,12:05AM,2:20AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T11:05:00Z,2026-10-11T13:20:00Z,false,Bledisloe Cup,SPORT
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,India v West Indies: 3rd T20,2:20AM,6:45AM,2026-10-12T04:34:42Z,Cricket,2026-10-11T13:20:00Z,2026-10-11T17:45:00Z,true,Intl Cricket: West Indies Tour Of India,SPORT
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,The Breakdown,6:45AM,7:40AM,2026-10-12T04:34:42Z,Other,2026-10-11T17:45:00Z,2026-10-11T18:40:00Z,false,The Breakdown,SPORT
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,PREM: Chiefs v Red Bulls,7:40AM,9:30AM,2026-10-12T04:34:42Z,Other,2026-10-11T18:40:00Z,2026-10-11T20:30:00Z,false,Gallagher Premiership,SPORT
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,NPC: Cantberbury v Waikato QF4,9:30AM,11:30AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T20:30:00Z,2026-10-11T22:30:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,Rallye Du Maroc Hls,11:30AM,12:30PM,2026-10-12T04:34:42Z,Other,2026-10-11T22:30:00Z,2026-10-11T23:30:00Z,false,Rallye Du Maroc,SPORT
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,India v West Indies: 3rd T20 Hls,12:30PM,12:45PM,2026-10-12T04:34:42Z,Cricket,2026-10-11T23:30:00Z,2026-10-11T23:45:00Z,false,Intl Cricket: West Indies Tour Of India,SPORT
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,Australia v Bangladesh: 2nd ODI Hls,12:45PM,1:15PM,2026-10-12T04:34:42Z,Cricket,2026-10-11T23:45:00Z,2026-10-12T00:15:00Z,false,Intl Women's Cricket: Australia V Bangladesh,SPORT
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,NPC: Northland v Tasman QF1 Hls,1:15PM,1:30PM,2026-10-12T04:34:42Z,Rugby Union,2026-10-12T00:15:00Z,2026-10-12T00:30:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,NPC: North Harbour v Taranaki QF2 Hls,1:30PM,1:45PM,2026-10-12T04:34:42Z,Rugby Union,2026-10-12T00:30:00Z,2026-10-12T00:45:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,NPC: Otago v Hawke's Bay QF3 Hls,1:45PM,2:00PM,2026-10-12T04:34:42Z,Rugby Union,2026-10-12T00:45:00Z,2026-10-12T01:00:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,NPC: Canterbury v Waikato QF4 Hls,2:00PM,2:15PM,2026-10-12T04:34:42Z,Rugby Union,2026-10-12T01:00:00Z,2026-10-12T01:15:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,FPC: Wellington v Northland Final Hls,2:15PM,2:30PM,2026-10-12T04:34:42Z,Rugby Union,2026-10-12T01:15:00Z,2026-10-12T01:30:00Z,false,The Farah Palmer Cup,SPORT
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,FPC: Canterbury v Auckland Final Hls,2:30PM,2:45PM,2026-10-12T04:34:42Z,Rugby Union,2026-10-12T01:30:00Z,2026-10-12T01:45:00Z,false,The Farah Palmer Cup,SPORT
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,Bledisloe: All Blacks v Australia Hls,2:45PM,3:00PM,2026-10-12T04:34:42Z,Rugby Union,2026-10-12T01:45:00Z,2026-10-12T02:00:00Z,false,Bledisloe Cup,SPORT
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,India v West Indies: 3rd T20 Hls,3:00PM,3:25PM,2026-10-12T04:34:42Z,Cricket,2026-10-12T02:00:00Z,2026-10-12T02:25:00Z,false,Intl Cricket: West Indies Tour Of India,SPORT
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,Australia v Bangladesh: 2nd ODI Hls,3:25PM,3:55PM,2026-10-12T04:34:42Z,Cricket,2026-10-12T02:25:00Z,2026-10-12T02:55:00Z,false,Intl Women's Cricket: Australia V Bangladesh,SPORT
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,ODC: Victoria v S Australia,3:55PM,12:00AM,2026-10-12T04:34:42Z,Other,2026-10-12T02:55:00Z,2026-10-12T11:00:00Z,true,Cricket: Marsh One Day Cup,SPORT
+NZ,SPT2,52,Sky Sport 2,[NZ] Sky Sport 2,2026-10-12,PL: Arsenal v Leeds United Hls,12:00AM,12:15AM,2026-10-12T04:34:42Z,Other,2026-10-12T11:00:00Z,2026-10-12T11:15:00Z,false,Premier League,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,DP World Tour: Round 4,12:00AM,5:00AM,2026-10-12T04:34:42Z,Golf,2026-10-11T11:00:00Z,2026-10-11T16:00:00Z,true,DP World Tour,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,PGA Champions Tour: R3,5:00AM,8:25AM,2026-10-12T04:34:42Z,Golf,2026-10-11T16:00:00Z,2026-10-11T19:25:00Z,true,PGA Champions Tour,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,PGA Tour: Round 4 Hls,8:25AM,9:00AM,2026-10-12T04:34:42Z,Golf,2026-10-11T19:25:00Z,2026-10-11T20:00:00Z,false,PGA Tour,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,Australia v Bangladesh: 2nd ODI Hls,9:00AM,9:30AM,2026-10-12T04:34:42Z,Cricket,2026-10-11T20:00:00Z,2026-10-11T20:30:00Z,false,Intl Women's Cricket: Australia V Bangladesh,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,NPC: Otago v Hawke's Bay QF3 Hls,9:30AM,9:45AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T20:30:00Z,2026-10-11T20:45:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,NPC: Canterbury v Waikato QF4 Hls,9:45AM,10:00AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T20:45:00Z,2026-10-11T21:00:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,FIA F1: Singapore Grand Prix Hls,10:00AM,10:15AM,2026-10-12T04:34:42Z,Motorsport,2026-10-11T21:00:00Z,2026-10-11T21:15:00Z,false,FIA Formula One World Championship,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,FPC: Canterbury v Auckland Final Hls,10:15AM,10:30AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T21:15:00Z,2026-10-11T21:30:00Z,false,The Farah Palmer Cup,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,PGA Tour: Round 4 Hls,10:30AM,11:00AM,2026-10-12T04:34:42Z,Golf,2026-10-11T21:30:00Z,2026-10-11T22:00:00Z,false,PGA Tour,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,India v West Indies: 3rd T20 Hls,11:00AM,11:15AM,2026-10-12T04:34:42Z,Cricket,2026-10-11T22:00:00Z,2026-10-11T22:15:00Z,false,Intl Cricket: West Indies Tour Of India,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,PREM: Chiefs v Red Bull Hls,11:15AM,11:30AM,2026-10-12T04:34:42Z,Other,2026-10-11T22:15:00Z,2026-10-11T22:30:00Z,false,Gallagher Premiership,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,DP World Tour: Round 4 Hls,11:30AM,12:00PM,2026-10-12T04:34:42Z,Golf,2026-10-11T22:30:00Z,2026-10-11T23:00:00Z,false,DP World Tour,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,PGA Tour: Round 4 Hls,12:00PM,12:30PM,2026-10-12T04:34:42Z,Golf,2026-10-11T23:00:00Z,2026-10-11T23:30:00Z,false,PGA Tour,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,Bledisloe: All Blacks v Australia,12:30PM,2:45PM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T23:30:00Z,2026-10-12T01:45:00Z,false,Bledisloe Cup,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,AFLW: Western Bulldogs v Essendon Hls,2:45PM,3:00PM,2026-10-12T04:34:42Z,Aussie Rules,2026-10-12T01:45:00Z,2026-10-12T02:00:00Z,false,Women's AFL,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,AFLW: Port Adelaide v Eagles Hls,3:00PM,3:15PM,2026-10-12T04:34:42Z,Aussie Rules,2026-10-12T02:00:00Z,2026-10-12T02:15:00Z,false,Women's AFL,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,AFLW: Geelong Cats v GWS Giants Hls,3:15PM,3:30PM,2026-10-12T04:34:42Z,Aussie Rules,2026-10-12T02:15:00Z,2026-10-12T02:30:00Z,false,Women's AFL,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,AFLW: Richmond v Adelaide Crows Hls,3:30PM,3:45PM,2026-10-12T04:34:42Z,Aussie Rules,2026-10-12T02:30:00Z,2026-10-12T02:45:00Z,false,Women's AFL,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,AFLW: Hawks v Lions Hls,3:45PM,4:00PM,2026-10-12T04:34:42Z,Aussie Rules,2026-10-12T02:45:00Z,2026-10-12T03:00:00Z,false,Women's AFL,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,DP World Tour: Round 4 Hls,4:00PM,4:30PM,2026-10-12T04:34:42Z,Golf,2026-10-12T03:00:00Z,2026-10-12T03:30:00Z,false,DP World Tour,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,PGA Tour: Round 4 Hls,4:30PM,5:00PM,2026-10-12T04:34:42Z,Golf,2026-10-12T03:30:00Z,2026-10-12T04:00:00Z,false,PGA Tour,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,FPC: Canterbury v Auckland Final,5:00PM,7:15PM,2026-10-12T04:34:42Z,Rugby Union,2026-10-12T04:00:00Z,2026-10-12T06:15:00Z,false,The Farah Palmer Cup,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,FPC: Wellington v Northland Final,7:15PM,9:30PM,2026-10-12T04:34:42Z,Rugby Union,2026-10-12T06:15:00Z,2026-10-12T08:30:00Z,false,The Farah Palmer Cup,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,Bledisloe: All Blacks v Australia,9:30PM,11:45PM,2026-10-12T04:34:42Z,Rugby Union,2026-10-12T08:30:00Z,2026-10-12T10:45:00Z,false,Bledisloe Cup,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,NPC: Northland v Tasman QF1 Hls,11:45PM,12:00AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-12T10:45:00Z,2026-10-12T11:00:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,SPT3,53,Sky Sport 3,[NZ] Sky Sport 3,2026-10-12,NPC: North Harbour v Taranaki QF2 Hls,12:00AM,12:15AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-12T11:00:00Z,2026-10-12T11:15:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,Tauihi: Hoiho v Queens,11:55PM,1:55AM,2026-10-12T04:34:42Z,Basketball,2026-10-11T10:55:00Z,2026-10-11T12:55:00Z,false,Tauihi Basketball Aotearoa,SPORT
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,The Breakdown,1:55AM,2:55AM,2026-10-12T04:34:42Z,Other,2026-10-11T12:55:00Z,2026-10-11T13:55:00Z,false,The Breakdown,SPORT
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,PREM: Chiefs v Red Bulls,2:55AM,5:00AM,2026-10-12T04:34:42Z,Other,2026-10-11T13:55:00Z,2026-10-11T16:00:00Z,true,Gallagher Premiership,SPORT
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,NPC: Northland v Tasman QF1 Hls,5:00AM,5:20AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T16:00:00Z,2026-10-11T16:20:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,NPC: North Harbour v Taranaki QF2 Hls,5:20AM,5:35AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T16:20:00Z,2026-10-11T16:35:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,NPC: Otago v Hawke's Bay QF3 Hls,5:35AM,5:50AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T16:35:00Z,2026-10-11T16:50:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,NPC: Canterbury v Waikato QF4 Hls,5:50AM,6:05AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T16:50:00Z,2026-10-11T17:05:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,Brute Force,6:05AM,6:35AM,2026-10-12T04:34:42Z,Other,2026-10-11T17:05:00Z,2026-10-11T17:35:00Z,false,Forever Auckland FC,SERIES
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,Out Of Form,6:35AM,7:05AM,2026-10-12T04:34:42Z,Other,2026-10-11T17:35:00Z,2026-10-11T18:05:00Z,false,Forever Auckland FC,SERIES
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,Australia W v Bangladesh W 1st ODI Hls,7:05AM,7:35AM,2026-10-12T04:34:42Z,Cricket,2026-10-11T18:05:00Z,2026-10-11T18:35:00Z,false,Intl Women's Cricket: Australia V Bangladesh,SPORT
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,Australia v Bangladesh: 2nd ODI,7:35AM,1:30PM,2026-10-12T04:34:42Z,Cricket,2026-10-11T18:35:00Z,2026-10-12T00:30:00Z,false,Intl Women's Cricket: Australia V Bangladesh,SPORT
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,Supercars Bathurst 1000 Race 30 EXT HLs,1:30PM,3:00PM,2026-10-12T04:34:42Z,Motorsport,2026-10-12T00:30:00Z,2026-10-12T02:00:00Z,false,Supercars Championship,SPORT
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,Motorsport: Super Saloons International,3:00PM,4:00PM,2026-10-12T04:34:42Z,Motorsport,2026-10-12T02:00:00Z,2026-10-12T03:00:00Z,false,Motorsport: Supersaloons International Challenge,SPORT
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,Hi-Tec Oils Super Series Rd5 HLs,4:00PM,5:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T03:00:00Z,2026-10-12T04:00:00Z,false,Motorsport: Hi-Tec Oils Super Series,SPORT
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,Australia W v Bangladesh W 1st ODI Hls,5:00PM,5:30PM,2026-10-12T04:34:42Z,Cricket,2026-10-12T04:00:00Z,2026-10-12T04:30:00Z,false,Intl Women's Cricket: Australia V Bangladesh,SPORT
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,Australia v Bangladesh: 2nd ODI Hls,5:30PM,6:00PM,2026-10-12T04:34:42Z,Cricket,2026-10-12T04:30:00Z,2026-10-12T05:00:00Z,false,Intl Women's Cricket: Australia V Bangladesh,SPORT
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,India v West Indies: 1st T20 Hls,6:00PM,6:15PM,2026-10-12T04:34:42Z,Cricket,2026-10-12T05:00:00Z,2026-10-12T05:15:00Z,false,Intl Cricket: West Indies Tour Of India,SPORT
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,India v West Indies: 2nd T20 Hls,6:15PM,6:30PM,2026-10-12T04:34:42Z,Cricket,2026-10-12T05:15:00Z,2026-10-12T05:30:00Z,false,Intl Cricket: West Indies Tour Of India,SPORT
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,India v West Indies: 3rd T20,6:30PM,10:40PM,2026-10-12T04:34:42Z,Cricket,2026-10-12T05:30:00Z,2026-10-12T09:40:00Z,false,Intl Cricket: West Indies Tour Of India,SPORT
+NZ,0001,54,Sky Sport 4,[NZ] Sky Sport 4,2026-10-12,Australia v Bangladesh: 2nd ODI,10:40PM,4:30AM,2026-10-12T04:34:42Z,Cricket,2026-10-12T09:40:00Z,2026-10-12T15:30:00Z,false,Intl Women's Cricket: Australia V Bangladesh,SPORT
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-10-12,Supercars Bathurst 1000 Race 30 EXT HLs,10:55PM,12:20AM,2026-10-12T04:34:42Z,Motorsport,2026-10-11T09:55:00Z,2026-10-11T11:20:00Z,false,Supercars Championship,SPORT
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-10-12,PL: Arsenal v Leeds United Hls,12:20AM,12:35AM,2026-10-12T04:34:42Z,Other,2026-10-11T11:20:00Z,2026-10-11T11:35:00Z,false,Premier League,SPORT
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-10-12,PL: Aston Villa v Brentford Hls,12:35AM,12:50AM,2026-10-12T04:34:42Z,Other,2026-10-11T11:35:00Z,2026-10-11T11:50:00Z,false,Premier League,SPORT
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-10-12,PL: Chelsea v Bournemouth Hls,12:50AM,1:05AM,2026-10-12T04:34:42Z,Other,2026-10-11T11:50:00Z,2026-10-11T12:05:00Z,false,Premier League,SPORT
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-10-12,PL: Ipswich Town v Fulham Hls,1:05AM,1:20AM,2026-10-12T04:34:42Z,Other,2026-10-11T12:05:00Z,2026-10-11T12:20:00Z,false,Premier League,SPORT
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-10-12,PL: Sunderland v Brighton Hls,1:20AM,1:35AM,2026-10-12T04:34:42Z,Other,2026-10-11T12:20:00Z,2026-10-11T12:35:00Z,false,Premier League,SPORT
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-10-12,PL: Manchester United v Tottenham Hls,1:35AM,1:50AM,2026-10-12T04:34:42Z,Other,2026-10-11T12:35:00Z,2026-10-11T12:50:00Z,false,Premier League,SPORT
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-10-12,PL: Hull City v Everton,1:50AM,4:10AM,2026-10-12T04:34:42Z,Other,2026-10-11T12:50:00Z,2026-10-11T15:10:00Z,true,Premier League,SPORT
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-10-12,Rallye Du Maroc Hls,4:10AM,5:10AM,2026-10-12T04:34:42Z,Other,2026-10-11T15:10:00Z,2026-10-11T16:10:00Z,false,Rallye Du Maroc,SPORT
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-10-12,PL: Arsenal v Leeds United Hls,5:10AM,5:30AM,2026-10-12T04:34:42Z,Other,2026-10-11T16:10:00Z,2026-10-11T16:30:00Z,false,Premier League,SPORT
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-10-12,ANZ PL Darts: Melbourne Hls,5:30AM,6:00AM,2026-10-12T04:34:42Z,Darts,2026-10-11T16:30:00Z,2026-10-11T17:00:00Z,false,Darts: ANZ Premier League,SPORT
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-10-12,Supercars Bathurst 1000 Race 30,6:00AM,1:25PM,2026-10-12T04:34:42Z,Motorsport,2026-10-11T17:00:00Z,2026-10-12T00:25:00Z,false,Supercars Championship,SPORT
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-10-12,DP World Tour: Round 4 Hls,1:25PM,1:55PM,2026-10-12T04:34:42Z,Golf,2026-10-12T00:25:00Z,2026-10-12T00:55:00Z,false,DP World Tour,SPORT
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-10-12,PGA Tour: Round 4 Hls,1:55PM,2:25PM,2026-10-12T04:34:42Z,Golf,2026-10-12T00:55:00Z,2026-10-12T01:25:00Z,false,PGA Tour,SPORT
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-10-12,Supercars Bathurst 1000 Race 30 EXT HLs,2:25PM,3:55PM,2026-10-12T04:34:42Z,Motorsport,2026-10-12T01:25:00Z,2026-10-12T02:55:00Z,false,Supercars Championship,SPORT
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-10-12,FIA F1: Singapore GP Sprint Race,3:55PM,6:30PM,2026-10-12T04:34:42Z,Motorsport,2026-10-12T02:55:00Z,2026-10-12T05:30:00Z,false,FIA Formula One World Championship,SPORT
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-10-12,FIA F1: Singapore Grand Prix,6:30PM,8:50PM,2026-10-12T04:34:42Z,Motorsport,2026-10-12T05:30:00Z,2026-10-12T07:50:00Z,false,FIA Formula One World Championship,SPORT
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-10-12,PL: Crystal Palace v Notts Forest,8:50PM,10:50PM,2026-10-12T04:34:42Z,Other,2026-10-12T07:50:00Z,2026-10-12T09:50:00Z,false,Premier League,SPORT
+NZ,0002,55,Sky Sport 5,[NZ] Sky Sport 5,2026-10-12,PL: Hull City v Everton,10:50PM,12:50AM,2026-10-12T04:34:42Z,Other,2026-10-12T09:50:00Z,2026-10-12T11:50:00Z,false,Premier League,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,FPC: Canterbury v Auckland Final,11:30PM,1:40AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T10:30:00Z,2026-10-11T12:40:00Z,false,The Farah Palmer Cup,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,PREM: Northampton Saints v Bath Hls,1:40AM,2:00AM,2026-10-12T04:34:42Z,Other,2026-10-11T12:40:00Z,2026-10-11T13:00:00Z,false,Gallagher Premiership,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,NPC: Cantberbury v Waikato QF4,2:00AM,4:00AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T13:00:00Z,2026-10-11T15:00:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,PGA Tour: Round 4 Hls,4:00AM,4:30AM,2026-10-12T04:34:42Z,Golf,2026-10-11T15:00:00Z,2026-10-11T15:30:00Z,false,PGA Tour,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,Korn Ferry Tour: Round 4,4:30AM,7:55AM,2026-10-12T04:34:42Z,Golf,2026-10-11T15:30:00Z,2026-10-11T18:55:00Z,true,Korn Ferry Tour,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,Supercars Bathurst 1000 Race 30 EXT HLs,7:55AM,9:25AM,2026-10-12T04:34:42Z,Motorsport,2026-10-11T18:55:00Z,2026-10-11T20:25:00Z,false,Supercars Championship,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,Cycling: Paris-Tours 2026,9:25AM,11:25AM,2026-10-12T04:34:42Z,Cycling,2026-10-11T20:25:00Z,2026-10-11T22:25:00Z,false,Cycling: Paris-Tours,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,PL: Arsenal v Leeds United Hls,11:25AM,11:40AM,2026-10-12T04:34:42Z,Other,2026-10-11T22:25:00Z,2026-10-11T22:40:00Z,false,Premier League,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,PL: Aston Villa v Brentford Hls,11:40AM,11:55AM,2026-10-12T04:34:42Z,Other,2026-10-11T22:40:00Z,2026-10-11T22:55:00Z,false,Premier League,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,PL: Chelsea v Bournemouth Hls,11:55AM,12:10PM,2026-10-12T04:34:42Z,Other,2026-10-11T22:55:00Z,2026-10-11T23:10:00Z,false,Premier League,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,PL: Ipswich Town v Fulham Hls,12:10PM,12:25PM,2026-10-12T04:34:42Z,Other,2026-10-11T23:10:00Z,2026-10-11T23:25:00Z,false,Premier League,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,PL: Manchester United v Tottenham Hls,12:25PM,12:40PM,2026-10-12T04:34:42Z,Other,2026-10-11T23:25:00Z,2026-10-11T23:40:00Z,false,Premier League,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,PL: Sunderland v Brighton Hls,12:40PM,12:55PM,2026-10-12T04:34:42Z,Other,2026-10-11T23:40:00Z,2026-10-11T23:55:00Z,false,Premier League,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,PL: Crystal Palace v Notts Forest Hls,12:55PM,1:10PM,2026-10-12T04:34:42Z,Other,2026-10-11T23:55:00Z,2026-10-12T00:10:00Z,false,Premier League,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,PL: Hull City v Everton Hls,1:10PM,1:25PM,2026-10-12T04:34:42Z,Other,2026-10-12T00:10:00Z,2026-10-12T00:25:00Z,false,Premier League,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,PL: Liverpool v Manchester City Mini Hls,1:25PM,1:35PM,2026-10-12T04:34:42Z,Other,2026-10-12T00:25:00Z,2026-10-12T00:35:00Z,false,Premier League,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,PGA Tour: Round 4,1:35PM,3:35PM,2026-10-12T04:34:42Z,Golf,2026-10-12T00:35:00Z,2026-10-12T02:35:00Z,false,PGA Tour,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,DP World Tour: Round 4,3:35PM,5:35PM,2026-10-12T04:34:42Z,Golf,2026-10-12T02:35:00Z,2026-10-12T04:35:00Z,false,DP World Tour,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,Korn Ferry Tour: Round 4,5:35PM,7:30PM,2026-10-12T04:34:42Z,Golf,2026-10-12T04:35:00Z,2026-10-12T06:30:00Z,false,Korn Ferry Tour,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,DP World Tour: Round 4 Hls,7:30PM,7:55PM,2026-10-12T04:34:42Z,Golf,2026-10-12T06:30:00Z,2026-10-12T06:55:00Z,false,DP World Tour,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,PGA Tour: Round 4 Hls,7:55PM,8:25PM,2026-10-12T04:34:42Z,Golf,2026-10-12T06:55:00Z,2026-10-12T07:25:00Z,false,PGA Tour,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,FIA F1: Singapore Grand Prix Hls,8:25PM,8:40PM,2026-10-12T04:34:42Z,Motorsport,2026-10-12T07:25:00Z,2026-10-12T07:40:00Z,false,FIA Formula One World Championship,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,India v West Indies: 3rd T20 Hls,8:40PM,8:55PM,2026-10-12T04:34:42Z,Cricket,2026-10-12T07:40:00Z,2026-10-12T07:55:00Z,false,Intl Cricket: West Indies Tour Of India,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,Spartan Sprint & 100m Champs,8:55PM,10:50PM,2026-10-12T04:34:42Z,Other,2026-10-12T07:55:00Z,2026-10-12T09:50:00Z,false,Spartan World Championship,SPORT
+NZ,0003,56,Sky Sport 6,[NZ] Sky Sport 6,2026-10-12,Golf: CKB WA PGA Round 3,10:50PM,12:45AM,2026-10-12T04:34:42Z,Golf,2026-10-12T09:50:00Z,2026-10-12T11:45:00Z,false,Golf: Western Australia PGA,SPORT
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-10-12,Golf: CKB WA PGA Round 4,11:55PM,2:00AM,2026-10-12T04:34:42Z,Golf,2026-10-11T10:55:00Z,2026-10-11T13:00:00Z,false,Golf: Western Australia PGA,SPORT
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-10-12,Cycling: Paris-Tours 2026,2:00AM,4:15AM,2026-10-12T04:34:42Z,Cycling,2026-10-11T13:00:00Z,2026-10-11T15:15:00Z,true,Cycling: Paris-Tours,SPORT
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-10-12,NPC: Cantberbury v Waikato QF4,4:15AM,6:15AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T15:15:00Z,2026-10-11T17:15:00Z,false,Rugby: Hilux NPC,SPORT
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-10-12,AFLW: Geelong Cats v GWS Giants Hls,6:15AM,6:30AM,2026-10-12T04:34:42Z,Aussie Rules,2026-10-11T17:15:00Z,2026-10-11T17:30:00Z,false,Women's AFL,SPORT
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-10-12,AFLW: Richmond v Adelaide Crows Hls,6:30AM,6:45AM,2026-10-12T04:34:42Z,Aussie Rules,2026-10-11T17:30:00Z,2026-10-11T17:45:00Z,false,Women's AFL,SPORT
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-10-12,AFLW: Hawks v Lions Hls,6:45AM,7:00AM,2026-10-12T04:34:42Z,Aussie Rules,2026-10-11T17:45:00Z,2026-10-11T18:00:00Z,false,Women's AFL,SPORT
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-10-12,PL: Crystal Palace v Notts Forest,7:00AM,9:00AM,2026-10-12T04:34:42Z,Other,2026-10-11T18:00:00Z,2026-10-11T20:00:00Z,false,Premier League,SPORT
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-10-12,PL: Liverpool v Manchester City,9:00AM,11:00AM,2026-10-12T04:34:42Z,Other,2026-10-11T20:00:00Z,2026-10-11T22:00:00Z,false,Premier League,SPORT
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-10-12,PL: Hull City v Everton,11:00AM,1:00PM,2026-10-12T04:34:42Z,Other,2026-10-11T22:00:00Z,2026-10-12T00:00:00Z,false,Premier League,SPORT
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-10-12,PREM: Leicester Tigers v Gloucester,1:00PM,3:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T00:00:00Z,2026-10-12T02:00:00Z,false,Gallagher Premiership,SPORT
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-10-12,PREM: Northampton Saints v Bath,3:00PM,5:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T02:00:00Z,2026-10-12T04:00:00Z,false,Gallagher Premiership,SPORT
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-10-12,PREM: Saracens v Bristol Bears,5:00PM,7:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T04:00:00Z,2026-10-12T06:00:00Z,false,Gallagher Premiership,SPORT
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-10-12,PREM: Chiefs v Red Bulls,7:00PM,9:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T06:00:00Z,2026-10-12T08:00:00Z,false,Gallagher Premiership,SPORT
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-10-12,AFLW: Western Bulldogs v Essendon,9:00PM,11:00PM,2026-10-12T04:34:42Z,Aussie Rules,2026-10-12T08:00:00Z,2026-10-12T10:00:00Z,false,Women's AFL,SPORT
+NZ,0009,57,Sky Sport 7,[NZ] Sky Sport 7,2026-10-12,AFLW: Port Adelaide v Eagles,11:00PM,1:00AM,2026-10-12T04:34:42Z,Aussie Rules,2026-10-12T10:00:00Z,2026-10-12T12:00:00Z,false,Women's AFL,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,12:00AM,12:30AM,2026-10-12T04:34:42Z,Other,2026-10-11T11:00:00Z,2026-10-11T11:30:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,THE BIG INTERVIEW,12:30AM,1:00AM,2026-10-12T04:34:42Z,Other,2026-10-11T11:30:00Z,2026-10-11T12:00:00Z,false,THE BIG INTERVIEW,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,PL: Crystal Palace v Nott'm Forest,1:00AM,4:20AM,2026-10-12T04:34:42Z,Other,2026-10-11T12:00:00Z,2026-10-11T15:20:00Z,true,Premier League,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,PL: Liverpool v Manchester City,4:20AM,7:00AM,2026-10-12T04:34:42Z,Other,2026-10-11T15:20:00Z,2026-10-11T18:00:00Z,true,Premier League,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,THE WEEKEND WRAP,7:00AM,8:00AM,2026-10-12T04:34:42Z,Other,2026-10-11T18:00:00Z,2026-10-11T19:00:00Z,false,THE WEEKEND WRAP,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,THE BIG INTERVIEW,8:00AM,8:30AM,2026-10-12T04:34:42Z,Other,2026-10-11T19:00:00Z,2026-10-11T19:30:00Z,false,THE BIG INTERVIEW,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,PL STORIES,8:30AM,9:00AM,2026-10-12T04:34:42Z,Soccer,2026-10-11T19:30:00Z,2026-10-11T20:00:00Z,false,PL STORIES,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,1-TO-11,9:00AM,10:00AM,2026-10-12T04:34:42Z,Other,2026-10-11T20:00:00Z,2026-10-11T21:00:00Z,false,1-TO-11,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,10:00AM,10:30AM,2026-10-12T04:34:42Z,Other,2026-10-11T21:00:00Z,2026-10-11T21:30:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,10:30AM,11:00AM,2026-10-12T04:34:42Z,Other,2026-10-11T21:30:00Z,2026-10-11T22:00:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,11:00AM,11:30AM,2026-10-12T04:34:42Z,Other,2026-10-11T22:00:00Z,2026-10-11T22:30:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,THE WEEKEND WRAP,11:30AM,12:30PM,2026-10-12T04:34:42Z,Other,2026-10-11T22:30:00Z,2026-10-11T23:30:00Z,false,THE WEEKEND WRAP,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,THE BIG INTERVIEW,12:30PM,1:00PM,2026-10-12T04:34:42Z,Other,2026-10-11T23:30:00Z,2026-10-12T00:00:00Z,false,THE BIG INTERVIEW,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,1:00PM,1:30PM,2026-10-12T04:34:42Z,Other,2026-10-12T00:00:00Z,2026-10-12T00:30:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,1:30PM,2:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T00:30:00Z,2026-10-12T01:00:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,2:00PM,2:30PM,2026-10-12T04:34:42Z,Other,2026-10-12T01:00:00Z,2026-10-12T01:30:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,2:30PM,3:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T01:30:00Z,2026-10-12T02:00:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,3:00PM,3:30PM,2026-10-12T04:34:42Z,Other,2026-10-12T02:00:00Z,2026-10-12T02:30:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,THE WEEKEND WRAP,3:30PM,4:30PM,2026-10-12T04:34:42Z,Other,2026-10-12T02:30:00Z,2026-10-12T03:30:00Z,false,THE WEEKEND WRAP,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,THE BIG INTERVIEW,4:30PM,5:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T03:30:00Z,2026-10-12T04:00:00Z,false,THE BIG INTERVIEW,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,5:00PM,5:30PM,2026-10-12T04:34:42Z,Other,2026-10-12T04:00:00Z,2026-10-12T04:30:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,5:30PM,6:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T04:30:00Z,2026-10-12T05:00:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,6:00PM,6:30PM,2026-10-12T04:34:42Z,Other,2026-10-12T05:00:00Z,2026-10-12T05:30:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,6:30PM,7:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T05:30:00Z,2026-10-12T06:00:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,7:00PM,7:30PM,2026-10-12T04:34:42Z,Other,2026-10-12T06:00:00Z,2026-10-12T06:30:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,THE WEEKEND WRAP,7:30PM,8:30PM,2026-10-12T04:34:42Z,Other,2026-10-12T06:30:00Z,2026-10-12T07:30:00Z,false,THE WEEKEND WRAP,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,THE BIG INTERVIEW,8:30PM,9:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T07:30:00Z,2026-10-12T08:00:00Z,false,THE BIG INTERVIEW,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,9:00PM,9:30PM,2026-10-12T04:34:42Z,Other,2026-10-12T08:00:00Z,2026-10-12T08:30:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,9:30PM,10:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T08:30:00Z,2026-10-12T09:00:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,10:00PM,10:30PM,2026-10-12T04:34:42Z,Other,2026-10-12T09:00:00Z,2026-10-12T09:30:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,10:30PM,11:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T09:30:00Z,2026-10-12T10:00:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,11:00PM,11:30PM,2026-10-12T04:34:42Z,Other,2026-10-12T10:00:00Z,2026-10-12T10:30:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,MATCH HIGHLIGHTS 26/27,11:30PM,12:00AM,2026-10-12T04:34:42Z,Other,2026-10-12T10:30:00Z,2026-10-12T11:00:00Z,false,MATCH HIGHLIGHTS 26/27,SPORT
+NZ,0004,58,Sky Sport Premier League,[NZ] Sky Sport Premier League,2026-10-12,THE WEEKEND WRAP,12:00AM,1:00AM,2026-10-12T04:34:42Z,Other,2026-10-12T11:00:00Z,2026-10-12T12:00:00Z,false,THE WEEKEND WRAP,SPORT
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-10-12,Korn Ferry Tour: Round 3,10:45PM,12:45AM,2026-10-12T04:34:42Z,Golf,2026-10-11T09:45:00Z,2026-10-11T11:45:00Z,false,Korn Ferry Tour,SPORT
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-10-12,AFLW: Hawks v Lions,12:45AM,2:45AM,2026-10-12T04:34:42Z,Aussie Rules,2026-10-11T11:45:00Z,2026-10-11T13:45:00Z,false,Women's AFL,SPORT
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-10-12,ANZ PL Darts: Melbourne Hls,2:45AM,3:15AM,2026-10-12T04:34:42Z,Darts,2026-10-11T13:45:00Z,2026-10-11T14:15:00Z,false,Darts: ANZ Premier League,SPORT
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-10-12,PGA Tour: Round 4 Hls,3:15AM,3:45AM,2026-10-12T04:34:42Z,Golf,2026-10-11T14:15:00Z,2026-10-11T14:45:00Z,false,PGA Tour,SPORT
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-10-12,The Breakdown,3:45AM,4:45AM,2026-10-12T04:34:42Z,Other,2026-10-11T14:45:00Z,2026-10-11T15:45:00Z,false,The Breakdown,SPORT
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-10-12,UCI BMX Racing World Cup: Rd8,4:45AM,6:15AM,2026-10-12T04:34:42Z,Other,2026-10-11T15:45:00Z,2026-10-11T17:15:00Z,false,UCI BMX Racing World Cup,SPORT
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-10-12,FPC: Canterbury v Auckland Final Hls,6:15AM,6:30AM,2026-10-12T04:34:42Z,Rugby Union,2026-10-11T17:15:00Z,2026-10-11T17:30:00Z,false,The Farah Palmer Cup,SPORT
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-10-12,Roc d'Azur,6:30AM,9:45AM,2026-10-12T04:34:42Z,Other,2026-10-11T17:30:00Z,2026-10-11T20:45:00Z,false,Roc d'Azur,SPORT
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-10-12,ANZ PL Darts: Melbourne Hls,9:45AM,10:15AM,2026-10-12T04:34:42Z,Darts,2026-10-11T20:45:00Z,2026-10-11T21:15:00Z,false,Darts: ANZ Premier League,SPORT
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-10-12,Tauihi: Pouakai v Whai,10:15AM,12:30PM,2026-10-12T04:34:42Z,Basketball,2026-10-11T21:15:00Z,2026-10-11T23:30:00Z,false,Tauihi Basketball Aotearoa,SPORT
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-10-12,Tauihi: Hoiho v Queens,12:30PM,2:25PM,2026-10-12T04:34:42Z,Basketball,2026-10-11T23:30:00Z,2026-10-12T01:25:00Z,false,Tauihi Basketball Aotearoa,SPORT
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-10-12,Australia v Bangladesh: 2nd ODI Hls,2:25PM,2:50PM,2026-10-12T04:34:42Z,Cricket,2026-10-12T01:25:00Z,2026-10-12T01:50:00Z,false,Intl Women's Cricket: Australia V Bangladesh,SPORT
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-10-12,UCI Gravel Worlds: Women's Elite,2:50PM,8:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T01:50:00Z,2026-10-12T07:00:00Z,false,UCI Gravel Cycling World Championships,SPORT
+NZ,0016,59,Sky Sport 9,[NZ] Sky Sport 9,2026-10-12,UCI Gravel Worlds: Men's Elite,8:00PM,1:00AM,2026-10-12T04:34:42Z,Other,2026-10-12T07:00:00Z,2026-10-12T12:00:00Z,false,UCI Gravel Cycling World Championships,SPORT
+NZ,0026,60,ESPN,[NZ] ESPN,2026-10-12,NBA Preseason,11:00PM,1:30AM,2026-10-12T04:34:42Z,Basketball,2026-10-11T10:00:00Z,2026-10-11T12:30:00Z,true,Live: NBA Preseason,SPORT
+NZ,0026,60,ESPN,[NZ] ESPN,2026-10-12,College Final,1:30AM,2:30AM,2026-10-12T04:34:42Z,Other,2026-10-11T12:30:00Z,2026-10-11T13:30:00Z,false,College Football Final,SPORT
+NZ,0026,60,ESPN,[NZ] ESPN,2026-10-12,NFL,2:30AM,6:15AM,2026-10-12T04:34:42Z,American Football,2026-10-11T13:30:00Z,2026-10-11T17:15:00Z,true,Live: NFL,SPORT
+NZ,0026,60,ESPN,[NZ] ESPN,2026-10-12,NFL,6:15AM,9:25AM,2026-10-12T04:34:42Z,American Football,2026-10-11T17:15:00Z,2026-10-11T20:25:00Z,true,Live: NFL,SPORT
+NZ,0026,60,ESPN,[NZ] ESPN,2026-10-12,NFL,9:25AM,12:45PM,2026-10-12T04:34:42Z,American Football,2026-10-11T20:25:00Z,2026-10-11T23:45:00Z,true,Live: NFL,SPORT
+NZ,0026,60,ESPN,[NZ] ESPN,2026-10-12,SC: NFL Blitz,12:45PM,1:15PM,2026-10-12T04:34:42Z,American Football,2026-10-11T23:45:00Z,2026-10-12T00:15:00Z,true,Live: SC: NFL Blitz,SPORT
+NZ,0026,60,ESPN,[NZ] ESPN,2026-10-12,NFL,1:15PM,5:00PM,2026-10-12T04:34:42Z,American Football,2026-10-12T00:15:00Z,2026-10-12T04:00:00Z,true,Live: NFL,SPORT
+NZ,0026,60,ESPN,[NZ] ESPN,2026-10-12,NFL Mini,5:00PM,5:30PM,2026-10-12T04:34:42Z,American Football,2026-10-12T04:00:00Z,2026-10-12T04:30:00Z,false,NFL Mini,SPORT
+NZ,0026,60,ESPN,[NZ] ESPN,2026-10-12,NBA Preseason,5:30PM,7:30PM,2026-10-12T04:34:42Z,Basketball,2026-10-12T04:30:00Z,2026-10-12T06:30:00Z,false,NBA Preseason,SPORT
+NZ,0026,60,ESPN,[NZ] ESPN,2026-10-12,NFL Mini,7:30PM,8:00PM,2026-10-12T04:34:42Z,American Football,2026-10-12T06:30:00Z,2026-10-12T07:00:00Z,false,NFL Mini,SPORT
+NZ,0026,60,ESPN,[NZ] ESPN,2026-10-12,NFL Mini,8:00PM,8:30PM,2026-10-12T04:34:42Z,American Football,2026-10-12T07:00:00Z,2026-10-12T07:30:00Z,false,NFL Mini,SPORT
+NZ,0026,60,ESPN,[NZ] ESPN,2026-10-12,NBL: Overtime,8:30PM,9:30PM,2026-10-12T04:34:42Z,Basketball,2026-10-12T07:30:00Z,2026-10-12T08:30:00Z,false,NBL: Overtime,SPORT
+NZ,0026,60,ESPN,[NZ] ESPN,2026-10-12,NFL,9:30PM,11:30PM,2026-10-12T04:34:42Z,American Football,2026-10-12T08:30:00Z,2026-10-12T10:30:00Z,false,NFL,SPORT
+NZ,0026,60,ESPN,[NZ] ESPN,2026-10-12,NFL,11:30PM,1:30AM,2026-10-12T04:34:42Z,American Football,2026-10-12T10:30:00Z,2026-10-12T12:30:00Z,false,NFL,SPORT
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-10-12,MLB,11:00PM,1:00AM,2026-10-12T04:34:42Z,Baseball,2026-10-11T10:00:00Z,2026-10-11T12:00:00Z,false,MLB,SPORT
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-10-12,College Football,1:00AM,3:00AM,2026-10-12T04:34:42Z,American Football,2026-10-11T12:00:00Z,2026-10-11T14:00:00Z,false,College Football,SPORT
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-10-12,Sunday NFL Countdown,3:00AM,6:00AM,2026-10-12T04:34:42Z,American Football,2026-10-11T14:00:00Z,2026-10-11T17:00:00Z,true,Live: Sunday NFL Countdown,SPORT
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-10-12,NFL,6:00AM,9:00AM,2026-10-12T04:34:42Z,American Football,2026-10-11T17:00:00Z,2026-10-11T20:00:00Z,true,Live: NFL,SPORT
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-10-12,College Final,9:00AM,10:00AM,2026-10-12T04:34:42Z,Other,2026-10-11T20:00:00Z,2026-10-11T21:00:00Z,false,College Football Final,SPORT
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-10-12,Women's College Volleyball,10:00AM,12:00PM,2026-10-12T04:34:42Z,Other,2026-10-11T21:00:00Z,2026-10-11T23:00:00Z,true,Live: Women's College Volleyball,SPORT
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-10-12,MLB Epic Moments,12:00PM,12:30PM,2026-10-12T04:34:42Z,Baseball,2026-10-11T23:00:00Z,2026-10-11T23:30:00Z,false,MLB Epic Moments,SPORT
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-10-12,MLB Epic Moments,12:30PM,1:00PM,2026-10-12T04:34:42Z,Baseball,2026-10-11T23:30:00Z,2026-10-12T00:00:00Z,false,MLB Epic Moments,SPORT
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-10-12,MLB,1:00PM,4:20PM,2026-10-12T04:34:42Z,Baseball,2026-10-12T00:00:00Z,2026-10-12T03:20:00Z,true,Live: MLB,SPORT
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-10-12,Prime 9,4:20PM,4:30PM,2026-10-12T04:34:42Z,Other,2026-10-12T03:20:00Z,2026-10-12T03:30:00Z,false,Prime 9,SPORT
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-10-12,Baseball Tonight,4:30PM,5:00PM,2026-10-12T04:34:42Z,Baseball,2026-10-12T03:30:00Z,2026-10-12T04:00:00Z,true,Live: Baseball Tonight,SPORT
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-10-12,NFL,5:00PM,7:30PM,2026-10-12T04:34:42Z,American Football,2026-10-12T04:00:00Z,2026-10-12T06:30:00Z,false,NFL,SPORT
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-10-12,NFL Mini,7:30PM,8:00PM,2026-10-12T04:34:42Z,American Football,2026-10-12T06:30:00Z,2026-10-12T07:00:00Z,false,NFL Mini,SPORT
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-10-12,ESPN FC,8:00PM,8:30PM,2026-10-12T04:34:42Z,Soccer,2026-10-12T07:00:00Z,2026-10-12T07:30:00Z,false,ESPN FC,SPORT
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-10-12,MLB,8:30PM,10:30PM,2026-10-12T04:34:42Z,Baseball,2026-10-12T07:30:00Z,2026-10-12T09:30:00Z,false,MLB,SPORT
+NZ,0082,61,ESPN2,[NZ] ESPN2,2026-10-12,NFL,10:30PM,1:00AM,2026-10-12T04:34:42Z,American Football,2026-10-12T09:30:00Z,2026-10-12T12:00:00Z,false,NFL,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Trackside 1 LIVE - AUS/INTL,12:00AM,1:00AM,2026-10-12T04:34:42Z,Racing,2026-10-11T11:00:00Z,2026-10-11T12:00:00Z,false,Trackside 1 LIVE - AUS/INTL,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Trackside 1 LIVE - AUS/INTL,1:00AM,2:00AM,2026-10-12T04:34:42Z,Racing,2026-10-11T12:00:00Z,2026-10-11T13:00:00Z,false,Trackside 1 LIVE - AUS/INTL,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Trackside 1 LIVE - AUS/INTL,2:00AM,3:00AM,2026-10-12T04:34:42Z,Racing,2026-10-11T13:00:00Z,2026-10-11T14:00:00Z,false,Trackside 1 LIVE - AUS/INTL,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Trackside 1 LIVE - AUS/INTL,3:00AM,3:50AM,2026-10-12T04:34:42Z,Racing,2026-10-11T14:00:00Z,2026-10-11T14:50:00Z,false,Trackside 1 LIVE - AUS/INTL,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Thoroughbred Trials,3:50AM,4:30AM,2026-10-12T04:34:42Z,Other,2026-10-11T14:50:00Z,2026-10-11T15:30:00Z,false,Thoroughbred Trials,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Harness Trials,4:30AM,5:30AM,2026-10-12T04:34:42Z,Other,2026-10-11T15:30:00Z,2026-10-11T16:30:00Z,false,Harness Trials,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Racing Replay Australia,5:30AM,6:00AM,2026-10-12T04:34:42Z,Racing,2026-10-11T16:30:00Z,2026-10-11T17:00:00Z,false,Racing Replay Australia,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Racing Replay Australia cont.,6:00AM,6:30AM,2026-10-12T04:34:42Z,Racing,2026-10-11T17:00:00Z,2026-10-11T17:30:00Z,false,Racing Replay Australia cont.,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Racing Replay Ashburton,6:30AM,7:15AM,2026-10-12T04:34:42Z,Racing,2026-10-11T17:30:00Z,2026-10-11T18:15:00Z,false,Racing Replay Ashburton,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Racing Replay Hastings,7:15AM,8:00AM,2026-10-12T04:34:42Z,Racing,2026-10-11T18:15:00Z,2026-10-11T19:00:00Z,false,Racing Replay Hastings,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Thoroughbred Weekly,8:00AM,9:00AM,2026-10-12T04:34:42Z,Other,2026-10-11T19:00:00Z,2026-10-11T20:00:00Z,false,Thoroughbred Weekly,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Racing Replay Alexandra Park,9:00AM,9:45AM,2026-10-12T04:34:42Z,Racing,2026-10-11T20:00:00Z,2026-10-11T20:45:00Z,false,Racing Replay Alexandra Park,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Racing Replay Addington,9:45AM,10:30AM,2026-10-12T04:34:42Z,Racing,2026-10-11T20:45:00Z,2026-10-11T21:30:00Z,false,Racing Replay Addington,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Racing Replay Taupo,10:30AM,11:00AM,2026-10-12T04:34:42Z,Racing,2026-10-11T21:30:00Z,2026-10-11T22:00:00Z,false,Racing Replay Taupo,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Racing Replay Australia,11:00AM,12:00PM,2026-10-12T04:34:42Z,Racing,2026-10-11T22:00:00Z,2026-10-11T23:00:00Z,false,Racing Replay Australia,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Racing Replay Ashburton,12:00PM,12:45PM,2026-10-12T04:34:42Z,Racing,2026-10-11T23:00:00Z,2026-10-11T23:45:00Z,false,Racing Replay Ashburton,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Racing Replay Hastings,12:45PM,1:30PM,2026-10-12T04:34:42Z,Racing,2026-10-11T23:45:00Z,2026-10-12T00:30:00Z,false,Racing Replay Hastings,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Thoroughbred Weekly,1:30PM,2:40PM,2026-10-12T04:34:42Z,Other,2026-10-12T00:30:00Z,2026-10-12T01:40:00Z,false,Thoroughbred Weekly,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Trackside 1 LIVE - AUS,2:40PM,3:00PM,2026-10-12T04:34:42Z,Racing,2026-10-12T01:40:00Z,2026-10-12T02:00:00Z,false,Trackside 1 LIVE - AUS,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Trackside 1 LIVE - AUS,3:00PM,4:00PM,2026-10-12T04:34:42Z,Racing,2026-10-12T02:00:00Z,2026-10-12T03:00:00Z,false,Trackside 1 LIVE - AUS,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Trackside 1 LIVE - AUS,4:00PM,5:00PM,2026-10-12T04:34:42Z,Racing,2026-10-12T03:00:00Z,2026-10-12T04:00:00Z,false,Trackside 1 LIVE - AUS,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Trackside 1 LIVE - AUS,5:00PM,6:00PM,2026-10-12T04:34:42Z,Racing,2026-10-12T04:00:00Z,2026-10-12T05:00:00Z,false,Trackside 1 LIVE - AUS,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Trackside 1 LIVE - AUS,6:00PM,7:00PM,2026-10-12T04:34:42Z,Racing,2026-10-12T05:00:00Z,2026-10-12T06:00:00Z,false,Trackside 1 LIVE - AUS,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Trackside 1 LIVE - AUS,7:00PM,8:00PM,2026-10-12T04:34:42Z,Racing,2026-10-12T06:00:00Z,2026-10-12T07:00:00Z,false,Trackside 1 LIVE - AUS,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Weigh In,8:00PM,9:00PM,2026-10-12T04:34:42Z,Other,2026-10-12T07:00:00Z,2026-10-12T08:00:00Z,false,Weigh In,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Trackside 1 LIVE - AUS,9:00PM,10:00PM,2026-10-12T04:34:42Z,Racing,2026-10-12T08:00:00Z,2026-10-12T09:00:00Z,false,Trackside 1 LIVE - AUS,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Trackside 1 LIVE - AUS,10:00PM,11:00PM,2026-10-12T04:34:42Z,Racing,2026-10-12T09:00:00Z,2026-10-12T10:00:00Z,false,Trackside 1 LIVE - AUS,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Trackside 1 LIVE - AUS,11:00PM,12:00AM,2026-10-12T04:34:42Z,Racing,2026-10-12T10:00:00Z,2026-10-12T11:00:00Z,false,Trackside 1 LIVE - AUS,SPORT
+NZ,0093,62,Trackside 1,[NZ] Trackside 1,2026-10-12,Trackside 1 LIVE - AUS,12:00AM,1:00AM,2026-10-12T04:34:42Z,Racing,2026-10-12T11:00:00Z,2026-10-12T12:00:00Z,false,Trackside 1 LIVE - AUS,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Trackside 2 LIVE - AUS,11:00PM,12:05AM,2026-10-12T04:34:42Z,Racing,2026-10-11T10:00:00Z,2026-10-11T11:05:00Z,false,Trackside 2 LIVE - AUS,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Racing Replay Australia,12:05AM,12:45AM,2026-10-12T04:34:42Z,Racing,2026-10-11T11:05:00Z,2026-10-11T11:45:00Z,false,Racing Replay Australia,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Racing Replay Ashburton,12:45AM,1:30AM,2026-10-12T04:34:42Z,Racing,2026-10-11T11:45:00Z,2026-10-11T12:30:00Z,false,Racing Replay Ashburton,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Racing Replay Hastings,1:30AM,2:15AM,2026-10-12T04:34:42Z,Racing,2026-10-11T12:30:00Z,2026-10-11T13:15:00Z,false,Racing Replay Hastings,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Thoroughbred Weekly,2:15AM,3:15AM,2026-10-12T04:34:42Z,Other,2026-10-11T13:15:00Z,2026-10-11T14:15:00Z,false,Thoroughbred Weekly,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Racing Replay Australia,3:15AM,4:15AM,2026-10-12T04:34:42Z,Racing,2026-10-11T14:15:00Z,2026-10-11T15:15:00Z,false,Racing Replay Australia,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Racing Replay Ashburton,4:15AM,5:00AM,2026-10-12T04:34:42Z,Racing,2026-10-11T15:15:00Z,2026-10-11T16:00:00Z,false,Racing Replay Ashburton,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Racing Replay Hastings,5:00AM,5:45AM,2026-10-12T04:34:42Z,Racing,2026-10-11T16:00:00Z,2026-10-11T16:45:00Z,false,Racing Replay Hastings,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Thoroughbred Weekly,5:45AM,6:00AM,2026-10-12T04:34:42Z,Other,2026-10-11T16:45:00Z,2026-10-11T17:00:00Z,false,Thoroughbred Weekly,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Thoroughbred Weekly cont.,6:00AM,6:55AM,2026-10-12T04:34:42Z,Other,2026-10-11T17:00:00Z,2026-10-11T17:55:00Z,false,Thoroughbred Weekly cont.,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Trackside 2 LIVE - USA,6:55AM,9:00AM,2026-10-12T04:34:42Z,Racing,2026-10-11T17:55:00Z,2026-10-11T20:00:00Z,false,Trackside 2 LIVE - USA,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Trackside 2 LIVE - USA,9:00AM,11:00AM,2026-10-12T04:34:42Z,Racing,2026-10-11T20:00:00Z,2026-10-11T22:00:00Z,false,Trackside 2 LIVE - USA,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Trackside 2 LIVE - USA,11:00AM,1:00PM,2026-10-12T04:34:42Z,Racing,2026-10-11T22:00:00Z,2026-10-12T00:00:00Z,false,Trackside 2 LIVE - USA,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Trackside 2 LIVE - AUS,1:00PM,3:00PM,2026-10-12T04:34:42Z,Racing,2026-10-12T00:00:00Z,2026-10-12T02:00:00Z,false,Trackside 2 LIVE - AUS,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Trackside 2 LIVE - AUS,3:00PM,5:00PM,2026-10-12T04:34:42Z,Racing,2026-10-12T02:00:00Z,2026-10-12T04:00:00Z,false,Trackside 2 LIVE - AUS,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Trackside 2 LIVE - AUS,5:00PM,7:00PM,2026-10-12T04:34:42Z,Racing,2026-10-12T04:00:00Z,2026-10-12T06:00:00Z,false,Trackside 2 LIVE - AUS,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Trackside 2 LIVE - AUS,7:00PM,8:00PM,2026-10-12T04:34:42Z,Racing,2026-10-12T06:00:00Z,2026-10-12T07:00:00Z,false,Trackside 2 LIVE - AUS,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Trackside 2 LIVE - AUS,8:00PM,9:15PM,2026-10-12T04:34:42Z,Racing,2026-10-12T07:00:00Z,2026-10-12T08:15:00Z,false,Trackside 2 LIVE - AUS,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Racing Replay Ashburton,9:15PM,10:00PM,2026-10-12T04:34:42Z,Racing,2026-10-12T08:15:00Z,2026-10-12T09:00:00Z,false,Racing Replay Ashburton,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Racing Replay Hastings,10:00PM,10:45PM,2026-10-12T04:34:42Z,Racing,2026-10-12T09:00:00Z,2026-10-12T09:45:00Z,false,Racing Replay Hastings,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Racing Replay Australia,10:45PM,11:45PM,2026-10-12T04:34:42Z,Racing,2026-10-12T09:45:00Z,2026-10-12T10:45:00Z,false,Racing Replay Australia,SPORT
+NZ,0094,63,Trackside 2,[NZ] Trackside 2,2026-10-12,Racing Replay Alexandra Park,11:45PM,12:30AM,2026-10-12T04:34:42Z,Racing,2026-10-12T10:45:00Z,2026-10-12T11:30:00Z,false,Racing Replay Alexandra Park,SPORT
+NZ,SARA,65,Sky Arena,[NZ] Sky Arena,2026-10-12,October 25th: UFC 333,6:00PM,6:00AM,2026-10-12T04:34:42Z,MMA,2026-10-11T05:00:00Z,2026-10-11T17:00:00Z,false,,
+NZ,SARA,65,Sky Arena,[NZ] Sky Arena,2026-10-12,October 25th: UFC 333,6:00AM,6:00PM,2026-10-12T04:34:42Z,MMA,2026-10-11T17:00:00Z,2026-10-12T05:00:00Z,false,,
+NZ,SARA,65,Sky Arena,[NZ] Sky Arena,2026-10-12,October 25th: UFC 333,6:00PM,6:00AM,2026-10-12T04:34:42Z,MMA,2026-10-12T05:00:00Z,2026-10-12T17:00:00Z,false,,
