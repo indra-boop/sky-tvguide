@@ -23,7 +23,7 @@ concurrency:
 
 jobs:
   scrape:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, jerco-public, linode]
     timeout-minutes: 10
     env:
       DASHBOARD_INGEST_URL: https://schedule.jerconetwork.com/api/ingest/v2
