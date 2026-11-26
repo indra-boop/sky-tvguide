@@ -52,10 +52,51 @@ Workflow `.github/workflows/daily-scrape.yml` berjalan setiap hari pukul
 
 Workflow akan:
 
-1. Menjalankan exporter menggunakan Python 3.12.
-2. Menulis `sports_YYYY-MM-DD.csv`.
-3. Commit dan push CSV bila ada perubahan.
-4. Upload `debug_artifacts/failure.json` selama tujuh hari jika gagal.
+1. Menentukan tanggal awal berdasarkan **Asia/Makassar (WITA)**.
+2. Mengambil **sembilan tanggal guide NZ** dari tanggal awal tersebut. Tanggal
+   tambahan diperlukan agar delapan hari WITA mempunyai data malam yang lengkap.
+3. Menulis `sports_START_to_END.csv`, lalu memvalidasi seluruh tanggal, UTC slot,
+   duplikat, jumlah baris, dan ukuran batch sebelum satu pun ingest dilakukan.
+4. Memeriksa kemampuan aggregator, kemudian mengirim delapan snapshot terpisah
+   berdasarkan **tanggal mulai WITA**. Setiap snapshot memuat satu hari lengkap,
+   maksimum 2.000 baris. Tanggal tepi yang hanya sebagian tidak dikirim.
+5. Commit dan push CSV hanya jika semua langkah yang diminta berhasil; kegagalan
+   ingest mencantumkan tanggal gagal dan tanggal yang sudah diterima.
+6. Upload `debug_artifacts/failure.json` selama tujuh hari jika scraper gagal.
+
+### Dependency dan verifikasi sebelum aktivasi jendela delapan hari
+
+**FIELD VERIFICATION:** perubahan collector ini membutuhkan rilis aggregator
+yang memakai `start_utc` / `end_utc` Sky, mempertahankan `liveAuthority=false`,
+dan mengganti data hanya untuk rentang tanggal mulai WITA dalam satu snapshot.
+`GET /api/schedule/v2?days=1` harus mengembalikan:
+
+```json
+{"capabilities":{"skyAbsoluteUtc":true,"ingestWindowByWitaDate":true}}
+```
+
+`ingest_window_to_dashboard.py` menolak mengirim data bila salah satu kemampuan
+tidak ada, bernilai selain `true`, atau probe gagal. Deploy dan verifikasi
+dependency aggregator serta rehearsal database terisolasi harus mendahului
+merge/aktivasi workflow ini. Unit tests dan PR tidak membuktikan produksi siap.
+
+Contoh persiapan yang tidak mengirim apa pun:
+
+```bash
+python scrape_sky_sports_guide.py --start-date 2026-11-27 --days 9
+python ingest_window_to_dashboard.py \
+  --csv sports_2026-11-27_to_2026-12-05.csv \
+  --start-date 2026-11-27 --days 8 --dry-run
+```
+
+CSV menyimpan sembilan tanggal guide NZ. Batch ingest dari contoh tersebut
+hanya mengganti delapan tanggal mulai WITA, **27 November–4 Desember**.
+Slot yang melewati tengah malam memakai waktu UTC asli sumber. Duplikat slot
+yang muncul pada dua guide dibuang hanya jika isinya sama; konflik membatalkan
+seluruh rencana sebelum POST. Satu tanggal gagal diunduh atau gagal validasi
+juga membatalkan ingest seluruh jendela. Kegagalan POST menghentikan tanggal
+berikutnya; tanggal yang sudah berhasil dicatat dan dapat dikirim ulang secara
+idempoten. Skrip ingest satu hari tetap tersedia untuk arsip lama.
 
 ## Output CSV
 
