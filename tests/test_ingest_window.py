@@ -1,6 +1,7 @@
 """A multi-day Sky scrape must never replace a WITA day with a partial NZ slice."""
 
 import contextlib
+import copy
 import csv
 import io
 import json
@@ -190,6 +191,67 @@ class WindowIngestTests(unittest.TestCase):
                 scrape.scrape(str(path), days=9, start_date=self.start)
         write.assert_not_called()
         self.assertFalse(path.exists())
+
+    @staticmethod
+    def source_response():
+        slot = {'id': 'slot', 'startMs': 1795752000000, 'endMs': 1795755600000,
+                'programme': {'title': 'Sports programme'}}
+        return {'experience': {'channelGroup': {'channels': [
+            {'id': 'SPT1', 'title': 'Sky Sport 1', 'slotsForDay': {'slots': [slot]}},
+            {'id': 'SPT2', 'title': 'Sky Sport 2', 'slotsForDay': {'slots': [copy.deepcopy(slot)]}},
+        ]}}}
+
+    def test_malformed_channel_or_slot_aborts_collection_before_csv(self):
+        valid = self.source_response()
+        bad_channels = [None, {'id': 'SPT2'}, {'id': 'SPT2', 'title': 'Sky Sport 2'},
+                        {'id': 'SPT2', 'title': 'Sky Sport 2', 'slotsForDay': {'slots': None}}]
+        valid_slot = valid['experience']['channelGroup']['channels'][1]['slotsForDay']['slots'][0]
+        for bad_slot in [None, {}, {'programme': {}},
+                         dict(valid_slot, startMs=None), dict(valid_slot, endMs=True),
+                         dict(valid_slot, endMs=valid_slot['startMs'])]:
+            bad_channels.append({'id': 'SPT2', 'title': 'Sky Sport 2', 'slotsForDay': {'slots': [bad_slot]}})
+        for bad_channel in bad_channels:
+            broken = copy.deepcopy(valid)
+            broken['experience']['channelGroup']['channels'][1] = bad_channel
+            with self.subTest(channel=bad_channel), patch.object(scrape, '_find_sports_group_id', return_value='sports'), patch.object(scrape, '_post_graphql', side_effect=[valid, broken]), patch.object(scrape, '_write_csv') as write:
+                with self.assertRaises(scrape.SkyGuideError):
+                    scrape.scrape(str(Path(self.folder.name) / 'partial.csv'), days=2, start_date=self.start)
+                write.assert_not_called()
+
+    def test_missing_channel_on_later_guide_aborts_collection(self):
+        first = self.source_response()
+        second = copy.deepcopy(first)
+        second['experience']['channelGroup']['channels'].pop()
+        with patch.object(scrape, '_find_sports_group_id', return_value='sports'), patch.object(scrape, '_post_graphql', side_effect=[first, second]), patch.object(scrape, '_write_csv') as write:
+            with self.assertRaisesRegex(scrape.SkyGuideError, 'channel list changed'):
+                scrape.scrape(str(Path(self.folder.name) / 'partial.csv'), days=2, start_date=self.start)
+        write.assert_not_called()
+
+    def test_explicit_empty_source_channel_is_preserved_as_known_not_missing(self):
+        response = self.source_response()
+        response['experience']['channelGroup']['channels'][1]['slotsForDay']['slots'] = []
+        expected = set()
+        with patch.object(scrape, '_post_graphql', return_value=response):
+            rows = scrape._scrape_day('sports', self.start, expected_channel_ids=expected)
+        self.assertEqual({'SPT1', 'SPT2'}, expected)
+        self.assertEqual(['SPT1'], [row['channel_id'] for row in rows])
+
+    def test_explicit_source_gap_is_logged_without_inventing_programmes(self):
+        response = self.source_response()
+        gap = {'id': 'SPT2-gap-2026-12-05', 'startMs': 1796428800000,
+               'endMs': 1796515200000, 'live': False, 'programme': None}
+        for gap_id in ['SPT2-gap-2026-12-05', 'SPT2-gap-2026-12-05T00:00:00Z', 'SPT2-2026-12-05T00:00:00Z']:
+            response['experience']['channelGroup']['channels'][1]['slotsForDay']['slots'] = [{**gap, 'id': gap_id}]
+            with self.subTest(gap_id=gap_id), patch.object(scrape, '_post_graphql', return_value=response), contextlib.redirect_stderr(io.StringIO()) as log:
+                rows = scrape._scrape_day('sports', date(2026, 12, 5))
+            self.assertEqual(['SPT1'], [row['channel_id'] for row in rows])
+            self.assertIn('channel SPT2: 1 explicit source gap', log.getvalue())
+        for change in [{'id': 'SPT2-unknown'}, {'id': 'SPT2-gap-2026-12-06'},
+                       {'live': True}, {'endMs': gap['startMs']}]:
+            response['experience']['channelGroup']['channels'][1]['slotsForDay']['slots'] = [{**gap, **change}]
+            with self.subTest(change=change), patch.object(scrape, '_post_graphql', return_value=response):
+                with self.assertRaises(scrape.SkyGuideError):
+                    scrape._scrape_day('sports', date(2026, 12, 5))
 
 
 if __name__ == '__main__':

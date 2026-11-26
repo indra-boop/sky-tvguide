@@ -98,6 +98,16 @@ juga membatalkan ingest seluruh jendela. Kegagalan POST menghentikan tanggal
 berikutnya; tanggal yang sudah berhasil dicatat dan dapat dikirim ulang secara
 idempoten. Skrip ingest satu hari tetap tersedia untuk arsip lama.
 
+Collector menolak struktur channel/slot yang hilang, programme/timestamp yang
+rusak, dan daftar ID channel yang berubah di tengah pengambilan sembilan hari.
+Respons sumber yang secara eksplisit memberi `slots: []` tetap diterima.
+Placeholder sumber berbentuk `CHANNEL-gap-UTC_DATE`, `CHANNEL-gap-UTC_INSTANT`,
+atau `CHANNEL-UTC_INSTANT`, dengan waktu valid yang sama persis dengan ID,
+`programme: null`, dan `live: false`, dicatat sebagai gap per channel/tanggal,
+tanpa membuat programme fiktif. Missing programme lainnya menyebabkan gagal.
+Gap berarti sumber belum menyediakan programme; ini bukan bukti tidak ada
+siaran. Periksa cakupan per channel saat rehearsal sebelum aktivasi.
+
 ## Output CSV
 
 Setiap channel pada source ini berasal dari market/feed Sky New Zealand, sehingga
