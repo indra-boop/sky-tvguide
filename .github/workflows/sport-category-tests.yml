@@ -2,11 +2,6 @@ name: Sport Category Tests
 
 on:
   pull_request:
-    paths:
-      - "sport_classifier.py"
-      - "scrape_sky_sports_guide.py"
-      - "tests/**"
-      - ".github/workflows/sport-category-tests.yml"
   push:
     branches: [main]
     paths:
