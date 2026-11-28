@@ -14,7 +14,6 @@ import json
 import os
 import re
 import sys
-from collections import Counter
 from datetime import date, datetime, time, timedelta, timezone
 from urllib.parse import urlsplit, urlunsplit
 from urllib.request import Request, urlopen
@@ -62,7 +61,9 @@ def plan_batches(
     expected_guides = {start_date + timedelta(days=offset) for offset in range(days + 1)}
     expected_wita = [(start_date + timedelta(days=offset)).isoformat() for offset in range(days)]
     batches: dict[str, list[dict[str, str]]] = {day: [] for day in expected_wita}
-    counts: Counter[date] = Counter()
+    guide_slots: dict[date, set[tuple[str, datetime]]] = {
+        guide: set() for guide in expected_guides
+    }
     seen: dict[tuple[str, datetime], dict[str, str]] = {}
 
     for index, row in enumerate(_read_rows(csv_path), 1):
@@ -84,8 +85,10 @@ def plan_batches(
         # The API can include the programme crossing NZ midnight and the next day's 00:00 slot.
         if start > guide_end or end <= guide_start:
             raise IngestError(f"Row {index}: UTC slot does not belong to its NZ guide date")
-        counts[guide_date] += 1
         key = (channel, start)
+        # Repeated rows must not disguise a truncated guide. A midnight slot
+        # may legitimately count once in each adjacent NZ guide.
+        guide_slots[guide_date].add(key)
         # Adjacent guide dates repeat a slot crossing NZ midnight. Drop only exact duplicates;
         # conflicting versions require a new consistent collection, not an arbitrary winner.
         comparable = {k: v for k, v in row.items() if k not in {"date", "scraped_at"}}
@@ -96,12 +99,16 @@ def plan_batches(
         seen[key] = comparable
         wita_day = start.astimezone(WITA).date().isoformat()
         if wita_day in batches:
-            batches[wita_day].append(row)
+            # NZ clocks repeat when DST ends. The supported explicit source key
+            # keeps those distinct UTC slots separate in aggregator normalization.
+            source_key = f"sky:{channel}:utc:{start.isoformat(timespec='milliseconds').replace('+00:00', 'Z')}"
+            batches[wita_day].append({**row, "source_key": source_key})
 
     for guide in sorted(expected_guides):
-        if counts[guide] < min_rows_per_guide:
+        count = len(guide_slots[guide])
+        if count < min_rows_per_guide:
             raise IngestError(
-                f"NZ guide {guide}: {counts[guide]} rows < minimum {min_rows_per_guide}; no ingest"
+                f"NZ guide {guide}: {count} unique slots < minimum {min_rows_per_guide}; no ingest"
             )
     planned = []
     for day, rows in batches.items():
@@ -155,6 +162,9 @@ def ingest_window(
             window = result.get("window", {})
             if result.get("ok") is not True or window.get("start") != day or window.get("end") != day:
                 raise IngestError("Aggregator response did not confirm the exact WITA replacement date")
+            counts = (result.get("received"), result.get("normalized"))
+            if any(type(count) is not int or count != len(rows) for count in counts):
+                raise IngestError("Aggregator receipt must confirm received and normalized counts equal sent rows")
             completed.append(day)
             print(f"WITA {day}: ingest confirmed ({len(rows)} rows)")
         except Exception as error:

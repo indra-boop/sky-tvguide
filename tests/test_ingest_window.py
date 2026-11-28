@@ -91,7 +91,8 @@ class WindowIngestTests(unittest.TestCase):
             day = datetime.fromisoformat(rows[0]['start_utc'].replace('Z', '+00:00')).astimezone(window.WITA).date().isoformat()
             calls.append(day)
             self.assertEqual(24, len(rows))
-            return {'ok': True, 'window': {'start': day, 'end': day}}
+            return {'ok': True, 'received': len(rows), 'normalized': len(rows),
+                    'window': {'start': day, 'end': day}}
         with patch.object(window, 'assert_compatible_aggregator') as probe, patch.object(window, '_post', side_effect=post):
             window.ingest_window(path, self.start, 8, url='https://example.invalid/api/ingest/v2', token='synthetic-test', min_rows_per_guide=1)
         probe.assert_called_once()
@@ -123,6 +124,52 @@ class WindowIngestTests(unittest.TestCase):
         conflict = dict(rows[20], program_title='Different programme at the same instant')
         with self.assertRaisesRegex(window.IngestError, 'conflicting duplicate'):
             window.plan_batches(self.write(rows + [conflict]), self.start, 8, min_rows_per_guide=1)
+
+    def test_duplicate_rows_cannot_satisfy_minimum_or_trigger_ingest(self):
+        # Repeating a truncated guide must not make it safe to replace a full day.
+        rows = fixtures() * 7  # 175 rows per guide, but only 25 distinct slots.
+        with patch.object(window, '_post') as post, patch.object(window, 'assert_compatible_aggregator') as probe:
+            with self.assertRaisesRegex(window.IngestError, 'minimum 150'):
+                window.ingest_window(self.write(rows), self.start, 8,
+                                     url='https://example.invalid/api/ingest/v2',
+                                     token='synthetic-test', min_rows_per_guide=150)
+        probe.assert_not_called()
+        post.assert_not_called()
+
+    def test_minimum_counts_shared_midnight_slot_once_for_each_guide(self):
+        # Adjacent guides each legitimately contain the same midnight slot.
+        batches = window.plan_batches(self.write(fixtures() * 2), self.start, 8,
+                                      min_rows_per_guide=25)
+        self.assertEqual(8, len(batches))
+        self.assertEqual([24] * 8, [len(rows) for _, rows in batches])
+
+    def test_repeated_nz_clock_keeps_distinct_utc_source_keys(self):
+        start = date(2026, 4, 3)
+        rows = [{**row, 'program_title': 'Tennis'} for row in fixtures(start)]
+        batches = window.plan_batches(self.write(rows, start=start), start, 8,
+                                      min_rows_per_guide=1)
+        repeated_clock = []
+        for _, batch in batches:
+            for row in batch:
+                instant = datetime.fromisoformat(row['start_utc'].replace('Z', '+00:00'))
+                nz = instant.astimezone(window.NZ)
+                if nz.date() == date(2026, 4, 5) and nz.hour == 2:
+                    repeated_clock.append(row)
+        self.assertEqual(2, len(repeated_clock))
+        self.assertEqual(repeated_clock[0]['start_time'], repeated_clock[1]['start_time'])
+        self.assertNotEqual(repeated_clock[0]['source_key'], repeated_clock[1]['source_key'])
+
+    def test_source_keys_are_stable_across_titles_and_distinct_between_channels(self):
+        original = fixtures()
+        rows = original + [{**row, 'channel_id': 'SPT2'} for row in original]
+        before = window.plan_batches(self.write(rows), self.start, 8, min_rows_per_guide=1)
+        changed = [{**row, 'program_title': 'Corrected programme title'} for row in rows]
+        after = window.plan_batches(self.write(changed * 2), self.start, 8,
+                                   min_rows_per_guide=1)
+        keys_before = {row['source_key'] for _, batch in before for row in batch}
+        keys_after = {row['source_key'] for _, batch in after for row in batch}
+        self.assertEqual(384, len(keys_before))
+        self.assertEqual(keys_before, keys_after)
 
     def test_invalid_utc_bounds_and_wrong_guide_date_are_rejected(self):
         for change in [
@@ -171,18 +218,34 @@ class WindowIngestTests(unittest.TestCase):
         self.assertFalse(req.has_header('Authorization'))
 
     def test_failed_post_stops_next_days_and_reports_completed_dates(self):
-        ok = {'ok': True, 'window': {'start': '2026-11-27', 'end': '2026-11-27'}}
+        ok = {'ok': True, 'received': 24, 'normalized': 24,
+              'window': {'start': '2026-11-27', 'end': '2026-11-27'}}
         with patch.object(window, 'assert_compatible_aggregator'), patch.object(window, '_post', side_effect=[ok, window.IngestError('synthetic failure')]) as post:
             with self.assertRaisesRegex(window.IngestError, 'WITA 2026-11-28.*completed dates=2026-11-27'):
                 window.ingest_window(self.write(), self.start, 8, url='https://example.invalid/api/ingest/v2', token='synthetic-test', min_rows_per_guide=1)
         self.assertEqual(2, post.call_count)
 
     def test_wrong_server_window_stops_subsequent_batches(self):
-        wrong = {'ok': True, 'window': {'start': '2026-11-26', 'end': '2026-11-27'}}
+        wrong = {'ok': True, 'received': 24, 'normalized': 24,
+                 'window': {'start': '2026-11-26', 'end': '2026-11-27'}}
         with patch.object(window, 'assert_compatible_aggregator'), patch.object(window, '_post', return_value=wrong) as post:
             with self.assertRaisesRegex(window.IngestError, 'exact WITA replacement date'):
                 window.ingest_window(self.write(), self.start, 8, url='https://example.invalid/api/ingest/v2', token='synthetic-test', min_rows_per_guide=1)
         post.assert_called_once()
+
+    def test_incomplete_or_invalid_receipt_counts_stop_subsequent_dates(self):
+        first = {'ok': True, 'received': 24, 'normalized': 24,
+                 'window': {'start': '2026-11-27', 'end': '2026-11-27'}}
+        second = {**first, 'window': {'start': '2026-11-28', 'end': '2026-11-28'}}
+        for field in ('received', 'normalized'):
+            for value in (23, 25, None, True, 24.0, '24'):
+                bad = {**second, field: value}
+                with self.subTest(field=field, value=value), patch.object(window, 'assert_compatible_aggregator'), patch.object(window, '_post', side_effect=[first, bad]) as post:
+                    with self.assertRaisesRegex(window.IngestError, 'WITA 2026-11-28:.*completed dates=2026-11-27;.*received and normalized'):
+                        window.ingest_window(self.write(), self.start, 8,
+                                             url='https://example.invalid/api/ingest/v2',
+                                             token='synthetic-test', min_rows_per_guide=1)
+                self.assertEqual(2, post.call_count)
 
     def test_scraper_failure_does_not_write_partial_csv(self):
         path = Path(self.folder.name) / 'partial.csv'

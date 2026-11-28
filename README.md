@@ -56,7 +56,9 @@ Workflow akan:
 2. Mengambil **sembilan tanggal guide NZ** dari tanggal awal tersebut. Tanggal
    tambahan diperlukan agar delapan hari WITA mempunyai data malam yang lengkap.
 3. Menulis `sports_START_to_END.csv`, lalu memvalidasi seluruh tanggal, UTC slot,
-   duplikat, jumlah baris, dan ukuran batch sebelum satu pun ingest dilakukan.
+   duplikat, jumlah slot unik per guide, dan ukuran batch sebelum satu pun
+   ingest dilakukan. Baris berulang tidak dapat memenuhi ambang minimum;
+   slot tengah malam yang muncul pada dua guide dihitung sekali per guide.
 4. Memeriksa kemampuan aggregator, kemudian mengirim delapan snapshot terpisah
    berdasarkan **tanggal mulai WITA**. Setiap snapshot memuat satu hari lengkap,
    maksimum 2.000 baris. Tanggal tepi yang hanya sebagian tidak dikirim.
@@ -97,6 +99,15 @@ seluruh rencana sebelum POST. Satu tanggal gagal diunduh atau gagal validasi
 juga membatalkan ingest seluruh jendela. Kegagalan POST menghentikan tanggal
 berikutnya; tanggal yang sudah berhasil dicatat dan dapat dikirim ulang secara
 idempoten. Skrip ingest satu hari tetap tersedia untuk arsip lama.
+
+Payload multi-hari menambahkan `source_key` stabil dari channel dan waktu mulai
+UTC. Dua slot dengan jam lokal dan judul sama saat akhir DST tetap berbeda;
+koreksi judul tidak mengganti identitas slot. CSV sumber tetap dipertahankan.
+Tanda terima harus mengonfirmasi tanggal yang tepat serta `received` dan
+`normalized` sebagai bilangan bulat yang sama dengan jumlah slot dikirim.
+Selisih jumlah menghentikan tanggal berikutnya. Pemeriksaan tanda terima terjadi
+setelah transaksi tanggal tersebut, sehingga status data tanggal yang gagal
+perlu diperiksa sebelum retry; delapan kiriman bukan satu transaksi atomik.
 
 Collector menolak struktur channel/slot yang hilang, programme/timestamp yang
 rusak, dan daftar ID channel yang berubah di tengah pengambilan sembilan hari.
