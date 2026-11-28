@@ -32,9 +32,10 @@ SKY_TIMEZONE = ZoneInfo("Pacific/Auckland")
 SOURCE_NAME = "sky-tvguide"
 
 # Batas server: MAX_EVENTS_PER_SYNC = 2000 di services/aggregator-api/server.mjs.
-# Payload TIDAK dipecah jadi beberapa batch: ingestSnapshot() memperlakukan satu
-# POST sebagai satu snapshot penuh per source, jadi batch kedua berpotensi
-# menghapus batch pertama. Lebih baik gagal keras daripada kehilangan data.
+# Jangan pecah payload berdasarkan jumlah baris: ingestSnapshot() mengganti
+# source pada rentang tanggal mulai WITA dalam satu POST. Batch yang bertumpang
+# tindih tanggal bisa menghapus batch sebelumnya. Collector multi-hari memakai
+# ingest_window_to_dashboard.py untuk membentuk snapshot hari WITA yang utuh.
 MAX_EVENTS_PER_SYNC = 2000
 
 DEFAULT_TIMEOUT_SECONDS = 40
@@ -257,8 +258,8 @@ def main() -> int:
         if len(rows) > MAX_EVENTS_PER_SYNC:
             raise IngestError(
                 f"{len(rows)} baris melebihi batas {MAX_EVENTS_PER_SYNC} event per "
-                f"sync. Payload tidak dipecah karena satu POST = satu snapshot "
-                f"penuh per source. Persempit rentang tanggal CSV."
+                f"sync. Payload tidak dipecah karena batch yang tumpang tindih "
+                f"tanggal WITA dapat saling menghapus. Persempit rentang tanggal CSV."
             )
 
         if args.dry_run:

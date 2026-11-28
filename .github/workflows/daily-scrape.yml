@@ -24,7 +24,7 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     env:
       DASHBOARD_INGEST_URL: https://schedule.jerconetwork.com/api/ingest/v2
       DASHBOARD_INGEST_TOKEN: ${{ secrets.DASHBOARD_INGEST_TOKEN }}
@@ -48,12 +48,36 @@ jobs:
             exit 1
           fi
 
-      - name: Run scraper
-        run: python scrape_sky_sports_guide.py --debug
+      - name: Select complete WITA window
+        run: |
+          python - <<'PY'
+          import os
+          from datetime import datetime, timedelta
+          from zoneinfo import ZoneInfo
+          start = datetime.now(ZoneInfo('Asia/Makassar')).date()
+          # NZ midnight is earlier than WITA midnight: the ninth guide date
+          # supplies the final WITA evening without publishing partial edge days.
+          end = start + timedelta(days=8)
+          with open(os.environ['GITHUB_ENV'], 'a') as output:
+              output.write(f'SKY_WINDOW_START={start}\n')
+              output.write(f'SKY_WINDOW_CSV=sports_{start}_to_{end}.csv\n')
+          PY
+
+      - name: Run scraper for nine adjacent NZ guide dates
+        run: >-
+          python scrape_sky_sports_guide.py --debug --days 9
+          --start-date "$SKY_WINDOW_START" --output "$SKY_WINDOW_CSV"
+
+      - name: Validate every WITA batch before ingest
+        run: >-
+          python ingest_window_to_dashboard.py --csv "$SKY_WINDOW_CSV"
+          --start-date "$SKY_WINDOW_START" --days 8 --dry-run
 
       - name: Ingest to dashboard aggregator
         if: ${{ !inputs.skip_ingest }}
-        run: python ingest_to_dashboard.py
+        run: >-
+          python ingest_window_to_dashboard.py --csv "$SKY_WINDOW_CSV"
+          --start-date "$SKY_WINDOW_START" --days 8
 
       - name: Upload diagnostics if scraper fails
         if: failure()

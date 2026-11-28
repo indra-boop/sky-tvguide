@@ -226,7 +226,7 @@ def _find_sports_group_id(*, debug: bool = False) -> str:
 
 
 def _format_sky_time(epoch_ms: Any) -> str:
-    if not isinstance(epoch_ms, (int, float)):
+    if isinstance(epoch_ms, bool) or not isinstance(epoch_ms, (int, float)):
         raise SkyGuideError(f"Invalid programme timestamp: {epoch_ms!r}")
     value = datetime.fromtimestamp(epoch_ms / 1000, tz=timezone.utc)
     value = value.astimezone(SKY_TIMEZONE)
@@ -241,7 +241,7 @@ def _format_utc(epoch_ms: Any) -> str:
     NZ day and can end with the 12:00AM slot of the next one. start_utc/end_utc
     keep what the API actually returned.
     """
-    if not isinstance(epoch_ms, (int, float)):
+    if isinstance(epoch_ms, bool) or not isinstance(epoch_ms, (int, float)):
         raise SkyGuideError(f"Invalid programme timestamp: {epoch_ms!r}")
     value = datetime.fromtimestamp(epoch_ms / 1000, tz=timezone.utc)
     return value.strftime("%Y-%m-%dT%H:%M:00Z")
@@ -261,11 +261,27 @@ def _slot_extras(slot: dict[str, Any], programme: dict[str, Any]) -> dict[str, s
     }
 
 
+def _is_explicit_gap(slot: dict[str, Any], channel_id: str, target_date: date) -> bool:
+    """Recognize only source gap IDs that encode their own channel and UTC start."""
+    if "programme" not in slot or slot["programme"] is not None or slot.get("live") is not False:
+        return False
+    # Timestamps have already been validated by the caller; the label must identify
+    # that same UTC day. A generic missing programme is never treated as a gap.
+    start = datetime.fromtimestamp(slot["startMs"] / 1000, timezone.utc)
+    end = datetime.fromtimestamp(slot["endMs"] / 1000, timezone.utc)
+    iso = start.isoformat(timespec="milliseconds" if start.microsecond else "seconds").replace("+00:00", "Z")
+    known_ids = {f"{channel_id}-gap-{start.date()}", f"{channel_id}-gap-{iso}", f"{channel_id}-{iso}"}
+    guide_start = datetime.combine(target_date, datetime.min.time(), SKY_TIMEZONE)
+    guide_end = datetime.combine(target_date + timedelta(days=1), datetime.min.time(), SKY_TIMEZONE)
+    return slot.get("id") in known_ids and start <= guide_end and end > guide_start
+
+
 def _scrape_day(
     sports_group_id: str,
     target_date: date,
     *,
     debug: bool = False,
+    expected_channel_ids: set[str] | None = None,
 ) -> list[dict[str, str]]:
     data = _post_graphql(
         CHANNEL_GROUP_QUERY,
@@ -289,12 +305,17 @@ def _scrape_day(
         "+00:00", "Z"
     )
     rows: list[dict[str, str]] = []
+    channel_ids: set[str] = set()
 
     for channel in channels:
         if not isinstance(channel, dict):
-            continue
+            raise SkyGuideError(f"Invalid channel entry for {target_date}")
 
+        channel_id = str(channel.get("id") or "").strip()
         channel_name = str(channel.get("title") or "").strip()
+        if not channel_id or not channel_name or channel_id in channel_ids:
+            raise SkyGuideError(f"Missing/duplicate channel identity for {target_date}")
+        channel_ids.add(channel_id)
         channel_display_name = f"[{COUNTRY_CODE}] {channel_name}"
 
         slots_for_day = channel.get("slotsForDay")
@@ -304,34 +325,39 @@ def _scrape_day(
             else None
         )
         if not isinstance(slots, list):
-            slots = []
+            raise SkyGuideError(f"Missing slots list for {target_date} channel {channel_id}")
 
         parsed_for_channel = 0
+        gaps_for_channel = 0
         for slot in slots:
             if not isinstance(slot, dict):
-                continue
-            programme = slot.get("programme")
-            if not isinstance(programme, dict):
-                continue
-            title = str(programme.get("title") or "").strip()
-            if not title:
-                continue
-
+                raise SkyGuideError(f"Invalid slot for {target_date} channel {channel_id}")
             try:
                 start_time = _format_sky_time(slot.get("startMs"))
                 end_time = _format_sky_time(slot.get("endMs"))
-                extras = _slot_extras(slot, programme)
-            except SkyGuideError as error:
-                print(
-                    f"[warning] Skip slot {slot.get('id')!r}: {error}",
-                    file=sys.stderr,
-                )
+                if slot["endMs"] <= slot["startMs"]:
+                    raise SkyGuideError("Programme must end after its start")
+            except (SkyGuideError, ValueError, OverflowError, OSError) as error:
+                raise SkyGuideError(
+                    f"Invalid timestamp for {target_date} channel {channel_id} "
+                    f"slot {slot.get('id')!r}: {error}"
+                ) from error
+
+            if _is_explicit_gap(slot, channel_id, target_date):
+                gaps_for_channel += 1
                 continue
+            programme = slot.get("programme")
+            if not isinstance(programme, dict):
+                raise SkyGuideError(f"Missing programme for {target_date} channel {channel_id}")
+            title = str(programme.get("title") or "").strip()
+            if not title:
+                raise SkyGuideError(f"Missing programme title for {target_date} channel {channel_id}")
+            extras = _slot_extras(slot, programme)
 
             rows.append(
                 {
                     "country_code": COUNTRY_CODE,
-                    "channel_id": str(channel.get("id") or ""),
+                    "channel_id": channel_id,
                     "channel_number": str(channel.get("number") or ""),
                     "channel_name": channel_name,
                     "channel_display_name": channel_display_name,
@@ -346,6 +372,12 @@ def _scrape_day(
             )
             parsed_for_channel += 1
 
+        if gaps_for_channel:
+            print(
+                f"[info] {target_date} channel {channel_id}: {gaps_for_channel} "
+                "explicit source gap slots (no programme supplied)",
+                file=sys.stderr,
+            )
         if debug:
             print(
                 f"[debug] {target_date.isoformat()} channel "
@@ -353,6 +385,11 @@ def _scrape_day(
                 f"{parsed_for_channel} programmes",
                 file=sys.stderr,
             )
+
+    if expected_channel_ids is not None:
+        if expected_channel_ids and channel_ids != expected_channel_ids:
+            raise SkyGuideError(f"Sports channel list changed within collection on {target_date}; no CSV written")
+        expected_channel_ids.update(channel_ids)
 
     if not rows:
         raise SkyGuideError(
@@ -458,6 +495,7 @@ def scrape(
     start_date = start_date or datetime.now(SKY_TIMEZONE).date()
     sports_group_id = _find_sports_group_id(debug=debug)
     rows: list[dict[str, str]] = []
+    expected_channel_ids: set[str] = set()
 
     for offset in range(days):
         rows.extend(
@@ -465,6 +503,7 @@ def scrape(
                 sports_group_id,
                 start_date + timedelta(days=offset),
                 debug=debug,
+                expected_channel_ids=expected_channel_ids,
             )
         )
 

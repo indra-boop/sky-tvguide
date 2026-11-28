@@ -7,6 +7,9 @@ on:
     paths:
       - "sport_classifier.py"
       - "scrape_sky_sports_guide.py"
+      - "ingest_to_dashboard.py"
+      - "ingest_window_to_dashboard.py"
+      - ".github/workflows/daily-scrape.yml"
       - "tests/**"
       - ".github/workflows/sport-category-tests.yml"
 
@@ -21,5 +24,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Test sport classification and CSV output
+      - name: Test source parsing, complete date batches, and ingest guards
         run: python -m unittest discover -s tests -v
