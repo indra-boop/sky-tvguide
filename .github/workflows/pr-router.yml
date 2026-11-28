@@ -1,0 +1,42 @@
+# PR router gratis (tanpa AI). Menggantikan pelabelan path oleh Cursor Approval Agent.
+# Diadaptasi dari indra-boop/jerco-sports-schedule#318.
+# Never checks out PR code. Labeler reads .github/labeler.yml via the GitHub API.
+# pull_request (not pull_request_target): fork PRs skip labeling because GITHUB_TOKEN is read-only.
+name: PR router
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: pr-router-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  labeler:
+    name: Labeler
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Clear leftover workspace (no PR checkout)
+        run: |
+          set -euo pipefail
+          # Labeler reads a local .github/labeler.yml if present. Keep the
+          # workspace empty so config is loaded via the GitHub API instead.
+          if [ -n "${GITHUB_WORKSPACE:-}" ] && [ -d "$GITHUB_WORKSPACE" ]; then
+            find "$GITHUB_WORKSPACE" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+          fi
+
+      - name: Apply path labels (no checkout)
+        uses: actions/labeler@8558fd74291d67161a8a78ce36a881fa63b766a9 # v5.0.0 (Node 20; self-hosted runner)
+        with:
+          repo-token: ${{ github.token }}
+          configuration-path: .github/labeler.yml
+          sync-labels: false
+          dot: true
